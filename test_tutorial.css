@@ -90,3 +90,7 @@ main p, ol {
     word-break: break-word;
     margin-left: 40px;
 }
+
+main .code, .video {
+    margin-left: 40px;
+}
