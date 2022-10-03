@@ -1,6 +1,7 @@
 header.page_header h1 {
     /* Position the page header */
     position: absolute;
+    top: 0;
     left: 0;
     right: 0;
     margin: auto;
@@ -26,7 +27,7 @@ nav.menu {
     /* position the navigation bar */
     position: absolute;
     width: 330px;
-    top: 83px;
+    top: 75px;
     bottom: 0;
     left: 0;
     overflow: auto;
@@ -64,7 +65,7 @@ main {
     position: absolute;
     left: 331px;
     right: 0;
-    top: 83px;
+    top: 75px;
     bottom: 0;
     overflow: auto;
 
