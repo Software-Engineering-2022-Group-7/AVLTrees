@@ -1,40 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <link rel="stylesheet" href="index.css">
     <title> Visualization </title>
-    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" href="visualization.css">
+    <!--    <link rel="shortcut icon" href="favicon.ico" />-->
 </head>
 <body>
 
-    <div class="container">
-        <div class="header"><h1> <a href="index.html">Introduction to AVL Trees Through Visualization </a></h1> </div>
-        <div class="menu">
-            <ul>
-                <li> <a href="index.html">Home</a> </li>
-                <li> <a href="tutorial.html">Tutorial</a> </li>
-                <li> <a href="visualization.html"> Visualization Tool </a> </li>
-                <li> <a href="implementation.html"> Implementation </a> </li>
-                <li> <a href="quiz.html"> Quiz </a> </li>
-            </ul>
+<!--< page header >-->
+<header class="page_header">
+    <h1><a href="index.html">Introduction to AVL Trees</a></h1>
+</header>
 
-        </div>
+<!--< navigation bar >-->
+<nav class="menu">
+    <h2><em>Sections</em></h2>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="tutorial.html">Tutorial</a></li>
+        <li><a href="visualization.html">Visualization Tool</a></li>
+        <li><a href="implementation.html">Implementation</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+    </ul>
+</nav>
 
-        <div class="content">
+<!--< main content section >-->
+<main>
+    <h1>Canvas</h1>
+    <!--<canvas id="myCanvas" width="1000" height="500" style="border:10px solid #691a86;"> </canvas> -->
+    <!-- Drawing canvas where all animation is done.  Note:  can be resized in code -->
+    <canvas id="test-canvas" width="500" height="400"></canvas>
+    <!-- Try 2<canvas></canvas>-->
+    <!--  Try 2 <script src="visualizer.js"></script>-->
+    <input id="Text1" TYPE="text" value="Text Field" name="Text1">
+    <input id="Reset1" type="reset" value="Reset" name="Reset1">
+</main>
 
-            <h1>Canvas</h1>
-
-            <!--<canvas id="myCanvas" width="1000" height="500" style="border:10px solid #691a86;"> </canvas> -->
-
-            <!-- Drawing canvas where all animation is done.  Note:  can be resized in code -->
-            <canvas id="test-canvas" width="500" height="400"></canvas> 
-            <!-- Try 2<canvas></canvas>-->
-            <!--  Try 2 <script src="visualizer.js"></script>-->
-                
-            <input id="Text1" TYPE="text" value="Text Field" name="Text1">
-            <input id="Reset1" type="reset" value="Reset" name="Reset1">
-
-        </div>
-    </div>
 </body>
 </html>

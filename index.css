@@ -1,81 +1,92 @@
+header.page_header h1 {
+    /* Position the page header */
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 10px 0;
 
-body {
-	font: 100% Verdana, Arial, Helvetica, sans-serif; 
-	background: #ffffff;
-	margin: 0;
-	padding: 0;
-	color: #000000;
+    font-family: "Trebuchet MS", Arial, serif;
+    font-style: italic;
+    font-size: xxx-large;
+    text-align: center;
+    background: #24292F;
 }
 
-.menu {
-   float:left; 
-   line-height:110%; 
-   margin-left: -2rem; 
-   
-   padding:1em; 
-   width:178px; 
+header.page_header a {
+    text-decoration: none;
+    color: white;
 }
 
-.menu ul {
-   list-style-type: none;
+header.page_header a:hover {
+    color: gray;
 }
 
-.menu a {
-   font-weight: bold;
-   text-decoration: none;
-   color:#006633;
+nav.menu {
+    /* position the navigation bar */
+    position: absolute;
+    width: 330px;
+    top: 83px;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+
+    border-right: 1px solid gray;
 }
 
-
-.content h1 {
-    color:#000000;
+nav.menu h2 {
+    font-size: 25px;
+    font-style: italic;
+    margin-top: 60px;
+    margin-bottom: -15px;
+    padding-left: 70px;
 }
 
-
-.content h2 {
-    color:#006633;
+nav.menu ul {
+    list-style-type: none;
+    line-height: 150%;
+    font-size: 25px;
+    font-style: italic;
+    padding-left: 70px;
 }
 
-.content h3 {
-    color:#006633;
+nav.menu a {
+    text-decoration: none;
+    color: #24292F;
 }
 
-
-.text, .personal {
-   margin: 0px 100px 100px 200px;
-   position: absolute;
-   font-family: Helvetica, sans-serif;
+nav.menu a:hover {
+    color: gray;
 }
 
+main {
+    /* Position the main section */
+    position: absolute;
+    left: 331px;
+    right: 0;
+    top: 83px;
+    bottom: 0;
+    overflow: auto;
 
-div.header h1 {
-	margin: 0; 	padding: 10px 0; 
+    font-family: "Trebuchet MS", Arial, serif;
+    background: #F6F8FA;
 }
 
-
-div.container {
-   width:100%;
-   height: 100%; 
-   margin:0px;
-
-   line-height:100%;
-}
-div.header,div.footer {
-	font: 100% Verdana, Arial, Helvetica, sans-serif;
-   text-align:center;
-
-	padding: 0 10px 0 20px; 
-	color:#ffCC33;
-
-	background: #775178; 
-
-
+main h1 {
+    font-style: italic;
+    font-size: 250%;
+    margin-left: 40px;
 }
 
-div.content {
-   margin-left:180px;
-   border-left:5px solid #253390;
-   padding: 2em;
+main h2 {
+    font-style: italic;
+    font-size: 200%;
+    margin-left: 40px;
 }
 
-
+main p, ol {
+    font-size: 110%;
+    width: 800px;
+    word-break: break-word;
+    margin-left: 40px;
+}
