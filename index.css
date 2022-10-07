@@ -26,7 +26,7 @@ header.page_header a:hover {
     color: gray;
 }
 
-nav {
+nav.sidebar {
     /* position the navigation bar */
     position: fixed;
     top: 80px;
@@ -49,23 +49,23 @@ nav {
     white-space: nowrap;
 }
 
-nav h2 {
+nav.sidebar h2 {
     font-weight: bold;
     font-size: 25px;
     margin-top: 50px;
 }
 
-nav ul {
+nav.sidebar ul {
     list-style-type: none;
     line-height: 150%;
 }
 
-nav a {
+nav.sidebar a {
     text-decoration: none;
     color: #24292F;
 }
 
-nav a:hover {
+nav.sidebar a:hover {
     color: gray;
 }
 

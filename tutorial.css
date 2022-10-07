@@ -1,3 +1,20 @@
 main .code, .video {
-    margin-left: 40px;
+    margin-left: 70px;
+}
+
+.tutorial_sidebar {
+    position: sticky;
+    float: right;
+    top:20px;
+    right: 0;
+    width: 22%;
+    font-size: 100%;
+}
+
+.tutorial_sidebar .nav-pills .nav-link {
+    color: #24292F;
+}
+
+.tutorial_sidebar .nav-pills .nav-link.active {
+    background-color: #d0d7de;
 }
