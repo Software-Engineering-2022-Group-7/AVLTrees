@@ -1,0 +1,18 @@
+main .card {
+    margin-left: 70px;
+}
+
+main h3 {
+    font-style: italic;
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.nav-link, .nav-link:hover, .nav-link.active {
+    color: #24292F;
+}
+
+.tab-pane text {
+    font-size: 110%;
+    word-break: break-word;
+}
