@@ -12,7 +12,8 @@ AVL.prototype.isEmpty = function() {
 };
 
 AVL.prototype.insert = function(key, value) {
-  
+//  this._root = insertInSubtree(this._root, key, value);
+//  this._size++;
 };
 
 AVL.prototype.update = function(key, value) {
@@ -135,13 +136,65 @@ AVL.prototype._buildPostOrderTraversal = function() {
 
 };
 
-AVL.prototype_countNodes = function(current_node) {
+AVL.prototype._countNodes = function(current_node) {
 
 };
 
-AVL.prototype_verifyKeysBoundedBy = function(current_node, minApplies, minBound, maxApplies, maxBound) {
+AVL.prototype._verifyKeysBoundedBy = function(current_node, minApplies, minBound, maxApplies, maxBound) {
 
 };
 
-const tree = new AVL();
-console.log(tree.isEmpty());
+function Node(key, value, left, right) {
+  this._key = key;
+  this._value = value;
+  if(left != undefined) {
+    this._left = left;
+  } else {
+    this._left = null;
+  }
+  if(right != undefined) {
+    this._right = right;
+  } else {
+    this._right = null;
+  }
+}
+
+Node.prototype.getKey = function() {
+  return this._key;
+}
+
+Node.prototype.setKey = function(newKey) {
+  this._key = newKey;
+}
+
+Node.prototype.getValue = function() {
+  return this._value;
+}
+
+Node.prototype.setValue = function(newValue) {
+  this._value = newValue;
+}
+
+Node.prototype.getLeft = function() {
+  return this._left;
+}
+
+Node.prototype.setLeft = function(newLeft) {
+  this._left = newLeft;
+}
+
+Node.prototype.getRight = function() {
+  return this._right;
+}
+
+Node.prototype.setRight = function(newRight) {
+  this._right = newRight;
+}
+
+// const node1 = new Node("A", 5, "node2");
+// console.log(node1.getRight());
+// node1.setRight("new node2");
+// console.log(node1.getRight());
+
+// const tree = new AVL();
+// console.log(tree.isEmpty());
