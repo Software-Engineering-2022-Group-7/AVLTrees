@@ -17,7 +17,7 @@ AVL.prototype.insert = function(key, value) {
 };
 
 AVL.prototype.update = function(key, value) {
-
+  this._updateInSubtree(this._root, key, value);
 };
 
 AVL.prototype.get = function(key) {
@@ -161,7 +161,18 @@ AVL.prototype._containsInSubtree = function(currentNode, key) {
 };
 
 AVL.prototype._updateInSubtree = function(currentNode, key, value) {
+  if(currentNode == null) {
+    throw "The key is not found.";
+  } else if (currentNode.getKey() == key) {
+    currentNode.setValue(value);
+    return;
+  }
 
+  if(key > currentNode.getKey()) {
+    return this._updateInSubtree(currentNode.getRight(), key, value);
+  } else {
+    return this._updateInSubtree(currentNode.getLeft(), key, value);
+  }
 };
 
 AVL.prototype._getHeightInSubtree = function(currentNode) {
@@ -273,25 +284,25 @@ Node.prototype.setRight = function(newRight) {
 
 /** ------------ TESTS ------------*/
 
-// function makeExampleAVL() {
-//   const tree = new AVL();
-//   tree.insert(6, "6");
-//   tree.insert(2, "2");
-//   tree.insert(7, "7");
-//   tree.insert(1, "1");
-//   tree.insert(4, "4");
-//   tree.insert(9, "9");
-//   tree.insert(3, "3");
-//   tree.checkInvariants();
-//   return tree;
-// }
+function makeExampleAVL() {
+  const tree = new AVL();
+  tree.insert("6", 6);
+  tree.insert("2", 2);
+  tree.insert("7", 7);
+  tree.insert("1", 1);
+  tree.insert("4", 4);
+  tree.insert("9", 9);
+  tree.insert("3", 3);
+  tree.checkInvariants();
+  return tree;
+}
 
 /** emptyAVL */
 // const tree = new AVL();
 // size = (tree.getSize() == 0);
 // empty = (tree.isEmpty() == true);
 // console.log(size && empty);
-// console.log(tree.checkInvariants());
+// tree.checkInvariants();
 
 /** exampleAVL */
 // const tree = makeExampleAVL();
@@ -305,3 +316,8 @@ Node.prototype.setRight = function(newRight) {
 // const tree = makeExampleAVL();
 // console.log(7 == tree.getSize());
 // console.log(!tree.isEmpty());
+
+/** update */
+// const tree = makeExampleAVL();
+// tree.update("1", 3);
+// console.log(3 == tree.get("1"));
