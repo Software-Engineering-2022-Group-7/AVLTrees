@@ -12,7 +12,7 @@ AVL.prototype.isEmpty = function() {
 };
 
 AVL.prototype.insert = function(key, value) {
-  this._root = insertInSubtree(this._root, key, value);
+  this._root = this._insertInSubtree(this._root, key, value);
   this._size++;
 };
 
@@ -21,7 +21,7 @@ AVL.prototype.update = function(key, value) {
 };
 
 AVL.prototype.get = function(key) {
-
+  return this._findInSubtree(this._root, key)
 };
 
 AVL.prototype.contains = function(key) {
@@ -85,8 +85,8 @@ AVL.prototype._getBalance = function(currentNode) {
   if(currentNode == null){
     return 0;
   }
-  const leftHeight = getHeightInSubtree(currentNode.getLeft());
-  const rightHeight = getHeightInSubtree(currentNode.getRight());
+  const leftHeight = this._getHeightInSubtree(currentNode.getLeft());
+  const rightHeight = this._getHeightInSubtree(currentNode.getRight());
   return leftHeight - rightHeight;
 };
 
@@ -115,9 +115,9 @@ AVL.prototype._insertInSubtree = function(currentNode, key, value) {
   } else if(currentNode.getKey() == key) {
     throw "The key already exists.";
   } else if(key > currentNode.getKey()) {
-    currentNode.setRight(insertInSubtree(currentNode.getRight(), key, value));
+    currentNode.setRight(this._insertInSubtree(currentNode.getRight(), key, value));
   } else if(key < currentNode.getKey()) {
-    currentNode.setLeft(insertInSubtree(currentNode.getLeft(), key, value));
+    currentNode.setLeft(this._insertInSubtree(currentNode.getLeft(), key, value));
   }
   const balance = this._getBalance(currentNode);
   if(balance > 1 && key < currentNode.getLeft().getKey()) {
@@ -135,7 +135,7 @@ AVL.prototype._insertInSubtree = function(currentNode, key, value) {
     return this._lefttRotate(currentNode);
   }
 
-  return current;
+  return currentNode;
 };
 
 AVL.prototype._removeFromSubtree = function(currentNode, key) {
@@ -143,7 +143,17 @@ AVL.prototype._removeFromSubtree = function(currentNode, key) {
 };
 
 AVL.prototype._findInSubtree = function(currentNode, key) {
+  if(currentNode == null) {
+    throw "The key is not found.";
+  } else if(currentNode.getKey() == key) {
+    return currentNode.getValue();
+  }
 
+  if(key > currentNode.getKey()) {
+    return this._findInSubtree(currentNode.getRight(), key);
+  } else {
+    return this._findInSubtree(currentNode.getLeft(), key);
+  }
 };
 
 AVL.prototype._containsInSubtree = function(currentNode, key) {
@@ -155,7 +165,7 @@ AVL.prototype._updateInSubtree = function(currentNode, key, value) {
 };
 
 AVL.prototype._getHeightInSubtree = function(currentNode) {
-  if(current == null) {
+  if(currentNode == null) {
     return -1;
   }
   const leftHeight = this._getHeightInSubtree(currentNode.getLeft()) + 1;
@@ -192,7 +202,11 @@ AVL.prototype._buildPostOrderTraversal = function() {
 };
 
 AVL.prototype._countNodes = function(currentNode) {
-
+  if(currentNode == null) {
+    return 0;
+  } else {
+    return this._countNodes(currentNode.getLeft()) + this._countNodes(currentNode.getRight()) + 1;
+  }
 };
 
 AVL.prototype._verifyKeysBoundedBy = function(currentNode, minApplies, minBound, maxApplies, maxBound) {
@@ -203,10 +217,10 @@ AVL.prototype._verifyKeysBoundedBy = function(currentNode, minApplies, minBound,
     throw "a node has a left descendent with greater key";
   }
   if(currentNode.getLeft() != null) {
-    verifyKeysBoundedBy(currentNode.getLeft(), minApplies, minBound, true, currentNode.getKey());
+    this._verifyKeysBoundedBy(currentNode.getLeft(), minApplies, minBound, true, currentNode.getKey());
   }
   if(currentNode.getRight() != null) {
-    verifyKeysBoundedBy(currentNode.getRight(), true, currentNode.getKey(), maxApplies, maxBound);
+    this._verifyKeysBoundedBy(currentNode.getRight(), true, currentNode.getKey(), maxApplies, maxBound);
   }
 };
 
@@ -257,10 +271,37 @@ Node.prototype.setRight = function(newRight) {
   this._right = newRight;
 }
 
-// const node1 = new Node("A", 5, "node2");
-// console.log(node1.getRight());
-// node1.setRight("new node2");
-// console.log(node1.getRight());
+/** ------------ TESTS ------------*/
 
+// function makeExampleAVL() {
+//   const tree = new AVL();
+//   tree.insert(6, "6");
+//   tree.insert(2, "2");
+//   tree.insert(7, "7");
+//   tree.insert(1, "1");
+//   tree.insert(4, "4");
+//   tree.insert(9, "9");
+//   tree.insert(3, "3");
+//   tree.checkInvariants();
+//   return tree;
+// }
+
+/** emptyAVL */
 // const tree = new AVL();
-// console.log(tree.isEmpty());
+// size = (tree.getSize() == 0);
+// empty = (tree.isEmpty() == true);
+// console.log(size && empty);
+// console.log(tree.checkInvariants());
+
+/** exampleAVL */
+// const tree = makeExampleAVL();
+// for (let i = 1; i <= 9; i++) {
+//   if (i != 5 && i != 8) {
+//     console.log(String(i) == tree.get(i));
+//   }
+// }
+
+/** exampleAVLSize */
+// const tree = makeExampleAVL();
+// console.log(7 == tree.getSize());
+// console.log(!tree.isEmpty());
