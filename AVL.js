@@ -25,11 +25,12 @@ AVL.prototype.get = function(key) {
 };
 
 AVL.prototype.contains = function(key) {
-
+  return this._containsInSubtree(this._root, key);
 };
 
 AVL.prototype.remove = function(key) {
-
+  this._root = this._removeFromSubtree(this._root, key);
+  this._size--;
 };
 
 AVL.prototype.getKeys = function() {
@@ -45,11 +46,11 @@ AVL.prototype.getHeight = function() {
 };
 
 AVL.prototype.getMaxKey = function() {
-
+  return this._getMaxInSubtree(this._root)[0];
 };
 
 AVL.prototype.getMinKey = function() {
-
+  return this._getMinInSubtree(this._root)[0];
 };
 
 AVL.prototype.getHeight = function() {
@@ -72,8 +73,11 @@ AVL.prototype.traversePostOrder = function() {
 
 };
 
+//add source
 AVL.prototype.displayTree = function() {
+  document.write("Tree:");
   this._displayTree(this._root, 0);
+  document.write("<br><br>");
 };
 
 AVL.prototype.checkInvariants = function() {
@@ -143,7 +147,54 @@ AVL.prototype._insertInSubtree = function(currentNode, key, value) {
 };
 
 AVL.prototype._removeFromSubtree = function(currentNode, key) {
+  console.log(currentNode.getKey());
+  console.log(key);
 
+  if(currentNode == null) {
+    throw "The key does not exist.";
+  } else if(key > currentNode.getKey()) {
+    currentNode.setRight(this._removeFromSubtree(currentNode.getRight(), key));
+    return currentNode;
+  } else if (key < currentNode.getKey()) {
+    currentNode.setLeft(this._removeFromSubtree(currentNode.getLeft(), key));
+    return currentNode;
+  } else {
+    if(currentNode.getLeft() == null && currentNode.getRight() == null) {
+      currentNode = null;
+      return currentNode;
+    } else if(currentNode.getLeft() == null && currentNode.getRight() != null) {
+      currentNode = currentNode.getRight();
+    } else if(currentNode.getRight() == null && currentNode.getLeft() != null) {
+      currentNode = currentNode.getLeft();
+    } else {
+      const max = this._getMaxInSubtree(currentNode.getLeft());
+      currentNode.setLeft(this._removeFromSubtree(currentNode.getLeft(), max[0]));
+      currentNode.setKey(max[0]);
+      currentNode.setValue(max[1]);
+    }
+  }
+
+  if(currentNode == null) {
+    return currentNode;
+  }
+
+  const balance = this._getBalance(currentNode);
+  if(balance > 1 && this._getBalance(currentNode.getLeft() >= 0)) {
+    return this._rightRotate(currentNode);
+  }
+  if(balance > 1 && this._getBalance(currentNode.getLeft() < 0)) {
+    currentNode.setLeft(this._leftRotate(currentNode.getLeft()));
+    return this._rightRotate(currentNode);
+  }
+  if(balance < -1 && this._getBalance(currentNode.getRight() <= 0)) {
+    return this._leftRotate(currentNode);
+  }
+  if(balance < -1 && this._getBalance(currentNode.getRight() > 0)) {
+    currentNode.setRight(this._rightRotate(currentNode.getRight()));
+    return this._lefttRotate(currentNode);
+  }
+
+  return currentNode;
 };
 
 AVL.prototype._findInSubtree = function(currentNode, key) {
@@ -161,7 +212,17 @@ AVL.prototype._findInSubtree = function(currentNode, key) {
 };
 
 AVL.prototype._containsInSubtree = function(currentNode, key) {
+  if(currentNode == null) {
+    return false;
+  } else if(currentNode.getKey() == key) {
+    return true;
+  }
 
+  if(key > currentNode.getKey()) {
+    return this._containsInSubtree(currentNode.getRight(), key);
+  } else {
+    return this._containsInSubtree(currentNode.getLeft(), key);
+  }
 };
 
 AVL.prototype._updateInSubtree = function(currentNode, key, value) {
@@ -192,12 +253,24 @@ AVL.prototype._getHeightInSubtree = function(currentNode) {
   }
 };
 
-AVL.prototype._getMinInSubtree = function(currentNode) {
-
+AVL.prototype._getMaxInSubtree = function(currentNode) {
+  if(currentNode == null) {
+    throw "Tree is empty";
+  }
+  while(currentNode.getRight() != null) {
+    currentNode = currentNode.getRight();
+  }
+  return new Array(currentNode.getKey(), currentNode.getValue());
 };
 
-AVL.prototype._getMaxInSubtree = function(currentNode) {
-
+AVL.prototype._getMinInSubtree = function(currentNode) {
+  if(currentNode == null) {
+    throw "Tree is empty";
+  }
+  while(currentNode.getLeft() != null) {
+    currentNode = currentNode.getLeft();
+  }
+  return new Array(currentNode.getKey(), currentNode.getValue());
 };
 
 AVL.prototype._buildInOrderTraversal = function() {
@@ -312,11 +385,9 @@ function makeExampleAVL() {
   tree.insert("9", 9);
   tree.insert("3", 3);
   tree.checkInvariants();
+  tree.displayTree();
   return tree;
 }
-
-const tree = makeExampleAVL();
-tree.displayTree();
 
 /** emptyAVL */
 // const tree = new AVL();
@@ -342,3 +413,15 @@ tree.displayTree();
 // const tree = makeExampleAVL();
 // tree.update("1", 3);
 // console.log(3 == tree.get("1"));
+
+/** contains */
+// const tree = makeExampleAVL();
+// console.log(true == tree.contains("1"));
+// console.log(false == tree.contains("10"));
+
+/** remove */
+const tree = makeExampleAVL();
+tree.remove("6");
+console.log(false == tree.contains("6"));
+//document.write("<br><br><br>");
+tree.displayTree();
