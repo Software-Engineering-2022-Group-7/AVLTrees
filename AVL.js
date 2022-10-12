@@ -72,6 +72,10 @@ AVL.prototype.traversePostOrder = function() {
 
 };
 
+AVL.prototype.displayTree = function() {
+  this._displayTree(this._root, 0);
+};
+
 AVL.prototype.checkInvariants = function() {
   if(this._countNodes(this._root) != this._size) {
     throw "Problem in BST: Node count doesn't match tree size";
@@ -220,6 +224,20 @@ AVL.prototype._countNodes = function(currentNode) {
   }
 };
 
+AVL.prototype._displayTree = function(currentNode, space) {
+  if(currentNode == null) {
+    return;
+  }
+  space += 10;
+  this._displayTree(currentNode.getRight(), space);
+  document.write("<br>");
+  for(let i = 10; i < space; i++) {
+    document.write("&nbsp;&nbsp;");
+  }
+  document.write(currentNode.getKey() + "\n");
+  this._displayTree(currentNode.getLeft(), space);
+};
+
 AVL.prototype._verifyKeysBoundedBy = function(currentNode, minApplies, minBound, maxApplies, maxBound) {
   if(minApplies && currentNode.getKey() < minBound) {
     throw "a node has a right descendent with lesser key";
@@ -296,6 +314,9 @@ function makeExampleAVL() {
   tree.checkInvariants();
   return tree;
 }
+
+const tree = makeExampleAVL();
+tree.displayTree();
 
 /** emptyAVL */
 // const tree = new AVL();
