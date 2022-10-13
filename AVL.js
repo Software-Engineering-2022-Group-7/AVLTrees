@@ -33,8 +33,17 @@ AVL.prototype.remove = function(key) {
   this._size--;
 };
 
-AVL.prototype.getKeys = function() {
-  const list = this.traversePreOrder();
+AVL.prototype.getKeys = function(traversal) {
+  let list = this.traverseInOrder();
+  if(traversal == 0) {
+    list = this.traversePreOrder();
+  } else if(traversal == 1) {
+    list = this.traversePostOrder();
+  } else if(traversal == 2) {
+    list = this.traverseInOrder();
+  } else if(traversal == 3) {
+    list = this.traverseLevelOrder();
+  }
   const keys = new Array();
   for(let i = 0; i < list.length; i++){
     keys.push(list[i][0]);
@@ -42,8 +51,18 @@ AVL.prototype.getKeys = function() {
   return keys;
 };
 
-AVL.prototype.getItems = function() {
-  return this.traversePreOrder();
+AVL.prototype.getItems = function(traversal) {
+  let list = this.traverseInOrder()
+  if(traversal == 0) {
+    list = this.traversePreOrder();
+  } else if(traversal == 1) {
+    list = this.traversePostOrder();
+  } else if(traversal == 2) {
+    list = this.traverseInOrder();
+  } else if(traversal == 3) {
+    list = this.traverseLevelOrder();
+  }
+  return list;
 };
 
 AVL.prototype.getHeight = function() {
@@ -62,13 +81,6 @@ AVL.prototype.getHeight = function() {
 
 };
 
-AVL.prototype.traverseInOrder = function() {
-
-};
-
-AVL.prototype.traverseLevelOrder = function() {
-
-};
 
 AVL.prototype.traversePreOrder = function() {
   const pairList = new Array();
@@ -81,7 +93,42 @@ AVL.prototype.traversePreOrder = function() {
 };
 
 AVL.prototype.traversePostOrder = function() {
+  const pairList = new Array();
+  this._buildPostOrderTraversal(this._root, pairList);
+  const list = new Array();
+  while(pairList.length != 0) {
+    list.push(pairList.pop());
+  }
+  return list;
+};
 
+AVL.prototype.traverseInOrder = function() {
+  const pairList = new Array();
+  this._buildInOrderTraversal(this._root, pairList);
+  const list = new Array();
+  while(pairList.length != 0) {
+    list.push(pairList.pop());
+  }
+  return list;
+};
+
+AVL.prototype.traverseLevelOrder = function() {
+  const list = new Array();
+  const queue = new Array();
+  const nodeCount = this._countNodes(this._root);
+
+  queue.push(this._root);
+  while(queue.length > 0) {
+    currentNode = queue.shift();
+    list.push([currentNode.getKey(), currentNode.getValue()]);
+    if(currentNode.getLeft() != null) {
+      queue.push(currentNode.getLeft());
+    }
+    if(currentNode.getRight() != null) {
+      queue.push(currentNode.getRight());
+    }
+  }
+  return list;
 };
 
 //add source
@@ -284,14 +331,6 @@ AVL.prototype._getMinInSubtree = function(currentNode) {
   return new Array(currentNode.getKey(), currentNode.getValue());
 };
 
-AVL.prototype._buildInOrderTraversal = function() {
-
-};
-
-AVL.prototype._buildLevelOrderTraversal = function() {
-
-};
-
 AVL.prototype._buildPreOrderTraversal = function(currentNode, list) {
   node = [currentNode.getKey(), currentNode.getValue()];
   list.unshift(node);
@@ -303,8 +342,26 @@ AVL.prototype._buildPreOrderTraversal = function(currentNode, list) {
   }
 };
 
-AVL.prototype._buildPostOrderTraversal = function() {
+AVL.prototype._buildPostOrderTraversal = function(currentNode, list) {
+  if(currentNode.getLeft() != null) {
+    this._buildPostOrderTraversal(currentNode.getLeft(), list);
+  }
+  if(currentNode.getRight() != null) {
+    this._buildPostOrderTraversal(currentNode.getRight(), list);
+  }
+  node = [currentNode.getKey(), currentNode.getValue()];
+  list.unshift(node);
+};
 
+AVL.prototype._buildInOrderTraversal = function(currentNode, list) {
+  if(currentNode.getLeft() != null) {
+    this._buildInOrderTraversal(currentNode.getLeft(), list);
+  }
+  node = [currentNode.getKey(), currentNode.getValue()];
+  list.unshift(node);
+  if(currentNode.getRight() != null) {
+    this._buildInOrderTraversal(currentNode.getRight(), list);
+  }
 };
 
 AVL.prototype._countNodes = function(currentNode) {
@@ -452,7 +509,7 @@ function makeExampleAVL() {
 
 /** getKeys */
 // const tree = makeExampleAVL();
-// const realKeys = tree.getKeys();
+// const realKeys = tree.getKeys(0);
 // const expectedKeys = ["6", "2", "1", "4", "3", "7", "9"];
 // console.log(expectedKeys.length == realKeys.length);
 // for(let i = 0; i < expectedKeys.length; i++){
@@ -461,9 +518,45 @@ function makeExampleAVL() {
 
 /** getItems */
 // const tree = makeExampleAVL();
-// const realItems = tree.getItems();
+// const realItems = tree.getItems(0);
 // const expectedItems = [["6", 6], ["2", 2], ["1", 1], ["4", 4], ["3", 3], ["7", 7], ["9", 9]];
 // console.log(expectedItems.length == realItems.length);
 // for(let i = 0; i < expectedItems.length; i++){
 //   console.log(expectedItems[i][0] == realItems[i][0] && expectedItems[i][1] == realItems[i][1]);
+// }
+
+/** ExamplePreOrderTraversal */
+// const tree = makeExampleAVL();
+// const realTraversal = tree.getKeys(0);
+// const expectedTraversal = ["6", "2", "1", "4", "3", "7", "9"];
+// console.log(expectedTraversal.length == realTraversal.length);
+// for(let i = 0; i < expectedTraversal.length; i++){
+//   console.log(expectedTraversal[i] == realTraversal[i]);
+// }
+
+/** ExamplePostOrderTraversal */
+// const tree = makeExampleAVL();
+// const realTraversal = tree.getKeys(1);
+// const expectedTraversal = ["1", "3", "4", "2", "9", "7", "6"];
+// console.log(expectedTraversal.length == realTraversal.length);
+// for(let i = 0; i < expectedTraversal.length; i++){
+//   console.log(expectedTraversal[i] == realTraversal[i]);
+// }
+
+/** ExampleInOrderTraversal */
+// const tree = makeExampleAVL();
+// const realTraversal = tree.getKeys(2);
+// const expectedTraversal = ["1", "2", "3", "4", "6", "7", "9"];
+// console.log(expectedTraversal.length == realTraversal.length);
+// for(let i = 0; i < expectedTraversal.length; i++){
+//   console.log(expectedTraversal[i] == realTraversal[i]);
+// }
+
+/** ExampleLevelOrderTraversal */
+// const tree = makeExampleAVL();
+// const realTraversal = tree.getKeys(3);
+// const expectedTraversal = ["6", "2", "7", "1", "4", "9", "3"];
+// console.log(expectedTraversal.length == realTraversal.length);
+// for(let i = 0; i < expectedTraversal.length; i++){
+//   console.log(expectedTraversal[i] == realTraversal[i]);
 // }
