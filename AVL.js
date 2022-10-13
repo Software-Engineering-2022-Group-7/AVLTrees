@@ -66,7 +66,7 @@ AVL.prototype.getItems = function(traversal) {
 };
 
 AVL.prototype.getHeight = function() {
-
+  return this._getHeightInSubtree(this._root);
 };
 
 AVL.prototype.getMaxKey = function() {
@@ -76,11 +76,6 @@ AVL.prototype.getMaxKey = function() {
 AVL.prototype.getMinKey = function() {
   return this._getMinInSubtree(this._root)[0];
 };
-
-AVL.prototype.getHeight = function() {
-
-};
-
 
 AVL.prototype.traversePreOrder = function() {
   const pairList = new Array();
@@ -524,6 +519,18 @@ function makeExampleAVL() {
 // for(let i = 0; i < expectedItems.length; i++){
 //   console.log(expectedItems[i][0] == realItems[i][0] && expectedItems[i][1] == realItems[i][1]);
 // }
+
+/** getHeight */
+// const tree = makeExampleAVL();
+// console.log(3 == tree.getHeight());
+
+/** getMax */
+// const tree = makeExampleAVL();
+// console.log("9" == tree.getMaxKey());
+
+/** getMin */
+// const tree = makeExampleAVL();
+// console.log("1" == tree.getMinKey());
 
 /** ExamplePreOrderTraversal */
 // const tree = makeExampleAVL();
