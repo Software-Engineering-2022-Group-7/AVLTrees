@@ -34,11 +34,16 @@ AVL.prototype.remove = function(key) {
 };
 
 AVL.prototype.getKeys = function() {
-
+  const list = this.traversePreOrder();
+  const keys = new Array();
+  for(let i = 0; i < list.length; i++){
+    keys.push(list[i][0]);
+  }
+  return keys;
 };
 
 AVL.prototype.getItems = function() {
-
+  return this.traversePreOrder();
 };
 
 AVL.prototype.getHeight = function() {
@@ -66,7 +71,13 @@ AVL.prototype.traverseLevelOrder = function() {
 };
 
 AVL.prototype.traversePreOrder = function() {
-
+  const pairList = new Array();
+  this._buildPreOrderTraversal(this._root, pairList);
+  const list = new Array();
+  while(pairList.length != 0) {
+    list.push(pairList.pop());
+  }
+  return list;
 };
 
 AVL.prototype.traversePostOrder = function() {
@@ -281,8 +292,15 @@ AVL.prototype._buildLevelOrderTraversal = function() {
 
 };
 
-AVL.prototype._buildPreOrderTraversal = function() {
-
+AVL.prototype._buildPreOrderTraversal = function(currentNode, list) {
+  node = [currentNode.getKey(), currentNode.getValue()];
+  list.unshift(node);
+  if(currentNode.getLeft() != null) {
+    this._buildPreOrderTraversal(currentNode.getLeft(), list);
+  }
+  if(currentNode.getRight() != null) {
+    this._buildPreOrderTraversal(currentNode.getRight(), list);
+  }
 };
 
 AVL.prototype._buildPostOrderTraversal = function() {
@@ -375,6 +393,13 @@ Node.prototype.setRight = function(newRight) {
 
 /** ------------ TESTS ------------*/
 
+//       6
+//     /  \
+//    2    7
+//   / \    \
+//  1   4    9
+//     /
+//   3
 function makeExampleAVL() {
   const tree = new AVL();
   tree.insert("6", 6);
@@ -420,8 +445,25 @@ function makeExampleAVL() {
 // console.log(false == tree.contains("10"));
 
 /** remove */
-const tree = makeExampleAVL();
-tree.remove("6");
-console.log(false == tree.contains("6"));
-//document.write("<br><br><br>");
-tree.displayTree();
+// const tree = makeExampleAVL();
+// tree.remove("6");
+// console.log(false == tree.contains("6"));
+// tree.displayTree();
+
+/** getKeys */
+// const tree = makeExampleAVL();
+// const realKeys = tree.getKeys();
+// const expectedKeys = ["6", "2", "1", "4", "3", "7", "9"];
+// console.log(expectedKeys.length == realKeys.length);
+// for(let i = 0; i < expectedKeys.length; i++){
+//   console.log(expectedKeys[i] == realKeys[i]);
+// }
+
+/** getItems */
+// const tree = makeExampleAVL();
+// const realItems = tree.getItems();
+// const expectedItems = [["6", 6], ["2", 2], ["1", 1], ["4", 4], ["3", 3], ["7", 7], ["9", 9]];
+// console.log(expectedItems.length == realItems.length);
+// for(let i = 0; i < expectedItems.length; i++){
+//   console.log(expectedItems[i][0] == realItems[i][0] && expectedItems[i][1] == realItems[i][1]);
+// }
