@@ -1,0 +1,24 @@
+Sections:
+
+1. Tree data structure
+2. Binary search trees
+3. Balanced vs. non-balanced
+4. Rotations
+5. AVL tree background/history
+6. AVL tree operations
+
+Reference link: https://www.tutorialspoint.com/data_structures_algorithms/avl_tree_algorithm.htm
+
+AVL Trees
+
+What is an AVL Tree?
+It is a variant on the  BST with additional properties to ensure balance.
+
+How does it work?
+ For every node on the tree, the height of the left and right subtrees differ by at most 1. To maintain the balance property, we alter the insert and delete routines. Whenever we encounter a node with an imbalance, rotations are performed.  So after every insert and remove operation done on the tree, we rebalance using the following rotations/algorithm.
+Left Rotation: [Diagram]
+Right Rotation:[Diagram]
+When and on what node to apply the rotations?
+	The balancing property depends on the height difference of the subtrees. If the height of the right subtree is greater than the height of the left subtree such that |height of the right subtree -  height of the left subtree| >1, then the tree will perform a right rotation.
+If | height of the left subtree - height of the right subtree|>1, then the tree will perform a left rotation.
+[Diagram of an example]
