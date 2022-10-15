@@ -34,49 +34,157 @@
     <h1>Implementations of an AVL Tree!</h1>
     <p>Below we will provide some implementations of the AVL Tree in different programming languages.</p>
 
-    <div class="card d-inline-flex w-75">
-        <div class="card-header">
-            <ul class="nav nav-tabs card-header-tabs" data-bs-tabs="tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="true" data-bs-toggle="tab" href="#pg1">General</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="tab" href="#pg2">C++</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="tab" href="#pg3">JavaScript</a>
-                </li>
-            </ul>
-        </div>
-        <div class="card-body tab-content">
-            <div class="tab-pane active" id="pg1">
-                <h3 class="card-title">General Implementation</h3>
-                <text>
-                    This is some placeholder content for the scrollspy page. Note that as you scroll down the page,
-                    the appropriate navigation link is highlighted. It's repeated throughout the component
-                    example. We keep adding some more example copy here to emphasize the scrolling and highlighting.
-                    <pre>
-                        <code>
-class Node {
-    public:
-    int key;
-    Node *left;
-    Node *right;
-    int height;
-};                      </code>
-                    </pre>
-                </text>
-                <ul>
-                    <li><a href="https://www.geeksforgeeks.org/avl-tree-set-1-insertion/">AVL Tree Insertion</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/AVL_tree">AVL Tree Wikipedia</a></li>
-                    <li><a href="https://www.geeksforgeeks.org/avl-tree-set-1-insertion/">AVL Tree Insertion</a></li>
+    <div class="main_content">
+        <div class="card d-inline-flex">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" data-bs-tabs="tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="true" data-bs-toggle="tab" href="#pg1">General</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#pg2">C++</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#pg3">JavaScript</a>
+                    </li>
                 </ul>
             </div>
-            <div class="tab-pane" id="pg2">
-                <h3 class="card-title">C++ Structure</h3>
-            </div>
-            <div class="tab-pane" id="pg3">
-                <h3 class="card-title">JavaScript Structure</h3>
+            <div class="card-body tab-content">
+                <div class="tab-pane active" id="pg1">
+                    <h3 class="card-title">General Implementation</h3>
+                    <text>
+                        As a certain kind of self-balancing binary search tree, an AVL Tree structure is implemented as
+                        a child class of a binary search tree, which is then a child class of a binary tree. In other
+                        words,
+                        the AVL Tree structure follows below hierarchical inheritance:
+                        <div class="tree_hierarchy">
+                            <code>Dictionary >> Binary Tree >> Binary Search Tree >> AVL Tree</code>
+                        </div>
+                        In this section, we will list the primary features of an AVL Tree structure. You can the
+                        find detailed implementations in the C++/JavaScript page. Besides viewing our implementations,
+                        we also recommend you to check these useful websites afterwards for more sophisticated
+                        explanations:
+                        <ul>
+                            <li><a href="https://en.wikipedia.org/wiki/AVL_tree">AVL Tree Wikipedia</a></li>
+                        </ul>
+                        <div id="methods_selection">
+                            <div class="button_lists">
+                                <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#AVL_Node"
+                                        aria-expanded="false" aria-controls="AVL_Node">AVL_node()
+                                </button>
+                                <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#insert"
+                                        aria-expanded="false" aria-controls="insert">insert()
+                                </button>
+                                <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#update"
+                                        aria-expanded="false" aria-controls="update">update()
+                                </button>
+                                <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#get"
+                                        aria-expanded="false" aria-controls="get">get()
+                                </button>
+                                <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#contains"
+                                        aria-expanded="false" aria-controls="contains">contains()
+                                </button>
+                                <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#remove"
+                                        aria-expanded="false" aria-controls="remove">remove()
+                                </button>
+                                <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#preOrder"
+                                        aria-expanded="false" aria-controls="preOrder">traversePreOrder()
+                                </button>
+                                <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#inOrder"
+                                        aria-expanded="false" aria-controls="inOrder">traverseInOrder()
+                                </button>
+                                <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#postOrder"
+                                        aria-expanded="false" aria-controls="postOrder">traversePostOrder()
+                                </button>
+                                <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#levelOrder"
+                                        aria-expanded="false" aria-controls="levelOrder">traverseLevelOrder()
+                                </button>
+                                <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#getBalance"
+                                        aria-expanded="false" aria-controls="getBalance">getBalance()
+                                </button>
+                                <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#rightRotate"
+                                        aria-expanded="false" aria-controls="rightRotate">rightRotate()
+                                </button>
+                                <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#leftRotate"
+                                        aria-expanded="false" aria-controls="leftRotate">leftRotate()
+                                </button>
+                            </div>
+                            <div class="collapse_contents">
+                                <div class="collapse" id="AVL_Node" data-bs-parent="#methods_selection">
+                                    <div class="card card-body">
+                                        AVL Node
+                                    </div>
+                                </div>
+                                <div class="collapse" id="insert" data-bs-parent="#methods_selection">
+                                    <div class="card card-body">
+                                        Insert
+                                    </div>
+                                </div>
+                                <div class="collapse" id="update" data-bs-parent="#methods_selection">
+                                    <div class="card card-body">
+                                        Update
+                                    </div>
+                                </div>
+                                <div class="collapse" id="get" data-bs-parent="#methods_selection">
+                                    <div class="card card-body">
+                                        Get
+                                    </div>
+                                </div>
+                                <div class="collapse" id="contains" data-bs-parent="#methods_selection">
+                                    <div class="card card-body">
+                                        Contains
+                                    </div>
+                                </div>
+                                <div class="collapse" id="remove" data-bs-parent="#methods_selection">
+                                    <div class="card card-body">
+                                        Remove
+                                    </div>
+                                </div>
+                                <div class="collapse" id="preOrder" data-bs-parent="#methods_selection">
+                                    <div class="card card-body">
+                                        preOrder traversal
+                                    </div>
+                                </div>
+                                <div class="collapse" id="inOrder" data-bs-parent="#methods_selection">
+                                    <div class="card card-body">
+                                        inOrder traversal
+                                    </div>
+                                </div>
+                                <div class="collapse" id="postOrder" data-bs-parent="#methods_selection">
+                                    <div class="card card-body">
+                                        postOrder traversal
+                                    </div>
+                                </div>
+                                <div class="collapse" id="levelOrder" data-bs-parent="#methods_selection">
+                                    <div class="card card-body">
+                                        levelOrder traversal
+                                    </div>
+                                </div>
+                                <div class="collapse" id="getBalance" data-bs-parent="#methods_selection">
+                                    <div class="card card-body">
+                                        Get balance
+                                    </div>
+                                </div>
+                                <div class="collapse" id="rightRotate" data-bs-parent="#methods_selection">
+                                    <div class="card card-body">
+                                        Right rotation
+                                    </div>
+                                </div>
+                                <div class="collapse" id="leftRotate" data-bs-parent="#methods_selection">
+                                    <div class="card card-body">
+                                        Left rotation
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </text>
+                </div>
+                <div class="tab-pane" id="pg2">
+                    <h3 class="card-title">C++ Structure</h3>
+                </div>
+                <div class="tab-pane" id="pg3">
+                    <h3 class="card-title">JavaScript Structure</h3>
+                </div>
             </div>
         </div>
     </div>
