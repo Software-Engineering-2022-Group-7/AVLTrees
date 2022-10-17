@@ -20,11 +20,13 @@ body {
     display: inline;}
 
   .explanation {
-    background-color: #325cda;
-    border-left: 6px solid #f44336;
-    padding: 0;
+    background-color: #a1c88d;
+    border-left: 6px solid #6c8d5c;
+    padding: 0px;
     margin: 0 auto;
-    margin-bottom: 1rem;
+    margin-bottom: 4rem;
+    margin-left: 180px;
+    margin-right: 180px;
     display: block;
   }
 
