@@ -3,20 +3,23 @@
     max-width: 1000px;
 }
 
+.main_content h2 {
+    margin-left: 0;
+}
+
 .main_content h3 {
     font-style: italic;
     font-size: 150%;
     font-weight: bold;
 }
 
-
-.main_content ul {
-    line-height: 200%;
+.implementation_link, .outer_reference {
+    padding-top: 15px;
 }
 
 .main_content a {
     text-decoration: none;
-    color: slategray;
+    color: dimgray;
 }
 
 .main_content a:hover {
@@ -27,7 +30,7 @@
     color: #24292F;
 }
 
-.tab-pane text {
+.card-body text, .card-body li {
     font-size: 110%;
     word-break: break-word;
 }
@@ -39,4 +42,8 @@ code {
 text .tree_hierarchy {
     text-align: center;
     line-height: 200%;
+}
+
+.tab-pane .expand_collapse_all {
+    margin: 10px 0;
 }
