@@ -1,45 +1,278 @@
-const question = document.querySelector('#question');
-const choices = Array.from(document.querySelectorAll('.choice-text'));
-const progressTest = document.querySelector('#progressText');
-const scoreText = document.querySelector('#score');
-const progressBarFull = document.querySelector('#progressBarFull');
+const headElem = document.getElementById("head");
+const buttonsElem = document.getElementById("buttons");
+const pagesElem = document.getElementById("pages");
 
-let currentQuestion = {};
+//Class that represents the quiz
+class Quiz
+{
+	constructor(type, questions, results)
+	{
+		//Type of the quiz: 1 - quiz with right answers, 2 - quiz without right answers
+		this.type = type;
 
-let acceptingAnswers = true;
-let score = 0;
-let questionCounter = 0;
-let availableQuestions = [];
+		//Questions
+		this.questions = questions;
 
-let questions = [
-    {
-        question: "What is 3 + 2?",
-        choice1: "6",
-        choice2: "5",
-        choice3: "7",
-        choice4: "4",
-        answer: "5",
-    },
-    {
-        question: "What is 5 + 2?",
-        choice1: "6",
-        choice2: "5",
-        choice3: "7",
-        choice4: "4",
-        answer: "7",
-    },
-    {
-        question: "What is 3 + 3?",
-        choice1: "6",
-        choice2: "5",
-        choice3: "7",
-        choice4: "4",
-        answer: "6",
-    }
-]
+		//Potential results
+		this.results = results;
 
-const SCORE_POINTS = 100;
-const MAX_QUESTIONS = 4;
+		//Total Scores
+		this.score = 0;
 
+		//The number of the result
+		this.result = 0;
 
+		//The number of the current question
+		this.current = 0;
+	}
 
+	Click(index)
+	{
+		//Adding scores/points
+		let value = this.questions[this.current].Click(index);
+		this.score += value;
+
+		let correct = -1;
+
+		//If at least one point was added -> the answer was right
+		if(value >= 1)
+		{
+			correct = index;
+		}
+		else
+		{
+			//Otherwise searching for the right answer
+			for(let i = 0; i < this.questions[this.current].answers.length; i++)
+			{
+				if(this.questions[this.current].answers[i].value >= 1)
+				{
+					correct = i;
+					break;
+				}
+			}
+		}
+
+		this.Next();
+
+		return correct;
+	}
+
+	//Next question
+	Next()
+	{
+		this.current++;
+		
+		if(this.current >= this.questions.length) 
+		{
+			this.End();
+		}
+	}
+
+	//If no more questions -> counts the total scores
+	End()
+	{
+		for(let i = 0; i < this.results.length; i++)
+		{
+			if(this.results[i].Check(this.score))
+			{
+				this.result = i;
+			}
+		}
+	}
+} 
+
+//Questions class
+class Question 
+{
+	constructor(text, answers)
+	{
+		this.text = text; 
+		this.answers = answers; 
+	}
+
+	Click(index) 
+	{
+		return this.answers[index].value; 
+	}
+}
+
+//Answers class
+class Answer 
+{
+	constructor(text, value) 
+	{
+		this.text = text; 
+		this.value = value; 
+	}
+}
+
+//Results class
+class Result 
+{
+	constructor(text, value)
+	{
+		this.text = text;
+		this.value = value;
+	}
+
+	//Check if enough score/points was scored
+	Check(value)
+	{
+		if(this.value <= value)
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+	}
+}
+
+//Messages for the results
+const results = 
+[
+	new Result("You should study more", 0),
+	new Result("Not bad, not bad", 2),
+	new Result("You are above average", 4),
+	new Result("You nailed it!", 6)
+];
+
+//Questions
+const questions = 
+[
+	new Question("A height balanced binary search tree is called: ", 
+	[
+		new Answer("height tree", 0),
+		new Answer("AVL tree", 1),
+		new Answer("binary tree", 0),
+		new Answer("binary search tree", 0)
+	]),
+
+	new Question("2 * 2 = ", 
+	[
+		new Answer("2", 0),
+		new Answer("3", 0),
+		new Answer("4", 1),
+		new Answer("0", 0)
+	]),
+
+	new Question("2 / 2 = ", 
+	[
+		new Answer("0", 0),
+		new Answer("1", 1),
+		new Answer("2", 0),
+		new Answer("3", 0)
+	]),
+
+	new Question("2 - 2 = ", 
+	[
+		new Answer("0", 1),
+		new Answer("1", 0),
+		new Answer("2", 0),
+		new Answer("3", 0)
+	]),
+
+	new Question("2 + 2 * 2 = ", 
+	[
+		new Answer("4", 0),
+		new Answer("6", 1),
+		new Answer("8", 0),
+		new Answer("10", 0)
+	]),
+
+	new Question("2 + 2 / 2 = ", 
+	[
+		new Answer("1", 0),
+		new Answer("2", 0),
+		new Answer("3", 1),
+		new Answer("4", 0)
+	])
+];
+
+//The quiz itself
+const quiz = new Quiz(1, questions, results);
+
+Update();
+
+//Update 
+function Update()
+{
+	//Checks whether there are more questions
+	if(quiz.current < quiz.questions.length) 
+	{
+		//If yes -> change the question
+		headElem.innerHTML = quiz.questions[quiz.current].text;
+
+		//Delete the old variants
+		buttonsElem.innerHTML = "";
+
+		//Create buttons for new answers
+		for(let i = 0; i < quiz.questions[quiz.current].answers.length; i++)
+		{
+			let btn = document.createElement("button");
+			btn.className = "button";
+
+			btn.innerHTML = quiz.questions[quiz.current].answers[i].text;
+
+			btn.setAttribute("index", i);
+
+			buttonsElem.appendChild(btn);
+		}
+		
+		//Current number of the question
+		pagesElem.innerHTML = (quiz.current + 1) + " / " + quiz.questions.length;
+
+		
+		Init();
+	}
+	else
+	{
+		//If ends -> display results
+		buttonsElem.innerHTML = "";
+		headElem.innerHTML = quiz.results[quiz.result].text;
+		pagesElem.innerHTML = "Points: " + quiz.score;
+	}
+}
+
+function Init()
+{
+	//All buttons
+	let btns = document.getElementsByClassName("button");
+
+	for(let i = 0; i < btns.length; i++)
+	{
+		btns[i].addEventListener("click", function (e) { Click(e.target.getAttribute("index")); });
+	}
+}
+
+function Click(index) 
+{
+	let correct = quiz.Click(index);
+
+	let btns = document.getElementsByClassName("button");
+
+	for(let i = 0; i < btns.length; i++)
+	{
+		btns[i].className = "button button_passive";
+	}
+
+	if(quiz.type == 1)
+	{
+		if(correct >= 0)
+		{
+			btns[correct].className = "button button_correct";
+		}
+
+		if(index != correct) 
+		{
+			btns[index].className = "button button_wrong";
+		} 
+	}
+	else
+	{
+		btns[index].className = "button button_correct";
+	}
+
+	setTimeout(Update, 1000);
+}

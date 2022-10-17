@@ -1,68 +1,81 @@
-body {
-    color: rgb(0, 0, 0);
+.wrapper
+{
+	width: 100%;
+	height: 100%;
+	display: table;
 }
 
-.choice-container  {
-    display: flex;
-    margin-bottom: 0.8rem;
-    width: 60%;
-    border-radius: 4px;
-    background:rgb(48, 139, 143);
-    font-size: 1rem;
-    min-width: 0rem ;
+.main
+{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
 }
 
-.choice-container:hover {
-    cursor: pointer;
-    box-shadow: 0 0.4rem 1.4rem 0 rgb(188, 223, 143) 0.5%;
-    transform: scale(1.02);
-    transform: transform 100ms;
+.quiz-frame
+{
+	border: 0;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-.choice-prefix {
-    padding: 2rem 2.5rem;
-    color: rgb(255, 255, 255);
+.quiz__head
+{
+	font-size: 30pt;
+	margin: 10px;
+	margin-bottom: 50px;
+    margin-top: 150px;
 }
 
-.choice-text {
-    padding: 2rem;
-    width: 100%;
+.head__content 
+{
+	padding: 5px;
 }
 
-.correct {
-    background-color: linear-gradient(32deg, rgba(green) 0%, rgb(green) 100%);
+.quiz__body
+{
+	margin: 10px;
 }
 
-.incorrect {
-    background-color: linear-gradient(32deg, rgba(red) 0%, rgb(red) 100%);
+.quiz__footer 
+{
+	position: absolute;
+	bottom: 0;
+	display: block;
+	width: 100%;
+    font-size: 30pt;
+    margin-bottom: 3rem;
 }
 
-#hud {
-    display: flex;
-    justify-content: space-between;
+.footer__content 
+{
+	padding: 5px;
 }
 
-.hud-prefix {
-    text-align: center;
-    font-size: 2rem;
+.button
+{
+	border: 0;
+	border-radius: 10px;
+	background: #1d1f2b;
+	color: #fff;
+	padding: 10px 25px;
+	width: 70%;
+	font-size: 15pt;
+	display: block;
+	margin: 2px auto;
+	cursor: pointer;
 }
 
-.hud-main-text {
-    text-align: center;
+.button_wrong 
+{
+	background: #EB6465;
 }
 
-#progressBar {
-    width: 20rem;
-    height: 3rem;
-    border: 0.2rem solid rgb(green);
-    margin-top: 2rem;
-    border-radius: 50px;
-    overflow: hidden;
+.button_correct
+{
+	background: #5EB97D;
 }
 
-#progressBarFull {
-    height: 100%;
-    background: green;
-    width: 100%;
+.button_passive
+{
+	background: #B3B3B3;
 }
-
