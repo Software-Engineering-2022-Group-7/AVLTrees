@@ -81,17 +81,8 @@ AVL.prototype.remove = function(key) {
  *                           in-order.
  * @return {Array} An array containing the keys in this AVL Tree.
  */
-AVL.prototype.getKeys = function(traversal) {
-  let list = this.traverseInOrder();
-  if(traversal == 0) {
-    list = this.traversePreOrder();
-  } else if(traversal == 1) {
-    list = this.traversePostOrder();
-  } else if(traversal == 2) {
-    list = this.traverseInOrder();
-  } else if(traversal == 3) {
-    list = this.traverseLevelOrder();
-  }
+AVL.prototype.getKeys = function() {
+  const list = this.traversePreOrder();
   const keys = new Array();
   for(let i = 0; i < list.length; i++){
     keys.push(list[i][0]);
@@ -108,18 +99,8 @@ AVL.prototype.getKeys = function(traversal) {
  * @return {Array} An array containing the key-value array pairs in the AVL
  *                 tree.
  */
-AVL.prototype.getItems = function(traversal) {
-  let list = this.traverseInOrder()
-  if(traversal == 0) {
-    list = this.traversePreOrder();
-  } else if(traversal == 1) {
-    list = this.traversePostOrder();
-  } else if(traversal == 2) {
-    list = this.traverseInOrder();
-  } else if(traversal == 3) {
-    list = this.traverseLevelOrder();
-  }
-  return list;
+AVL.prototype.getItems = function() {
+  return this.traversePreOrder();
 };
 
 /**
@@ -269,7 +250,7 @@ AVL.prototype._getBalance = function(currentNode) {
  */
 AVL.prototype._rightRotate = function(currentNode) {
   const leftNode = currentNode.getLeft();
-  const rightNode = currentNode.getRight();
+  const rightNode = leftNode.getRight();
   leftNode.setRight(currentNode);
   currentNode.setLeft(rightNode);
 
@@ -282,8 +263,8 @@ AVL.prototype._rightRotate = function(currentNode) {
  * @return {Node} The node replacing the location of the given node.
  */
 AVL.prototype._leftRotate = function(currentNode) {
-  const leftNode = currentNode.getLeft();
   const rightNode = currentNode.getRight();
+  const leftNode = rightNode.getLeft();
   rightNode.setLeft(currentNode);
   currentNode.setRight(leftNode);
 
@@ -724,17 +705,17 @@ Node.prototype.setRight = function(newRight) {
             /
           3
 */
-function makeExampleAVL() {
-  const tree = new AVL();
-  tree.insert("6", 6);
-  tree.insert("2", 2);
-  tree.insert("7", 7);
-  tree.insert("1", 1);
-  tree.insert("4", 4);
-  tree.insert("9", 9);
-  tree.insert("3", 3);
-  return tree;
-}
+// function makeExampleAVL() {
+//   const tree = new AVL();
+//   tree.insert("6", 6);
+//   tree.insert("2", 2);
+//   tree.insert("7", 7);
+//   tree.insert("1", 1);
+//   tree.insert("4", 4);
+//   tree.insert("9", 9);
+//   tree.insert("3", 3);
+//   return tree;
+// }
 
 // function inLeftLeftAVL() {
 //   const tree = new AVL();
@@ -746,7 +727,7 @@ function makeExampleAVL() {
 //   tree.displayTree();
 //   return tree;
 // }
-//
+
 // function inRightRightAVL() {
 //   const tree = new AVL();
 //   tree.insert("1", 1);
@@ -757,7 +738,7 @@ function makeExampleAVL() {
 //   tree.displayTree();
 //   return tree;
 // }
-//
+
 // function inLeftRightAVL() {
 //   const tree = new AVL();
 //   tree.insert("3", 3);
@@ -768,7 +749,7 @@ function makeExampleAVL() {
 //   tree.displayTree();
 //   return tree;
 // }
-//
+
 // function inRightLeftAVL() {
 //   const tree = new AVL();
 //   tree.insert("1", 1);
@@ -780,65 +761,65 @@ function makeExampleAVL() {
 //   return tree;
 // }
 
-function reLeftLeftAVL() {
-  const tree = new AVL();
-  tree.insert("3", 3);
-  tree.displayTree();
-  tree.insert("4", 4);
-  tree.displayTree();
-  tree.insert("2", 2);
-  tree.displayTree();
-  tree.insert("1", 1);
-  tree.displayTree();
-  tree.remove("4");
-  tree.displayTree();
-  return tree;
-}
+// function reLeftLeftAVL() {
+//   const tree = new AVL();
+//   tree.insert("3", 3);
+//   tree.displayTree();
+//   tree.insert("4", 4);
+//   tree.displayTree();
+//   tree.insert("2", 2);
+//   tree.displayTree();
+//   tree.insert("1", 1);
+//   tree.displayTree();
+//   tree.remove("4");
+//   tree.displayTree();
+//   return tree;
+// }
 
-function reRightRightAVL() {
-  const tree = new AVL();
-  tree.insert("2", 2);
-  tree.displayTree();
-  tree.insert("1", 1);
-  tree.displayTree();
-  tree.insert("3", 3);
-  tree.displayTree();
-  tree.insert("4", 4);
-  tree.displayTree();
-  tree.remove("1");
-  tree.displayTree();
-  return tree;
-}
+// function reRightRightAVL() {
+//   const tree = new AVL();
+//   tree.insert("2", 2);
+//   tree.displayTree();
+//   tree.insert("1", 1);
+//   tree.displayTree();
+//   tree.insert("3", 3);
+//   tree.displayTree();
+//   tree.insert("4", 4);
+//   tree.displayTree();
+//   tree.remove("1");
+//   tree.displayTree();
+//   return tree;
+// }
 
-function reLeftRightAVL() {
-  const tree = new AVL();
-  tree.insert("3", 3);
-  tree.displayTree();
-  tree.insert("4", 4);
-  tree.displayTree();
-  tree.insert("1", 1);
-  tree.displayTree();
-  tree.insert("2", 2);
-  tree.displayTree();
-  tree.remove("4");
-  tree.displayTree();
-  return tree;
-}
+// function reLeftRightAVL() {
+//   const tree = new AVL();
+//   tree.insert("3", 3);
+//   tree.displayTree();
+//   tree.insert("4", 4);
+//   tree.displayTree();
+//   tree.insert("1", 1);
+//   tree.displayTree();
+//   tree.insert("2", 2);
+//   tree.displayTree();
+//   tree.remove("4");
+//   tree.displayTree();
+//   return tree;
+// }
 
-function reRightLeftAVL() {
-  const tree = new AVL();
-  tree.insert("2", 2);
-  tree.displayTree();
-  tree.insert("1", 1);
-  tree.displayTree();
-  tree.insert("4", 4);
-  tree.displayTree();
-  tree.insert("3", 3);
-  tree.displayTree();
-  tree.remove("1");
-  tree.displayTree();
-  return tree;
-}
+// function reRightLeftAVL() {
+//   const tree = new AVL();
+//   tree.insert("2", 2);
+//   tree.displayTree();
+//   tree.insert("1", 1);
+//   tree.displayTree();
+//   tree.insert("4", 4);
+//   tree.displayTree();
+//   tree.insert("3", 3);
+//   tree.displayTree();
+//   tree.remove("1");
+//   tree.displayTree();
+//   return tree;
+// }
 
 /** emptyAVL */
 // const tree = new AVL();
@@ -856,20 +837,20 @@ function reRightLeftAVL() {
 // }
 // tree.checkInvariants();
 
-/** reLeftLeftAVL*/
-// const tree = reLeftLeftAVL();
+/** inLeftLeftAVL*/
+// const tree = inLeftLeftAVL();
 // tree.checkInvariants();
 
-/** reRightRightAVL*/
-// const tree = reRightRightAVL();
+/** inRightRightAVL*/
+// const tree = inRightRightAVL();
 // tree.checkInvariants();
 
-/** reLeftRightAVL*/
-// const tree = reLeftRightAVL();
+/** inLeftRightAVL*/
+// const tree = inLeftRightAVL();
 // tree.checkInvariants();
 
-/** reRightLeftAVL*/
-// const tree = reRightLeftAVL();
+/** inRightLeftAVL*/
+// const tree = inRightLeftAVL();
 // tree.checkInvariants();
 
 /** exampleAVLSize */
@@ -921,7 +902,7 @@ function reRightLeftAVL() {
 
 /** getKeys */
 // const tree = makeExampleAVL();
-// const realKeys = tree.getKeys(0);
+// const realKeys = tree.getKeys();
 // const expectedKeys = ["6", "2", "1", "4", "3", "7", "9"];
 // console.log(expectedKeys.length == realKeys.length);
 // for(let i = 0; i < expectedKeys.length; i++){
@@ -931,8 +912,9 @@ function reRightLeftAVL() {
 
 /** getItems */
 // const tree = makeExampleAVL();
-// const realItems = tree.getItems(0);
-// const expectedItems = [["6", 6], ["2", 2], ["1", 1], ["4", 4], ["3", 3], ["7", 7], ["9", 9]];
+// const realItems = tree.getItems();
+// const expectedItems = [["6", 6], ["2", 2], ["1", 1], ["4", 4], ["3", 3],
+//                       ["7", 7], ["9", 9]];
 // console.log(expectedItems.length == realItems.length);
 // for(let i = 0; i < expectedItems.length; i++){
 //   console.log(expectedItems[i][0] == realItems[i][0] && expectedItems[i][1] == realItems[i][1]);
@@ -958,40 +940,48 @@ function reRightLeftAVL() {
 
 /** ExamplePreOrderTraversal */
 // const tree = makeExampleAVL();
-// const realTraversal = tree.getKeys(0);
-// const expectedTraversal = ["6", "2", "1", "4", "3", "7", "9"];
+// const realTraversal = tree.traversePreOrder();
+// const expectedTraversal = [["6", 6], ["2", 2], ["1", 1], ["4", 4], ["3", 3],
+//                           ["7", 7], ["9", 9]];
 // console.log(expectedTraversal.length == realTraversal.length);
 // for(let i = 0; i < expectedTraversal.length; i++){
-//   console.log(expectedTraversal[i] == realTraversal[i]);
+//   console.log(expectedTraversal[i][0] == realTraversal[i][0] &&
+//               expectedTraversal[i][1] == realTraversal[i][1]);
 // }
 // tree.checkInvariants();
 
 /** ExamplePostOrderTraversal */
 // const tree = makeExampleAVL();
-// const realTraversal = tree.getKeys(1);
-// const expectedTraversal = ["1", "3", "4", "2", "9", "7", "6"];
+// const realTraversal = tree.traversePostOrder();
+// const expectedTraversal = [["1", 1], ["3", 3], ["4", 4], ["2", 2], ["9", 9],
+//                           ["7", 7], ["6", 6]];
 // console.log(expectedTraversal.length == realTraversal.length);
 // for(let i = 0; i < expectedTraversal.length; i++){
-//   console.log(expectedTraversal[i] == realTraversal[i]);
+//   console.log(expectedTraversal[i][0] == realTraversal[i][0] &&
+//               expectedTraversal[i][1] == realTraversal[i][1]);
 // }
 // tree.checkInvariants();
 
 /** ExampleInOrderTraversal */
 // const tree = makeExampleAVL();
-// const realTraversal = tree.getKeys(2);
-// const expectedTraversal = ["1", "2", "3", "4", "6", "7", "9"];
+// const realTraversal = tree.traverseInOrder();
+// const expectedTraversal = [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["6", 6],
+//                           ["7", 7], ["9", 9]];
 // console.log(expectedTraversal.length == realTraversal.length);
 // for(let i = 0; i < expectedTraversal.length; i++){
-//   console.log(expectedTraversal[i] == realTraversal[i]);
+//   console.log(expectedTraversal[i][0] == realTraversal[i][0] &&
+//               expectedTraversal[i][1] == realTraversal[i][1]);
 // }
 // tree.checkInvariants();
 
 /** ExampleLevelOrderTraversal */
 // const tree = makeExampleAVL();
-// const realTraversal = tree.getKeys(3);
-// const expectedTraversal = ["6", "2", "7", "1", "4", "9", "3"];
+// const realTraversal = tree.traverseLevelOrder();
+// const expectedTraversal = [["6", 6], ["2", 2], ["7", 7], ["1", 1], ["4", 4],
+//                           ["9", 9], ["3", 3]];
 // console.log(expectedTraversal.length == realTraversal.length);
 // for(let i = 0; i < expectedTraversal.length; i++){
-//   console.log(expectedTraversal[i] == realTraversal[i]);
+//   console.log(expectedTraversal[i][0] == realTraversal[i][0] &&
+//               expectedTraversal[i][1] == realTraversal[i][1]);
 // }
 // tree.checkInvariants();
