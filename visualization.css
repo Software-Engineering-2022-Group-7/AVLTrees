@@ -1,9 +1,32 @@
-canvas {
+body {
+    background: #111;
+    color: #f8f8f8;
+  }
+  canvas {
     background: #f8f8f8;
     padding: 0;
     margin: 0 auto 1rem;
     display: block;
+    border: 1px solid black;
 }
+  .toolbox {
+    width: 100px;
+    margin: 0 auto;
+    display: inline;}
+    
+  .action_btn {
+    width: 100px;
+    margin: 0 auto;
+    display: inline;}
+
+  .explanation {
+    background-color: #325cda;
+    border-left: 6px solid #f44336;
+    padding: 0;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    display: block;
+  }
 
 input {
     margin-left: 40px;
