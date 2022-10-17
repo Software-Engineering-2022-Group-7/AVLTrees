@@ -1,6 +1,6 @@
 function expand() {
-    $('.collapse').collapse('show');
+    $('.methods_display').find('.collapse').collapse('show');
 }
 function collapse() {
-    $('.collapse').collapse('hide');
+    $('.methods_display').find('.collapse').collapse('hide');
 }
