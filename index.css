@@ -12,7 +12,7 @@ header.page_header h1 {
     /* words */
     font-family: "Trebuchet MS", Arial, serif;
     font-style: italic;
-    font-size: 300%;
+    font-size: 50px;
     font-weight: bold;
     text-align: center;
 }
@@ -101,7 +101,7 @@ main h2 {
     margin-left: 70px;
 }
 
-main p, ol {
+main p, main ol {
     font-size: 110%;
     width: 800px;
     word-break: break-word;
