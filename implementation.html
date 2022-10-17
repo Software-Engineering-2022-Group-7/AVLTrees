@@ -71,19 +71,24 @@
                         many ways to implement an AVL Tree, so just take ours as an example. We strongly
                         encourage you to design your own one!
                         <ul class="implementation_link">
-                            <li><a href="#">AVL Tree Implementation</a></li>
+                            <li><a target="_blank" rel="noopener noreferrer"
+                                   href="https://github.com/Kleokhov/Data_Structure_Implementations">AVL Tree
+                                Implementation</a></li>
                         </ul>
                         Besides viewing our implementations, we also recommend you to check these useful websites
                         afterwards for more sophisticated explanations:
                         <ul class="outer_reference">
-                            <li><a href="https://en.wikipedia.org/wiki/AVL_tree">AVL Tree Wikipedia</a></li>
+                            <li><a target="_blank" rel="noopener noreferrer"
+                                   href="https://en.wikipedia.org/wiki/AVL_tree">AVL Tree Wikipedia</a></li>
                         </ul>
                     </text>
                 </div>
                 <div class="tab-pane" id="pg2">
                     <h3 class="card-title">C++ Structure</h3>
                     <ul class="implementation_link">
-                        <li><a href="#">AVL Tree Implementation</a></li>
+                        <li><a target="_blank" rel="noopener noreferrer"
+                               href="https://github.com/Kleokhov/Data_Structure_Implementations">AVL Tree
+                            Implementation</a></li>
                     </ul>
                     <text>
                         Here are the primary methods of the AVL Tree. Click on the column to review
@@ -117,7 +122,7 @@
                                         </code>
                                         <br><br>
                                         You can manipulate the node through methods like <code>getLeft(), getRight()
-                                        </code> to get the left/right node of the current node, or <code>setValue(),
+                                    </code> to get the left/right node of the current node, or <code>setValue(),
                                         setKey() </code> to change the key/value of the current node.
                                     </div>
                                 </div>
@@ -355,112 +360,42 @@
                 </div>
                 <div class="tab-pane" id="pg3">
                     <h3 class="card-title">JavaScript Structure</h3>
-                    <div id="methods_selection">
-                        <div class="button_lists">
-                            <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#AVL_Node"
-                                    aria-expanded="false" aria-controls="AVL_Node">AVL_node()
-                            </button>
-                            <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#insert"
-                                    aria-expanded="false" aria-controls="insert">insert()
-                            </button>
-                            <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#update"
-                                    aria-expanded="false" aria-controls="update">update()
-                            </button>
-                            <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#get"
-                                    aria-expanded="false" aria-controls="get">get()
-                            </button>
-                            <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#contains"
-                                    aria-expanded="false" aria-controls="contains">contains()
-                            </button>
-                            <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#remove"
-                                    aria-expanded="false" aria-controls="remove">remove()
-                            </button>
-                            <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#preOrder"
-                                    aria-expanded="false" aria-controls="preOrder">traversePreOrder()
-                            </button>
-                            <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#inOrder"
-                                    aria-expanded="false" aria-controls="inOrder">traverseInOrder()
-                            </button>
-                            <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#postOrder"
-                                    aria-expanded="false" aria-controls="postOrder">traversePostOrder()
-                            </button>
-                            <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#levelOrder"
-                                    aria-expanded="false" aria-controls="levelOrder">traverseLevelOrder()
-                            </button>
-                            <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#getBalance"
-                                    aria-expanded="false" aria-controls="getBalance">getBalance()
-                            </button>
-                            <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#rightRotate"
-                                    aria-expanded="false" aria-controls="rightRotate">rightRotate()
-                            </button>
-                            <button class="btn btn-light" data-bs-toggle="collapse" data-bs-target="#leftRotate"
-                                    aria-expanded="false" aria-controls="leftRotate">leftRotate()
-                            </button>
-                        </div>
-                        <div class="collapse_contents">
-                            <div class="collapse" id="AVL_Node" data-bs-parent="#methods_selection">
-                                <div class="card card-body">
-                                    AVL Node
-                                </div>
-                            </div>
-                            <div class="collapse" id="insert" data-bs-parent="#methods_selection">
-                                <div class="card card-body">
-                                    Insert
-                                </div>
-                            </div>
-                            <div class="collapse" id="update" data-bs-parent="#methods_selection">
-                                <div class="card card-body">
-                                    Update
-                                </div>
-                            </div>
-                            <div class="collapse" id="get" data-bs-parent="#methods_selection">
-                                <div class="card card-body">
-                                    Get
-                                </div>
-                            </div>
-                            <div class="collapse" id="contains" data-bs-parent="#methods_selection">
-                                <div class="card card-body">
-                                    Contains
-                                </div>
-                            </div>
-                            <div class="collapse" id="remove" data-bs-parent="#methods_selection">
-                                <div class="card card-body">
-                                    Remove
-                                </div>
-                            </div>
-                            <div class="collapse" id="preOrder" data-bs-parent="#methods_selection">
-                                <div class="card card-body">
-                                    preOrder traversal
-                                </div>
-                            </div>
-                            <div class="collapse" id="inOrder" data-bs-parent="#methods_selection">
-                                <div class="card card-body">
-                                    inOrder traversal
-                                </div>
-                            </div>
-                            <div class="collapse" id="postOrder" data-bs-parent="#methods_selection">
-                                <div class="card card-body">
-                                    postOrder traversal
-                                </div>
-                            </div>
-                            <div class="collapse" id="levelOrder" data-bs-parent="#methods_selection">
-                                <div class="card card-body">
-                                    levelOrder traversal
-                                </div>
-                            </div>
-                            <div class="collapse" id="getBalance" data-bs-parent="#methods_selection">
-                                <div class="card card-body">
-                                    Get balance
-                                </div>
-                            </div>
-                            <div class="collapse" id="rightRotate" data-bs-parent="#methods_selection">
-                                <div class="card card-body">
-                                    Right rotation
-                                </div>
-                            </div>
-                            <div class="collapse" id="leftRotate" data-bs-parent="#methods_selection">
-                                <div class="card card-body">
-                                    Left rotation
+                    <ul class="implementation_link">
+                        <li><a target="_blank" rel="noopener noreferrer"
+                               href="https://github.com/Kleokhov/Data_Structure_Implementations">AVL Tree
+                            Implementation</a></li>
+                    </ul>
+                    <div class="expand_collapse_all">
+                        <button type="button" class="btn btn-outline-dark" onclick="expand2()">Expand All</button>
+                        <button type="button" class="btn btn-outline-dark" onclick="collapse2()">Collapse All</button>
+                    </div>
+                    <div class="methods_display2">
+                        <!--assign id number starting from accordionFlush14-->
+                        <div class="accordion accordion-flush" id="accordionFlush14">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-heading14">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapse14" aria-expanded="false"
+                                            aria-controls="flush-collapse14">
+                                        LinkedBSTNode()
+                                    </button>
+                                </h2>
+                                <div id="flush-collapse14" class="accordion-collapse collapse"
+                                     aria-labelledby="flush-heading14" data-bs-parent="#accordionFlush14">
+                                    <div class="accordion-body">
+                                        The linkedBSTNode is similar to a linked list node. It is a simple data
+                                        container that stores information. Specifically, it stores <br>
+                                        <code>
+                                            key (a key in the type of K);
+                                            value (a value in the type of V);
+                                            left (a pointer to left);
+                                            right (a pointer to right).
+                                        </code>
+                                        <br><br>
+                                        You can manipulate the node through methods like <code>getLeft(), getRight()
+                                    </code> to get the left/right node of the current node, or <code>setValue(),
+                                        setKey() </code> to change the key/value of the current node.
+                                    </div>
                                 </div>
                             </div>
                         </div>
