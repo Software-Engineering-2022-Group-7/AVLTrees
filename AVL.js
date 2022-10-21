@@ -334,14 +334,11 @@ AVL.prototype._removeFromSubtree = function(currentNode, key) {
     throw "The key does not exist.";
   } else if(key > currentNode.getKey()) {
     currentNode.setRight(this._removeFromSubtree(currentNode.getRight(), key));
-    // return currentNode;
   } else if (key < currentNode.getKey()) {
     currentNode.setLeft(this._removeFromSubtree(currentNode.getLeft(), key));
-    // return currentNode;
   } else {
     if(currentNode.getLeft() == null && currentNode.getRight() == null) {
       currentNode = null;
-      // return currentNode;
     } else if(currentNode.getLeft() == null && currentNode.getRight() != null) {
       currentNode = currentNode.getRight();
     } else if(currentNode.getRight() == null && currentNode.getLeft() != null) {
