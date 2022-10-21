@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> Visualization </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="visualization.css">
     <!--    <link rel="shortcut icon" href="favicon.ico" />-->
 </head>
@@ -14,14 +17,14 @@
 </header>
 
 <!--< navigation bar >-->
-<nav class="menu">
-    <h2><em>Sections</em></h2>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="tutorial.html">Tutorial</a></li>
-        <li><a href="visualization.html">Visualization Tool</a></li>
-        <li><a href="implementation.html">Implementation</a></li>
-        <li><a href="quiz.html">Quiz</a></li>
+<nav id="sidebar" class="sidebar">
+    <h2>Sections</h2>
+    <ul class="list-group list-group-flush d-inline-flex">
+        <li class="list-group-item"><a href="index.html">Home</a></li>
+        <li class="list-group-item"><a href="tutorial.html">Tutorial</a></li>
+        <li class="list-group-item"><a href="visualization.html">Visualization Tool</a></li>
+        <li class="list-group-item"><a href="implementation.html">Implementation</a></li>
+        <li class="list-group-item"><a href="quiz.html">Quiz</a></li>
     </ul>
 </nav>
 
@@ -30,11 +33,31 @@
     <h1>Canvas</h1>
     <!--<canvas id="myCanvas" width="1000" height="500" style="border:10px solid #691a86;"> </canvas> -->
     <!-- Drawing canvas where all animation is done.  Note:  can be resized in code -->
-    <canvas id="test-canvas" width="500" height="400"></canvas>
+    <div class="toolbox" >
+        <div class="action_btn">
+
+            <input id="numInput" type="number" class="action_btn numInput" placeholder="Enter">
+            <button onclick="submitInput()" type="button" class="action_btn submit">Insert</button>
+            <input id="numDelete" type="number" class="action_btn numDelete" placeholder="Enter">
+            <button onclick="submitDelete()" type="button" class="action_btn numDelete">Delete</button>
+            <button onclick="clearcanvas()" id = "reset" type="reset">Reset the canvas</button>
+        </div>
+    </div>
+
+
+    <!-- Drawing canvas where all animation is done.  Note:  can be resized in code -->
+    <canvas id="canvas" width="500" height="400"></canvas> 
     <!-- Try 2<canvas></canvas>-->
     <!--  Try 2 <script src="visualizer.js"></script>-->
-    <input id="Text1" TYPE="text" value="Text Field" name="Text1">
-    <input id="Reset1" type="reset" value="Reset" name="Reset1">
+        
+    
+    <div class="explanation">
+        <p><strong>Explanation</strong> Some text...</p>
+    </div>
+
+
+
+
 </main>
 
 </body>

@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Quiz Page</title>
-<!--    <link rel="shortcut icon" href="favicon.ico" />-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="quiz.css">
+    <!--    <link rel="shortcut icon" href="favicon.ico" />-->
 </head>
 <body>
 
@@ -14,59 +17,41 @@
 </header>
 
 <!--< navigation bar >-->
-<nav class="menu">
-    <h2><em>Sections</em></h2>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="tutorial.html">Tutorial</a></li>
-        <li><a href="visualization.html">Visualization Tool</a></li>
-        <li><a href="implementation.html">Implementation</a></li>
-        <li><a href="quiz.html">Quiz</a></li>
+<nav id="sidebar" class="sidebar">
+    <h2>Sections</h2>
+    <ul class="list-group list-group-flush d-inline-flex">
+        <li class="list-group-item"><a href="index.html">Home</a></li>
+        <li class="list-group-item"><a href="tutorial.html">Tutorial</a></li>
+        <li class="list-group-item"><a href="visualization.html">Visualization Tool</a></li>
+        <li class="list-group-item"><a href="implementation.html">Implementation</a></li>
+        <li class="list-group-item"><a href="quiz.html">Quiz</a></li>
     </ul>
 </nav>
 
 <!--< main content section >-->
-<main>
-    <div id="quiz" class="justify-center flex-column">
-        <div id="hud">
-            <div id="hud-item">
-                <p id="progressText" class="hud-prefix">
-                    Question
-                </p>
-                <div id="progressBar">
-                    <div id="progressBarFull"></div>
+<div class="wrapper">
+    <main class="main">
+        <div class="quiz__head">
+            <div class="head__content" id="head">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut ducimus odit accusamus, illum quas magni provident odio praesentium commodi sint, porro harum, minus cupiditate architecto culpa aut ex dolore officia.</div>
+        </div>
+        <div class="quiz__body">
+            <div class="buttons">
+                <div class="buttons__content" id="buttons">
+                    <button class="button">Default button</button><br>
+                    <button class="button button_wrong">Wrong answer</button><br>
+                    <button class="button button_correct">Correct answer</button><br>
+                    <button class="button button_passive">Unclicked button</button><br>
                 </div>
             </div>
-            <div class="hud-item">
-                <p class="hud-prefix">
-                    Score
-                </p>
-                <h1 class="hud-main-text" id="score">
-                    0
-                </h1>
-
+  
+            <div class="quiz__footer">
+                <div class="footer__content" id="pages">0 / 0</div>
             </div>
         </div>
-        <div id="question"><h1>What is the answer to this question?</h1> </div>
-        <div class="choice-container">
-            <p class="choice-prefix">A</p>
-            <p class="choice-text" data-num="1">Choice 1</p>
-        </div>
-        <div class="choice-container">
-            <p class="choice-prefix">B</p>
-            <p class="choice-text" data-num="2">Choice 2</p>
-        </div>
-        <div class="choice-container">
-            <p class="choice-prefix">C</p>
-            <p class="choice-text" data-num="3">Choice 3</p>
-        </div>
-        <div class="choice-container">
-            <p class="choice-prefix">D</p>
-            <p class="choice-text" data-num="4">Choice 4</p>
-        </div>
-    </div>
-</main>
-<script src="quiz.js"></script>
+       
+    </main>
+ </div>
+<script type="text/javascript" src="quiz.js"></script>
 
 </body>
 </html>
