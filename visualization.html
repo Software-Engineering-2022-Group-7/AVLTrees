@@ -35,11 +35,15 @@
     <h1>Canvas</h1>
     <!--<canvas id="myCanvas" width="1000" height="500" style="border:10px solid #691a86;"> </canvas> -->
     <!-- Drawing canvas where all animation is done.  Note:  can be resized in code -->
+     <!-- Drawing canvas where all animation is done.  Note:  can be resized in code -->
+    <canvas id="canvas" width="500" height="400"></canvas> 
+     <!-- Try 2<canvas></canvas>-->
+     <!--  Try 2 <script src="visualizer.js"></script>-->
     <div class="toolbox" >
         <div class="action_btn">
 
             <input id="numInput" type="number" class="action_btn numInput" placeholder="Enter">
-            <button onclick="submitInput()" type="button" class="action_btn submit">Insert</button>
+            <button onclick="stroke()" type="button" class="action_btn submit">Insert</button>
             <input id="numDelete" type="number" class="action_btn numDelete" placeholder="Enter">
             <button onclick="submitDelete()" type="button" class="action_btn numDelete">Delete</button>
             <button onclick="clearcanvas()" id = "reset" type="reset">Reset the canvas</button>
@@ -47,10 +51,7 @@
     </div>
 
 
-    <!-- Drawing canvas where all animation is done.  Note:  can be resized in code -->
-    <canvas id="canvas" width="500" height="400"></canvas> 
-    <!-- Try 2<canvas></canvas>-->
-    <!--  Try 2 <script src="visualizer.js"></script>-->
+
         
     
     <div class="explanation">
