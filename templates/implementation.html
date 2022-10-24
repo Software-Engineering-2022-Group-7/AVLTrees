@@ -1,36 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Implementation</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="implementation.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-    <script src="implementation.js"></script>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}
+<title>Implementation</title>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="../static/implementation.js"></script>
+{% endblock %}
 
-<!--< page header >-->
-<header class="page_header">
-    <h1><a href="index.html">Introduction to AVL Trees</a></h1>
-</header>
-
-<!--< navigation bar >-->
-<nav id="sidebar" class="sidebar">
-    <h2>Sections</h2>
-    <ul class="list-group list-group-flush d-inline-flex">
-        <li class="list-group-item"><a href="index.html">Home</a></li>
-        <li class="list-group-item"><a href="tutorial.html">Tutorial</a></li>
-        <li class="list-group-item"><a href="visualization.html">Visualization Tool</a></li>
-        <li class="list-group-item"><a href="implementation.html">Implementation</a></li>
-        <li class="list-group-item"><a href="quiz.html">Quiz</a></li>
-    </ul>
-</nav>
-
-<!--< main content section >-->
+{% block content %}
 <main>
     <h1>Implementations of an AVL Tree!</h1>
     <div class="main_content">
@@ -405,6 +381,4 @@
         </div>
     </div>
 </main>
-
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}
+<title>Quiz</title>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+    <main class="main">
+        <div class="quiz__head">
+            <div class="head__content" id="head">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut ducimus odit accusamus, illum quas magni provident odio praesentium commodi sint, porro harum, minus cupiditate architecto culpa aut ex dolore officia.</div>
+        </div>
+        <div class="quiz__body">
+            <div class="buttons">
+                <div class="buttons__content" id="buttons">
+                    <button class="button">Default button</button><br>
+                    <button class="button button_wrong">Wrong answer</button><br>
+                    <button class="button button_correct">Correct answer</button><br>
+                    <button class="button button_passive">Unclicked button</button><br>
+                </div>
+            </div>
+  
+            <div class="quiz__footer">
+                <div class="footer__content" id="pages">0 / 0</div>
+            </div>
+            <div class="quiz__points">
+                <div class="footer__content" id="points">Points: 0</div>
+            </div>
+        </div>
+       
+    </main>
+</div>
+<script src="../static/quiz.js"></script>
+{% endblock %}

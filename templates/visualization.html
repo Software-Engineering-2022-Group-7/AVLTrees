@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}
+<title>Visualization</title>
+<script src="visualization.js"></script>
+<script src="circle.js"></script>
+{% endblock %}
+
+{% block content %}
+<main>
+    <h1>Canvas</h1>
+    <!--<canvas id="myCanvas" width="1000" height="500" style="border:10px solid #691a86;"> </canvas> -->
+    <!-- Drawing canvas where all animation is done.  Note:  can be resized in code -->
+    <div class="toolbox" >
+        <div class="action_btn">
+
+            <input id="numInput" type="number" class="action_btn numInput" placeholder="Enter">
+            <button onclick="submitInput()" type="button" class="action_btn submit">Insert</button>
+            <input id="numDelete" type="number" class="action_btn numDelete" placeholder="Enter">
+            <button onclick="submitDelete()" type="button" class="action_btn numDelete">Delete</button>
+            <button onclick="clearcanvas()" id = "reset" type="reset">Reset the canvas</button>
+        </div>
+    </div>
+
+
+    <!-- Drawing canvas where all animation is done.  Note:  can be resized in code -->
+    <canvas id="canvas" width="500" height="400"></canvas> 
+    <!-- Try 2<canvas></canvas>-->
+    <!--  Try 2 <script src="visualizer.js"></script>-->
+        
+    
+    <div class="explanation">
+        <p><strong>Explanation</strong> Some text...</p>
+    </div>
+
+
+
+
+</main>
+{% endblock %}
