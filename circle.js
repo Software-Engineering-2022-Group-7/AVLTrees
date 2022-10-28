@@ -22,7 +22,7 @@ c.clearRect(0, 0, innerWidth, innerHeight)
     y += 1
 }
 animate()
-*/
+
 
 /*
 // Single Animated Circle - Get Canvas element by Id

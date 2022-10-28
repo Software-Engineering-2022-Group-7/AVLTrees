@@ -11,7 +11,7 @@ window.onload=function(){
   //function that is called to clear the canvas
   function clearcanvas()
   */
-    var canvas = document.getElementById('reset').addEventListener('click', function () {
-      context.clearRect(0, 0, canvas.width, canvas.height);
-  }, false);
+  const canvas = document.getElementById('canvas')
+  const context = canvas.getContext('2d')
+  const clearcanvas = () => context.clearRect(0, 0, canvas.width, canvas.height)
 }
