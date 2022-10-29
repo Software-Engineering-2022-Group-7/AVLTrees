@@ -265,7 +265,7 @@ text .tree_hierarchy {
 
 .quiz__footer 
 {
-	position: absolute;
+
 	bottom: 0;
 	display: block;
 	width: 100%;
@@ -274,7 +274,7 @@ text .tree_hierarchy {
 }
 .quiz__points 
 {
-	position: absolute;
+	
 	bottom: 0;
 	display: block;
 	width: 100%;
