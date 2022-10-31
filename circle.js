@@ -1,3 +1,15 @@
+/*
+make the circle a variable that takes in the objectID and object Label
+Each node will know its id, label, radius, thickness, x&y coordinates, color
+
+
+
+
+
+
+
+
+*/
 function node(){
 var c = document.getElementById("canvas");
 var ctx = c.getContext("2d");
