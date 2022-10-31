@@ -250,7 +250,7 @@ text .tree_hierarchy {
 	font-size: 30pt;
 	margin: 10px;
 	margin-bottom: 50px;
-    margin-top: 150px;
+    margin-top: 100px;
 }
 
 .head__content 
@@ -270,7 +270,7 @@ text .tree_hierarchy {
 	display: block;
 	width: 100%;
     font-size: 30pt;
-    margin-bottom: 3rem;
+    /*margin-bottom: 3rem;*/
 }
 .quiz__points 
 {
