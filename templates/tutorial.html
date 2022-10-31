@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}
+<title>Tutorial</title>
+{% endblock %}
+
+{% block content %}
+    <main data-bs-spy="scroll" data-bs-target="#navbar_tutorial" data-bs-smooth-scroll="true" tabindex="0">
+        <div class="tutorial_sidebar">
+            <nav id="navbar_tutorial" class="h-100 flex-column align-items-stretch pe-4">
+                <nav class="nav nav-pills flex-column">
+                    <a class="nav-link" href="#content_title">Content</a>
+                    <nav class="nav nav-pills flex-column">
+                        <a class="nav-link ms-3 my-1" href="#Tree_data_structure">Tree Data Structure</a>
+                        <a class="nav-link ms-3 my-1" href="#Binary_search_trees">Binary Search Trees</a>
+                        <a class="nav-link ms-3 my-1" href="#Balanced_non_balanced">Balanced vs. Non-Balanced</a>
+                        <a class="nav-link ms-3 my-1" href="#Rotations">Rotations</a>
+                        <a class="nav-link ms-3 my-1" href="#AVL_tree_background">AVL tree Background</a>
+                        <a class="nav-link ms-3 my-1" href="#AVL_tree_operations">AVL tree Operations</a>
+                    </nav>
+                </nav>
+            </nav>
+        </div>
+
+        <h1 id="content_title">How to build an AVL Tree?</h1>
+        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate
+            navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example
+            copy here to emphasize the scrolling and highlighting.</p>
+
+        <h2 id="Tree_data_structure">Tree Data Structure</h2>
+        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate
+            navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example
+            copy here to emphasize the scrolling and highlighting.</p>
+
+        <h2 id="Binary_search_trees">Binary Search Trees</h2>
+        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate
+            navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example
+            copy here to emphasize the scrolling and highlighting.</p>
+
+        <h2 id="Balanced_non_balanced">Balanced vs. Non-Balanced</h2>
+        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate
+            navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example
+            copy here to emphasize the scrolling and highlighting.</p>
+
+        <h2 id="Rotations">Rotations</h2>
+        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate
+            navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example
+            copy here to emphasize the scrolling and highlighting.</p>
+
+        <h2 id="AVL_tree_background">AVL tree Background</h2>
+        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate
+            navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example
+            copy here to emphasize the scrolling and highlighting.</p>
+
+        <h2 id="AVL_tree_operations">AVL tree Operations</h2>
+        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate
+            navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example
+            copy here to emphasize the scrolling and highlighting.</p>
+
+        <div class="video">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/vRwi_UcZGjU" title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
+        </div>
+
+        <h2>Example Code:</h2>
+        <div class="code">
+            <code>
+                class Node {
+                public:
+                int key;
+                Node *left;
+                Node *right;
+                int height;
+                };
+            </code>
+        </div>
+    </main>
+{% endblock %}

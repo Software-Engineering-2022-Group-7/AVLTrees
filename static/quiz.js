@@ -1,6 +1,7 @@
 const headElem = document.getElementById("head");
 const buttonsElem = document.getElementById("buttons");
 const pagesElem = document.getElementById("pages");
+const pointsElem = document.getElementById("points");
 
 //Class that represents the quiz
 class Quiz
@@ -222,7 +223,8 @@ function Update()
 		
 		//Current number of the question
 		pagesElem.innerHTML = (quiz.current + 1) + " / " + quiz.questions.length;
-
+		
+		pointsElem.innerHTML = "Points: " + quiz.score;
 		
 		Init();
 	}
@@ -231,7 +233,8 @@ function Update()
 		//If ends -> display results
 		buttonsElem.innerHTML = "";
 		headElem.innerHTML = quiz.results[quiz.result].text;
-		pagesElem.innerHTML = "Points: " + quiz.score;
+		pagesElem.innerHTML = "";
+		pointsElem.innerHTML = "Points: " + quiz.score;
 	}
 }
 

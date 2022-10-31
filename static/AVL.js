@@ -1,7 +1,7 @@
 /**
  * Creates a new AVL tree.
  */
-function AVL() {
+ function AVL() {
   this._size = 0;
   this._root = null;
 }
