@@ -75,10 +75,6 @@ AVL.prototype.remove = function(key) {
 
 /**
  * Obtains an array containing all keys in this AVL tree.
- * @param {Number} traversal The traversal to use. 0 for pre-order, 1 for
- *                           post-order, 2 for in-order, 3 for level-order.
- *                           If no traversal is provided, the default is
- *                           in-order.
  * @return {Array} An array containing the keys in this AVL Tree.
  */
 AVL.prototype.getKeys = function() {
@@ -92,10 +88,6 @@ AVL.prototype.getKeys = function() {
 
 /**
  * Obtains an array containing all key-value array pairs in this AVL tree.
- * @param {Number} traversal The traversal to use. 0 for pre-order, 1 for
- *                  post-order, 2 for in-order, 3 for level-order.
- *                  If no traversal is provided, the default is
- *                  in-order.
  * @return {Array} An array containing the key-value array pairs in the AVL
  *                 tree.
  */

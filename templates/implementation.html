@@ -26,31 +26,20 @@
                 <div class="tab-pane active" id="pg1">
                     <h3 class="card-title">General Implementation</h3>
                     <text>
-                        As a certain kind of self-balancing binary search tree, an AVL Tree structure is implemented as
-                        a child class of a binary search tree, which is then a child class of a binary tree. In other
-                        words,
-                        the AVL Tree structure follows below hierarchical inheritance:
-                        <div class="tree_hierarchy">
-                            <code>Dictionary >> Binary Tree >> Binary Search Tree >> AVL Tree</code>
-                        </div>
-                        Therefore, when designing an AVL Tree, it is important to have each parent class either
-                        declared as virtual or implemented. Implementations of more basic structures like linked list
-                        are also necessary, as they will be frequently used when creating the tree structure.
-                        <br><br>
-                        In the code we provide, we've created our own version of each sub-structure (i.e., linked list)
-                        for educational purpose. Feel free to use any STL library that could save tons of time when
-                        creating your own AVL!
+                        An AVL tree is a kind of binary search tree. It has nodes with associated keys and values,
+                        organized into a tree data structure. On this page, we describe each of the functions
+                        associated with AVL trees in C++ and in JavaScript.
                         <br><br>
                         Below is the link to a repository that contains the implementations we designed. There are
                         many ways to implement an AVL Tree, so just take ours as an example. We strongly
-                        encourage you to design your own one!
+                        encourage you to design your own!
                         <ul class="implementation_link">
                             <li><a target="_blank" rel="noopener noreferrer"
                                    href="https://github.com/Kleokhov/Data_Structure_Implementations">AVL Tree
                                 Implementation</a></li>
                         </ul>
-                        Besides viewing our implementations, we also recommend you to check these useful websites
-                        afterwards for more sophisticated explanations:
+                        In addition to viewing our implementations, we also recommend that you check out these useful
+                        websites for a more sophisticated explanation:
                         <ul class="outer_reference">
                             <li><a target="_blank" rel="noopener noreferrer"
                                    href="https://en.wikipedia.org/wiki/AVL_tree">AVL Tree Wikipedia</a></li>
@@ -65,9 +54,24 @@
                             Implementation</a></li>
                     </ul>
                     <text>
-                        Here are the primary methods of the AVL Tree. Click on the column to review
+                        As a certain kind of self-balancing binary search tree, an AVL Tree structure is implemented as
+                        a child class of a binary search tree, which is then a child class of a binary tree. In other
+                        words,
+                        the AVL Tree structure follows below hierarchical inheritance:
+                        <div class="tree_hierarchy">
+                            <code>Dictionary >> Binary Tree >> Binary Search Tree >> AVL Tree</code>
+                        </div>
+                        Therefore, when designing an AVL Tree, it is important to have each parent class either
+                        declared as virtual or implemented. Implementations of more basic structures like LinkedList
+                        are also necessary, as they will be frequently used when creating the tree structure.
+                        <br><br>
+                        In the code we provide, we've created our own version of each sub-structure (i.e., LinkedList)
+                        for educational purpose. Feel free to use any STL library that could save time when
+                        creating your own AVL!
+                        <br><br>
+                        Here are the primary methods of the AVL Tree in C++. Click on the column to review
                         the description. We do not have explanations for sub-structures like LinkedList
-                        on this page, but you can find more about them in the code comments.
+                        on this page, but you can find out more about them in the code comments.
                     </text>
                     <div class="expand_collapse_all">
                         <button type="button" class="btn btn-outline-dark" onclick="expand()">Expand All</button>
@@ -340,9 +344,13 @@
                             Implementation</a></li>
                     </ul>
                     <text>
-                        Here are the primary methods of the AVL Tree. Click on the column to review
-                        the description. We do not have explanations for sub-structures like LinkedList
-                        on this page, but you can find more about them in the code comments.
+                        This implementation has two object constructors - a Node
+                        (with an associated key, value, left child, and right child)
+                        and an AVL (with a size and a root Node). Every function for those two objects
+                        is added as a prototype.
+                        <br><br>
+                        Here are the primary methods of the AVL Tree in JavaScript. Click on the column to review
+                        the description.
                     </text>
                     <div class="expand_collapse_all">
                         <button type="button" class="btn btn-outline-dark" onclick="expand()">Expand All</button>
@@ -355,24 +363,13 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse14" aria-expanded="false"
                                             aria-controls="flush-collapse14">
-                                        LinkedBSTNode()
+                                        Node(key, value, left, right)
                                     </button>
                                 </h2>
                                 <div id="flush-collapse14" class="accordion-collapse collapse"
                                      aria-labelledby="flush-heading14" data-bs-parent="#accordionFlush14">
                                     <div class="accordion-body">
-                                        The linkedBSTNode is similar to a linked list node. It is a simple data
-                                        container that stores information. Specifically, it stores <br>
-                                        <code>
-                                            key (a key in the type of K);
-                                            value (a value in the type of V);
-                                            left (a pointer to left);
-                                            right (a pointer to right).
-                                        </code>
-                                        <br><br>
-                                        You can manipulate the node through methods like <code>getLeft(), getRight()
-                                    </code> to get the left/right node of the current node, or <code>setValue(),
-                                        setKey() </code> to change the key/value of the current node.
+
                                     </div>
                                 </div>
                             </div>
@@ -383,7 +380,7 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse15" aria-expanded="false"
                                             aria-controls="flush-collapse15">
-                                        insert()
+                                        Node.getKey()
                                     </button>
                                 </h2>
                                 <div id="flush-collapse15" class="accordion-collapse collapse"
@@ -402,7 +399,7 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse16" aria-expanded="false"
                                             aria-controls="flush-collapse16">
-                                        update()
+                                        Node.setKey(newKey)
                                     </button>
                                 </h2>
                                 <div id="flush-collapse16" class="accordion-collapse collapse"
@@ -421,7 +418,7 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse17" aria-expanded="false"
                                             aria-controls="flush-collapse17">
-                                        get()
+                                        Node.getValue()
                                     </button>
                                 </h2>
                                 <div id="flush-collapse17" class="accordion-collapse collapse"
@@ -440,7 +437,7 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse18" aria-expanded="false"
                                             aria-controls="flush-collapse18">
-                                        contains()
+                                        Node.setValue(newValue)
                                     </button>
                                 </h2>
                                 <div id="flush-collapse18" class="accordion-collapse collapse"
@@ -459,7 +456,7 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse19" aria-expanded="false"
                                             aria-controls="flush-collapse19">
-                                        remove()
+                                        Node.getLeft()
                                     </button>
                                 </h2>
                                 <div id="flush-collapse19" class="accordion-collapse collapse"
@@ -478,7 +475,7 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse20" aria-expanded="false"
                                             aria-controls="flush-collapse20">
-                                        traversePreOrder()
+                                        Node.setLeft(newLeft)
                                     </button>
                                 </h2>
                                 <div id="flush-collapse20" class="accordion-collapse collapse"
@@ -497,7 +494,7 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse21" aria-expanded="false"
                                             aria-controls="flush-collapse21">
-                                        traverseInOrder()
+                                        Node.getRight()
                                     </button>
                                 </h2>
                                 <div id="flush-collapse21" class="accordion-collapse collapse"
@@ -516,7 +513,7 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse22" aria-expanded="false"
                                             aria-controls="flush-collapse22">
-                                        traversePostOrder()
+                                        Node.setRight(newRight)
                                     </button>
                                 </h2>
                                 <div id="flush-collapse22" class="accordion-collapse collapse"
@@ -535,7 +532,7 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse23" aria-expanded="false"
                                             aria-controls="flush-collapse23">
-                                        traverseLevelOrder()
+                                        AVL()
                                     </button>
                                 </h2>
                                 <div id="flush-collapse23" class="accordion-collapse collapse"
@@ -554,7 +551,7 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse24" aria-expanded="false"
                                             aria-controls="flush-collapse24">
-                                        getBalance()
+                                        AVL.getSize()
                                     </button>
                                 </h2>
                                 <div id="flush-collapse24" class="accordion-collapse collapse"
@@ -573,7 +570,7 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse25" aria-expanded="false"
                                             aria-controls="flush-collapse25">
-                                        rightRotate()
+                                        AVL.isEmpty()
                                     </button>
                                 </h2>
                                 <div id="flush-collapse25" class="accordion-collapse collapse"
@@ -592,11 +589,296 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse26" aria-expanded="false"
                                             aria-controls="flush-collapse26">
-                                        leftRotate()
+                                        AVL._getBalance(currentNode)
                                     </button>
                                 </h2>
                                 <div id="flush-collapse26" class="accordion-collapse collapse"
                                      aria-labelledby="flush-heading26" data-bs-parent="#accordionFlush26">
+                                    <div class="accordion-body">
+                                        Placeholder content for this accordion, which is intended to
+                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
+                                        accordion body.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion accordion-flush" id="accordionFlush27">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-heading27">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapse27" aria-expanded="false"
+                                            aria-controls="flush-collapse27">
+                                        AVL._rightRotate(currentNode)
+                                    </button>
+                                </h2>
+                                <div id="flush-collapse27" class="accordion-collapse collapse"
+                                     aria-labelledby="flush-heading27" data-bs-parent="#accordionFlush27">
+                                    <div class="accordion-body">
+                                        Placeholder content for this accordion, which is intended to
+                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
+                                        accordion body.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion accordion-flush" id="accordionFlush28">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-heading28">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapse28" aria-expanded="false"
+                                            aria-controls="flush-collapse28">
+                                        AVL._leftRotate(currentNode)
+                                    </button>
+                                </h2>
+                                <div id="flush-collapse28" class="accordion-collapse collapse"
+                                     aria-labelledby="flush-heading28" data-bs-parent="#accordionFlush28">
+                                    <div class="accordion-body">
+                                        Placeholder content for this accordion, which is intended to
+                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
+                                        accordion body.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion accordion-flush" id="accordionFlush29">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-heading29">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapse29" aria-expanded="false"
+                                            aria-controls="flush-collapse29">
+                                        AVL.insert(key, value)
+                                    </button>
+                                </h2>
+                                <div id="flush-collapse29" class="accordion-collapse collapse"
+                                     aria-labelledby="flush-heading29" data-bs-parent="#accordionFlush29">
+                                    <div class="accordion-body">
+                                        Placeholder content for this accordion, which is intended to
+                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
+                                        accordion body.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion accordion-flush" id="accordionFlush30">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-heading30">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapse30" aria-expanded="false"
+                                            aria-controls="flush-collapse30">
+                                        AVL.update(key, value)
+                                    </button>
+                                </h2>
+                                <div id="flush-collapse30" class="accordion-collapse collapse"
+                                     aria-labelledby="flush-heading30" data-bs-parent="#accordionFlush30">
+                                    <div class="accordion-body">
+                                        Placeholder content for this accordion, which is intended to
+                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
+                                        accordion body.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion accordion-flush" id="accordionFlush31">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-heading31">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapse31" aria-expanded="false"
+                                            aria-controls="flush-collapse31">
+                                        AVL.get(key)
+                                    </button>
+                                </h2>
+                                <div id="flush-collapse31" class="accordion-collapse collapse"
+                                     aria-labelledby="flush-heading31" data-bs-parent="#accordionFlush31">
+                                    <div class="accordion-body">
+                                        Placeholder content for this accordion, which is intended to
+                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
+                                        accordion body.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion accordion-flush" id="accordionFlush32">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-heading32">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapse32" aria-expanded="false"
+                                            aria-controls="flush-collapse32">
+                                        AVL.contains(key)
+                                    </button>
+                                </h2>
+                                <div id="flush-collapse32" class="accordion-collapse collapse"
+                                     aria-labelledby="flush-heading32" data-bs-parent="#accordionFlush32">
+                                    <div class="accordion-body">
+                                        Placeholder content for this accordion, which is intended to
+                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
+                                        accordion body.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion accordion-flush" id="accordionFlush33">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-heading33">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapse33" aria-expanded="false"
+                                            aria-controls="flush-collapse33">
+                                        AVL.remove(key)
+                                    </button>
+                                </h2>
+                                <div id="flush-collapse33" class="accordion-collapse collapse"
+                                     aria-labelledby="flush-heading33" data-bs-parent="#accordionFlush33">
+                                    <div class="accordion-body">
+                                        Placeholder content for this accordion, which is intended to
+                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
+                                        accordion body.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion accordion-flush" id="accordionFlush34">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-heading34">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapse34" aria-expanded="false"
+                                            aria-controls="flush-collapse34">
+                                        AVL.getKeys()
+                                    </button>
+                                </h2>
+                                <div id="flush-collapse34" class="accordion-collapse collapse"
+                                     aria-labelledby="flush-heading34" data-bs-parent="#accordionFlush34">
+                                    <div class="accordion-body">
+                                        Placeholder content for this accordion, which is intended to
+                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
+                                        accordion body.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion accordion-flush" id="accordionFlush35">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-heading35">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapse35" aria-expanded="false"
+                                            aria-controls="flush-collapse35">
+                                        AVL.getItems()
+                                    </button>
+                                </h2>
+                                <div id="flush-collapse35" class="accordion-collapse collapse"
+                                     aria-labelledby="flush-heading35" data-bs-parent="#accordionFlush35">
+                                    <div class="accordion-body">
+                                        Placeholder content for this accordion, which is intended to
+                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
+                                        accordion body.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion accordion-flush" id="accordionFlush36">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-heading36">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapse36" aria-expanded="false"
+                                            aria-controls="flush-collapse36">
+                                        AVL.getHeight()
+                                    </button>
+                                </h2>
+                                <div id="flush-collapse36" class="accordion-collapse collapse"
+                                     aria-labelledby="flush-heading36" data-bs-parent="#accordionFlush36">
+                                    <div class="accordion-body">
+                                        Placeholder content for this accordion, which is intended to
+                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
+                                        accordion body.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion accordion-flush" id="accordionFlush37">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-heading37">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapse37" aria-expanded="false"
+                                            aria-controls="flush-collapse37">
+                                        AVL.getMaxKey()
+                                    </button>
+                                </h2>
+                                <div id="flush-collapse37" class="accordion-collapse collapse"
+                                     aria-labelledby="flush-heading37" data-bs-parent="#accordionFlush37">
+                                    <div class="accordion-body">
+                                        Placeholder content for this accordion, which is intended to
+                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
+                                        accordion body.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion accordion-flush" id="accordionFlush38">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-heading38">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapse38" aria-expanded="false"
+                                            aria-controls="flush-collapse38">
+                                        AVL.traversePreOrder()
+                                    </button>
+                                </h2>
+                                <div id="flush-collapse38" class="accordion-collapse collapse"
+                                     aria-labelledby="flush-heading38" data-bs-parent="#accordionFlush38">
+                                    <div class="accordion-body">
+                                        Placeholder content for this accordion, which is intended to
+                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
+                                        accordion body.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion accordion-flush" id="accordionFlush39">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-heading39">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapse39" aria-expanded="false"
+                                            aria-controls="flush-collapse39">
+                                        AVL.traversePostOrder()
+                                    </button>
+                                </h2>
+                                <div id="flush-collapse39" class="accordion-collapse collapse"
+                                     aria-labelledby="flush-heading39" data-bs-parent="#accordionFlush39">
+                                    <div class="accordion-body">
+                                        Placeholder content for this accordion, which is intended to
+                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
+                                        accordion body.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion accordion-flush" id="accordionFlush40">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-heading40">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapse40" aria-expanded="false"
+                                            aria-controls="flush-collapse40">
+                                        AVL.traverseInOrder()
+                                    </button>
+                                </h2>
+                                <div id="flush-collapse40" class="accordion-collapse collapse"
+                                     aria-labelledby="flush-heading40" data-bs-parent="#accordionFlush40">
+                                    <div class="accordion-body">
+                                        Placeholder content for this accordion, which is intended to
+                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
+                                        accordion body.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion accordion-flush" id="accordionFlush41">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-heading41">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapse41" aria-expanded="false"
+                                            aria-controls="flush-collapse41">
+                                        AVL.traverseLevelOrder()
+                                    </button>
+                                </h2>
+                                <div id="flush-collapse41" class="accordion-collapse collapse"
+                                     aria-labelledby="flush-heading41" data-bs-parent="#accordionFlush41">
                                     <div class="accordion-body">
                                         Placeholder content for this accordion, which is intended to
                                         demonstrate the <code>.accordion-flush</code> class. This is the first item's
