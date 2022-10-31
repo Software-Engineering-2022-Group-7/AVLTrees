@@ -2,22 +2,48 @@
 make the circle a variable that takes in the objectID and object Label
 Each node will know its id, label, radius, thickness, x&y coordinates, color
 
-
-
-
-
-
-
-
 */
+/*
+let c = document.getElementById("canvas");
+let ctx = c.getContext("2d");
+class Circle {
+	constructor(x, y, radius,color){
+		this.x = x;
+		this.y = y;
+		this.radius = radius;
+		this.color = color;
+	}
+	draw(ctx){
+		ctx.beginPath();
+		ctx.linewidth = 4;
+		ctx.arc(this.x, this.y, this.radius,0, Math.PI*2, false);
+		ctx.stroke();
+		ctx.closePath();
+	}
+}
+
+
+let all_circles = [];
+
+let createCircle = function(circle){
+	my_circle.draw(ctx);
+}
+
+for(var num = 0; num < 10; num++){
+	let my_circle = new Circle(100, 75, 50, "black");
+	all_circles.push(my_circle);
+}
+*/
+
 function node(){
-var c = document.getElementById("canvas");
-var ctx = c.getContext("2d");
+let c = document.getElementById("canvas");
+let ctx = c.getContext("2d");
 ctx.beginPath();
 ctx.arc(100, 75, 50, 0, 2 * Math.PI);
 ctx.stroke();
 
 }
+
 /*
 const canvas = document.getElementById('canvas')
 const ctx = canvas.getContext('2d')
