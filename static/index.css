@@ -12,7 +12,7 @@ header.page_header h1 {
     /* words */
     font-family: "Trebuchet MS", Arial, serif;
     font-style: italic;
-    font-size: 300%;
+    font-size: 50px;
     font-weight: bold;
     text-align: center;
 }
@@ -206,6 +206,11 @@ text .tree_hierarchy {
 .nav-link, .nav-link:hover, .nav-link.active {
     color: #24292F;
 }
+
+.card {
+    margin-bottom: 10px;
+}
+
 
 .card-body text, .card-body li {
     font-size: 110%;
