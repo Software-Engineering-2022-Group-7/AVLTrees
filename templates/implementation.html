@@ -369,6 +369,26 @@
                                 <div id="flush-collapse14" class="accordion-collapse collapse"
                                      aria-labelledby="flush-heading14" data-bs-parent="#accordionFlush14">
                                     <div class="accordion-body">
+                                        Creates a new node. Takes key as the key of the new node and value as the
+                                        value of the new node. It also optionally takes a left and/or right child node.
+                                        <br><br>
+                                        Set the node's _key and _value variables to the passed parameters:
+
+<pre><code>this._key = key;
+this._value = value;</code></pre>
+                                        If a left and/or right child is passed in, set the node's _left and _right
+                                        variables appropriately:
+
+<pre><code>if(left != undefined) {
+  this._left = left;
+} else {
+  this._left = null;
+}
+if(right != undefined) {
+  this._right = right;
+} else {
+  this._right = null;
+}</code></pre>
 
                                     </div>
                                 </div>
@@ -380,15 +400,20 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse15" aria-expanded="false"
                                             aria-controls="flush-collapse15">
-                                        Node.getKey()
+                                        Node.getKey(), Node.setKey(newKey), Node.getValue(), Node.setValue(newValue)
                                     </button>
                                 </h2>
                                 <div id="flush-collapse15" class="accordion-collapse collapse"
                                      aria-labelledby="flush-heading15" data-bs-parent="#accordionFlush15">
                                     <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
+                                        Getters and setters of key and value for Node.
+                                        <br><br>
+                                        For Node.getKey() and Node.getValue(), return variable: <br>
+                                        <code> return this._key; </code> <br>
+                                        <code> return this._value; </code> <br><br>
+                                        For Node.setKey(newKey) and Node.setValue(newValue), set variable: <br>
+                                        <code> this._key = newKey; </code> <br>
+                                        <code> this._value = newValue; </code>
                                     </div>
                                 </div>
                             </div>
@@ -399,15 +424,20 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse16" aria-expanded="false"
                                             aria-controls="flush-collapse16">
-                                        Node.setKey(newKey)
+                                        Node.getLeft(), Node.getRight(), Node.setLeft(newLeft), Node.setRight(newRight)
                                     </button>
                                 </h2>
                                 <div id="flush-collapse16" class="accordion-collapse collapse"
                                      aria-labelledby="flush-heading16" data-bs-parent="#accordionFlush16">
                                     <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
+                                        Getters and setters of left and right child nodes for Node.
+                                        <br><br>
+                                        For Node.getLeft() and Node.getRight(), return variable: <br>
+                                        <code> return this._left; </code> <br>
+                                        <code> return this._right; </code> <br><br>
+                                        For Node.setLeft(newLeft) and Node.setRight(newRight), set variable: <br>
+                                        <code> this._left = newLeft; </code> <br>
+                                        <code> this._right = newRight; </code>
                                     </div>
                                 </div>
                             </div>
@@ -418,15 +448,17 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse17" aria-expanded="false"
                                             aria-controls="flush-collapse17">
-                                        Node.getValue()
+                                        AVL()
                                     </button>
                                 </h2>
                                 <div id="flush-collapse17" class="accordion-collapse collapse"
                                      aria-labelledby="flush-heading17" data-bs-parent="#accordionFlush17">
                                     <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
+                                        Creates a new empty AVL tree with two local variables: _size and _root.
+                                        _size represents the number of nodes in the tree and _root represents the root node of the tree.
+                                        <br>
+                                        <code>this._size = 0;</code> <br>
+                                        <code>this._root = null;</code>
                                     </div>
                                 </div>
                             </div>
@@ -437,15 +469,14 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse18" aria-expanded="false"
                                             aria-controls="flush-collapse18">
-                                        Node.setValue(newValue)
+                                        AVL.getSize()
                                     </button>
                                 </h2>
                                 <div id="flush-collapse18" class="accordion-collapse collapse"
                                      aria-labelledby="flush-heading18" data-bs-parent="#accordionFlush18">
                                     <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
+                                        Returns the size of the AVL tree.<br>
+                                        <code>return this._size;</code>
                                     </div>
                                 </div>
                             </div>
@@ -456,15 +487,14 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse19" aria-expanded="false"
                                             aria-controls="flush-collapse19">
-                                        Node.getLeft()
+                                        AVL.isEmpty()
                                     </button>
                                 </h2>
                                 <div id="flush-collapse19" class="accordion-collapse collapse"
                                      aria-labelledby="flush-heading19" data-bs-parent="#accordionFlush19">
                                     <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
+                                        Returns true if the AVL tree is empty.<br>
+                                        <code>return this._size == 0;</code>
                                     </div>
                                 </div>
                             </div>
@@ -475,15 +505,44 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse20" aria-expanded="false"
                                             aria-controls="flush-collapse20">
-                                        Node.setLeft(newLeft)
+                                        AVL._getBalance(currentNode)
                                     </button>
                                 </h2>
                                 <div id="flush-collapse20" class="accordion-collapse collapse"
                                      aria-labelledby="flush-heading20" data-bs-parent="#accordionFlush20">
                                     <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
+                                        A private function that returns the balance of a given node. Balance
+                                        is the difference in the heights of the left and right subtrees. It calls
+                                        another private, recursive function: AVL._getHeightInSubtree(currentNode).
+                                        This function is used as part of the insertion algorithm.
+                                        <br><br>
+                                        AVL._getBalance(currentNode):
+                                        <br><br>
+                                        If currentNode is null, return 0.
+<pre><code>if(currentNode == null){
+    return 0;
+}</code></pre>
+                                        Call the recursive function AVL._getHeightInSubtree(currentNode)
+                                        on the left and right child nodes. Return the difference between their heights.
+<pre><code>const leftHeight = this._getHeightInSubtree(currentNode.getLeft());
+const rightHeight = this._getHeightInSubtree(currentNode.getRight());
+return leftHeight - rightHeight;</code></pre>
+                                        AVL._getHeightInSubtree(currentNode):
+                                        <br><br>
+                                        If currentNode is null, return -1.
+<pre><code>if(currentNode == null) {
+    return -1;
+}</code></pre>
+                                        Define the left and right height variables as a recursive
+                                        call to this function on currentNode's left and right child nodes, plus 1.
+<pre><code>const leftHeight = this._getHeightInSubtree(currentNode.getLeft()) + 1;
+const rightHeight = this._getHeightInSubtree(currentNode.getRight()) + 1;</code></pre>
+                                        Return the larger height.
+<pre><code>if(leftHeight >= rightHeight) {
+    return leftHeight;
+} else {
+    return rightHeight;
+}</code></pre>
                                     </div>
                                 </div>
                             </div>
@@ -494,15 +553,47 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse21" aria-expanded="false"
                                             aria-controls="flush-collapse21">
-                                        Node.getRight()
+                                        AVL._leftRotate(currentNode), AVL._rightRotate(currentNode)
                                     </button>
                                 </h2>
                                 <div id="flush-collapse21" class="accordion-collapse collapse"
                                      aria-labelledby="flush-heading21" data-bs-parent="#accordionFlush21">
                                     <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
+                                        Private functions that perform a rotation on a given node. They return the
+                                        node replacing the location of the current Node.
+                                        <br><br>
+                                        AVL._leftRotate(currentNode):<br><br>
+<pre>
+     a                                 b
+    / \                               / \
+   c   b   -> AVL.rotateLeft(a) ->   a   e
+      / \                           / \
+     d   e                         c   d
+</pre>
+                                        Get currentNode's right child (rightNode) and rightNode's left child (leftNode).
+                                        Replace leftNode with currentNode and set currentNode's right child to be leftNode.
+                                        Return rightNode.
+<pre><code>const rightNode = currentNode.getRight();
+const leftNode = rightNode.getLeft();
+rightNode.setLeft(currentNode);
+currentNode.setRight(leftNode);
+return rightNode</code></pre>
+                                        AVL._rightRotate(currentNode):<br><br>
+<pre>
+       b                              a
+      / \                            / \
+     a   e -> AVL.rotateRight(b) -> c   b
+    / \                                / \
+   c   d                              d   e
+</pre>
+                                        Get currentNode's left child (leftNode) and the leftNode's right child (rightNode).
+                                        Replace rightNode with currentNode and set currentNode's left child to be rightNode.
+                                        Return leftNode.
+<pre><code>const leftNode = currentNode.getLeft();
+const rightNode = leftNode.getRight();
+leftNode.setRight(currentNode);
+currentNode.setLeft(rightNode);
+return leftNode;</code></pre>
                                     </div>
                                 </div>
                             </div>
@@ -513,15 +604,74 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse22" aria-expanded="false"
                                             aria-controls="flush-collapse22">
-                                        Node.setRight(newRight)
+                                        AVL.insert(key, value)
                                     </button>
                                 </h2>
                                 <div id="flush-collapse22" class="accordion-collapse collapse"
                                      aria-labelledby="flush-heading22" data-bs-parent="#accordionFlush22">
                                     <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
+                                        Adds a new node to its correct position in the tree.
+                                        Does this by setting the root node to a call to a private
+                                        recursive function AVL._insertInSubtree(currentNode, key, value),
+                                        with the root passed in as the currentNode. Also incremements _size.
+<pre><code>this._root = this._insertInSubtree(this._root, key, value);
+this._size++;</code></pre>
+                                        AVL._insertInSubtree(currentNode, key, value):
+                                        <br><br>
+                                        If currentNode is null, make and return a
+                                        new node with the given key and value.
+<pre><code>if(currentNode == null) {
+    const newNode = new Node(key, value);
+    return newNode;
+}</code></pre>
+                                        If the currentNode's key matches the given key, throw an error.
+<pre><code>else if(currentNode.getKey() == key) {
+    throw "The key already exists.";
+}</code></pre>
+                                        If the given key is greater than than the currentNode's, set the currentNode's right child to be a
+                                        recursive call to this function with currentNode's right child passed in.
+<pre><code>else if(key > currentNode.getKey()) {
+    currentNode.setRight(this._insertInSubtree(currentNode.getRight(), key, value));
+}</code></pre>
+                                        If the given key is less than the currentNode's, set the currentNode's left child to be a
+                                        recursive call to this function with the currentNode's left child passed in.
+<pre><code>else if(key < currentNode.getKey()) {
+  currentNode.setLeft(this._insertInSubtree(currentNode.getLeft(), key, value));
+}</code></pre>
+                                        Above is the actual insertion process. Below is the rebalancing process.
+                                        <br><br>
+                                        Get the balance of the currentNode (balance). If the balance is greater than 1, it's either a
+                                        left left case (if the given key is less than currentNode's left child's key), or a left right (else).
+                                        For a left left case of rebalancing, set currentNode to be a right rotation on currentNode. For a left right case,
+                                        set currentNode's left child to be a leftRotation on the left child and return a right rotation on
+                                        currentNode.
+<pre><code>const balance = this._getBalance(currentNode);
+if(balance > 1) {
+    if(key < currentNode.getLeft().getKey()) {
+        //left left
+        currentNode = this._rightRotate(currentNode);
+    } else {
+        //left right
+        currentNode.setLeft(this._leftRotate(currentNode.getLeft()));
+        return this._rightRotate(currentNode);
+    }
+}</code></pre>
+                                        If the balance is less than 1, it's either a right right case (if the given key is
+                                        more than currentNode's right child's key) or a right left (else).
+                                        For a right right case of rebalancing, set currentNode to be a left rotation of currentNode.
+                                        For a right left case, set currentNode's right child to be a right rotation on the right child and
+                                        return a left rotation on currentNode. After all this, return the currentNode.
+<pre><code>if(balance < -1) {
+    if(key > currentNode.getRight().getKey()) {
+        //right right
+        currentNode = this._leftRotate(currentNode);
+    } else {
+        //right left
+        currentNode.setRight(this._rightRotate(currentNode.getRight()));
+        return this._leftRotate(currentNode);
+    }
+}
+return currentNode;</pre></code>
                                     </div>
                                 </div>
                             </div>
@@ -532,15 +682,35 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse23" aria-expanded="false"
                                             aria-controls="flush-collapse23">
-                                        AVL()
+                                        AVL.update(key, value)
                                     </button>
                                 </h2>
                                 <div id="flush-collapse23" class="accordion-collapse collapse"
                                      aria-labelledby="flush-heading23" data-bs-parent="#accordionFlush23">
                                     <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
+                                        Changes the value of a node associated with a given key.
+                                        Does this by calling a private recursive function
+                                        AVL._updateInSubtree(currentNode, key, value),
+                                        with the root passed in as the currentNode.
+                                        <code>this._updateInSubtree(this._root, key, value);</code><br><br>
+                                        AVL._updateInSubtree(currentNode, key, value):
+                                        <br><br>
+                                        If currentNode is null, throw an error.
+                                        If the currentNode's key matches the given key, set the currentNode's value to the given value and return.
+<pre><code>if(currentNode == null) {
+    throw "The key is not found.";
+} else if (currentNode.getKey() == key) {
+    currentNode.setValue(value);
+    return;
+}</code></pre>
+                                        If the given key is greater than the currentNode's, return a recursive call to this function
+                                        with currentNode's right child passed in. If the given key is less than or equal to the
+                                        currentNode's, return a recursive call to this function with currentNode's left child passed in.
+<pre><code>if(key > currentNode.getKey()) {
+    return this._updateInSubtree(currentNode.getRight(), key, value);
+} else {
+    return this._updateInSubtree(currentNode.getLeft(), key, value);
+}</code></pre>
                                     </div>
                                 </div>
                             </div>
@@ -551,15 +721,34 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse24" aria-expanded="false"
                                             aria-controls="flush-collapse24">
-                                        AVL.getSize()
+                                        AVL.get(key)
                                     </button>
                                 </h2>
                                 <div id="flush-collapse24" class="accordion-collapse collapse"
                                      aria-labelledby="flush-heading24" data-bs-parent="#accordionFlush24">
                                     <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
+                                        Returns the value of the node associated with a given key.
+                                        Does this by returning a call to a private recursive function
+                                        AVL._findInSubtree(currentNode, key),
+                                        with the root passed in as the currentNode.
+                                        <code>return this._findInSubtree(this._root, key);</code><br><br>
+                                        AVL._findInSubtree(currentNode, key):
+                                        <br><br>
+                                        If currentNode is null, throw an error.
+                                        If the currentNode's key matches the given key, return the currentNode's value.
+<pre><code>if(currentNode == null) {
+    throw "The key is not found.";
+} else if(currentNode.getKey() == key) {
+    return currentNode.getValue();
+}</code></pre>
+                                        If the given key is greater than the currentNode's, return a recursive call to this function
+                                        with currentNode's right child passed in. If the given key is less than or equal to the
+                                        currentNode's, return a recursive call to this function with currentNode's left child passed in.
+<pre><code>if(key > currentNode.getKey()) {
+  return this._findInSubtree(currentNode.getRight(), key);
+} else {
+  return this._findInSubtree(currentNode.getLeft(), key);
+}</code></pre>
                                     </div>
                                 </div>
                             </div>
@@ -570,15 +759,34 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse25" aria-expanded="false"
                                             aria-controls="flush-collapse25">
-                                        AVL.isEmpty()
+                                        AVL.contains(key)
                                     </button>
                                 </h2>
                                 <div id="flush-collapse25" class="accordion-collapse collapse"
                                      aria-labelledby="flush-heading25" data-bs-parent="#accordionFlush25">
                                     <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
+                                        Returns true if the tree contains a node associated with a given key.
+                                        Does this by returning a call to a private recursive function
+                                        AVL._containsInSubtree(currentNode, key),
+                                        with the root passed in as the currentNode.
+                                        <code>return this._containsInSubtree(this._root, key);</code><br><br>
+                                        AVL._containsInSubtree(currentNode, key):
+                                        <br><br>
+                                        If currentNode is null, return false.
+                                        If the currentNode's key matches the given key, return true.
+<pre><code>if(currentNode == null) {
+    return false;
+} else if(currentNode.getKey() == key) {
+    return true;
+}</code></pre>
+                                        If the given key is greater than the currentNode's, return a recursive call to this function
+                                        with currentNode's right child passed in. If the given key is less than or equal to the
+                                        currentNode's, return a recursive call to this function with currentNode's left child passed in.
+<pre><code>if(key > currentNode.getKey()) {
+    return this._containsInSubtree(currentNode.getRight(), key);
+} else {
+    return this._containsInSubtree(currentNode.getLeft(), key);
+}</code></pre>
                                     </div>
                                 </div>
                             </div>
@@ -589,15 +797,99 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse26" aria-expanded="false"
                                             aria-controls="flush-collapse26">
-                                        AVL._getBalance(currentNode)
+                                        AVL.remove(key)
                                     </button>
                                 </h2>
                                 <div id="flush-collapse26" class="accordion-collapse collapse"
                                      aria-labelledby="flush-heading26" data-bs-parent="#accordionFlush26">
                                     <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
+                                        Deletes the node associated with a given key from the tree.
+                                        Does this by setting the root node to a call to a private
+                                        recursive function AVL._removeFromSubtree(currentNode, key),
+                                        with the root passed in as the currentNode. Also decrements _size.
+<pre><code>this._root = this._removeFromSubtree(this._root, key);
+this._size--;</code></pre>
+                                        AVL._removeFromSubtree(currentNode, key):
+                                        <br><br>
+                                        If currentNode is null, throw an error.
+<pre><code>if(currentNode == null) {
+    throw "The key does not exist.";
+}</code></pre>
+                                        If the given key is greater than than the currentNode's,
+                                        set the currentNode's right child to be a recursive call to this function with currentNode's right child passed in.
+<pre><code>else if(key > currentNode.getKey()) {
+    currentNode.setRight(this._removeFromSubtree(currentNode.getRight(), key));
+}</code></pre>
+                                        If the given key is less than the currentNode's, set the currentNode's left child to be a
+                                        recursive call to this function with the currentNode's left child passed in.
+<pre><code>else if (key < currentNode.getKey()) {
+    currentNode.setLeft(this._removeFromSubtree(currentNode.getLeft(), key));
+}</code></pre>
+                                        If the currentNode's key matches the given key, then remove currentNode.
+                                        The way this removal occurs depends on currentNode's children.
+                                        If currentNode has no children, set it to null.
+                                        If currentNode has only a right child, set currentNode to its right child.
+                                        If currentNode has only a left child, set currentNode to its left child.
+                                        If currentNode has both a left and right child, give currentNode the
+                                        key and value of the minimum node of the right child's subtree
+                                        (using AVL._getMinInSubtree(currentNode) with the currentNode's right child passed in)
+                                        and remove the minimum node from the tree.
+                                        After all of this, if currentNode is null, return currentNode.
+<pre><code>else {
+    if(currentNode.getLeft() == null && currentNode.getRight() == null) {
+        currentNode = null;
+    } else if(currentNode.getLeft() == null && currentNode.getRight() != null) {
+        currentNode = currentNode.getRight();
+    } else if(currentNode.getRight() == null && currentNode.getLeft() != null) {
+        currentNode = currentNode.getLeft();
+    } else {
+        const min = this._getMinInSubtree(currentNode.getRight());
+        currentNode.setKey(min[0]);
+        currentNode.setValue(min[1]);
+        currentNode.setRight(this._removeFromSubtree(currentNode.getRight(), min[0]));
+    }
+}
+
+if(currentNode == null) {
+    return currentNode;
+}</code></pre>
+                                        Above is the actual removal process. Below is the rebalancing process.
+                                        <br><br>
+                                        Get the balance of the currentNode (balance). If balance is greater than 1
+                                        and the balance of the left child is greater or equal to 0,
+                                        it's a left left case of rebalancing. A left left case is rebalanced by
+                                        returning a right rotation on currentNode.
+<pre><code>const balance = this._getBalance(currentNode);
+if(balance > 1 && this._getBalance(currentNode.getLeft()) >= 0) {
+    return this._rightRotate(currentNode);
+}</code></pre>
+                                        If balance is greater than 1 and the balance of the left child is
+                                        less than 0, it's a left right case of rebalancing. A left right
+                                        case is rebalanced by setting currentNode's left child to be
+                                        a left rotation of the left child and then returning a right rotation
+                                        on currentNode.
+<pre><code>if(balance > 1 && this._getBalance(currentNode.getLeft()) < 0) {
+    currentNode.setLeft(this._leftRotate(currentNode.getLeft()));
+    return this._rightRotate(currentNode);
+}</pre></code>
+                                        If balance is less than -1 and the balance of the right child is
+                                        less than or equal to 0, it's a right right case of rebalancing. A right right
+                                        case is rebalanced by returning a left rotation on currentNode.
+<pre><code>if(balance < -1 && this._getBalance(currentNode.getRight()) <= 0) {
+  return this._leftRotate(currentNode);
+}</pre></code>
+                                        If balance is less than -1 and the balance of the right child is
+                                        greater than 0, it's a right left case of rebalancing. A right left
+                                        case is rebalanced by setting currentNode's right child to be
+                                        a right rotation of the right child and then returning a left rotation
+                                        on currentNode. After all of these cases, return currentNode.
+<pre><code>if(balance < -1 && this._getBalance(currentNode.getRight()) > 0) {
+    currentNode.setRight(this._rightRotate(currentNode.getRight()));
+    return this._leftRotate(currentNode);
+}
+
+return currentNode;</pre></code>
+
                                     </div>
                                 </div>
                             </div>
@@ -608,15 +900,23 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse27" aria-expanded="false"
                                             aria-controls="flush-collapse27">
-                                        AVL._rightRotate(currentNode)
+                                        AVL.getKeys()
                                     </button>
                                 </h2>
                                 <div id="flush-collapse27" class="accordion-collapse collapse"
                                      aria-labelledby="flush-heading27" data-bs-parent="#accordionFlush27">
                                     <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
+                                        Returns an array of all the keys in the tree. This example uses
+                                        a pre-order traversal, but the kind used isn't important.
+                                        <br><br>
+                                        Get the traversal (an array of key-value pairs also represented as arrays),
+                                        and creates a new array of just the keys. Return the array of keys.
+<pre><code>const list = this.traversePreOrder();
+const keys = new Array();
+for(let i = 0; i < list.length; i++){
+    keys.push(list[i][0]);
+}
+return keys;</code></pre>
                                     </div>
                                 </div>
                             </div>
@@ -627,15 +927,17 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse28" aria-expanded="false"
                                             aria-controls="flush-collapse28">
-                                        AVL._leftRotate(currentNode)
+                                        AVL.getItems()
                                     </button>
                                 </h2>
                                 <div id="flush-collapse28" class="accordion-collapse collapse"
                                      aria-labelledby="flush-heading28" data-bs-parent="#accordionFlush28">
                                     <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
+                                        Returns an array of all the key-value pairs in the tree. This example uses
+                                        a pre-order traversal, but the kind used isn't important.
+                                        <br><br>
+                                        Return the traversal (an array of key-value pairs also represented as arrays).<br>
+                                        <code>return this.traversePreOrder();</code>
                                     </div>
                                 </div>
                             </div>
@@ -646,15 +948,33 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse29" aria-expanded="false"
                                             aria-controls="flush-collapse29">
-                                        AVL.insert(key, value)
+                                        AVL.getHeight()
                                     </button>
                                 </h2>
                                 <div id="flush-collapse29" class="accordion-collapse collapse"
                                      aria-labelledby="flush-heading29" data-bs-parent="#accordionFlush29">
                                     <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
+                                        Returns the height of the tree.
+                                        Does this by returning a call to a private recursive function
+                                        AVL._getHeightInSubtree(currentNode),
+                                        with the root passed in as the currentNode.<br>
+                                        <code>return this._getHeightInSubtree(this._root);</code><br><br>
+                                        AVL._getHeightInSubtree(currentNode, key):
+                                        <br><br>
+                                        If currentNode is null, return -1.
+<pre><code>if(currentNode == null) {
+    return -1;
+}</code></pre>
+                                        Define the left and right height variables as a recursive
+                                        call to this function on currentNode's left and right child nodes, plus 1.
+<pre><code>const leftHeight = this._getHeightInSubtree(currentNode.getLeft()) + 1;
+const rightHeight = this._getHeightInSubtree(currentNode.getRight()) + 1;</code></pre>
+                                        Return the larger height.
+<pre><code>if(leftHeight >= rightHeight) {
+    return leftHeight;
+} else {
+    return rightHeight;
+}</code></pre>
                                     </div>
                                 </div>
                             </div>
@@ -665,15 +985,40 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse30" aria-expanded="false"
                                             aria-controls="flush-collapse30">
-                                        AVL.update(key, value)
+                                        AVL.getMinKey(), AVL.getMaxKey()
                                     </button>
                                 </h2>
                                 <div id="flush-collapse30" class="accordion-collapse collapse"
                                      aria-labelledby="flush-heading30" data-bs-parent="#accordionFlush30">
                                     <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
+                                        Returns the minimum/maximum key in the tree.
+                                        Does this by returning the first element of
+                                        the key-value array pair gotten by calling the private function
+                                        AVL._getMinInSubtree(currentNode) or AVL._getMinInSubtree(currentNode) with
+                                        the root passed in as the currentNode.<br>
+                                        <code>return this._getMinInSubtree(this._root)[0];</code><br>
+                                        <code>return this._getMaxInSubtree(this._root)[0];</code><br><br>
+                                        AVL._getMinInSubtree(currentNode):
+                                        <br><br>
+                                        If currentNode is null, throw an error.
+<pre><code>if(currentNode == null) {
+    throw "Tree is empty";
+}</code></pre>
+                                        Travel through the subtree's left children with a while loop until currentNode's
+                                        left child is null. Then, return a new array with currentNode's key
+                                        as the first element and currentNode's value as the second.
+<pre><code>while(currentNode.getLeft() != null) {
+    currentNode = currentNode.getLeft();
+}
+return new Array(currentNode.getKey(), currentNode.getValue());</code></pre>
+                                        AVL._getMaxInSubtree(currentNode):
+                                        <br><br>
+                                        Similar to the minimum function, the only difference is that
+                                        instead of traveling through the subtree's left children, travel through
+                                        the right.
+<pre><code>while(currentNode.getRight() != null) {
+    currentNode = currentNode.getRight();
+}</code></pre>
                                     </div>
                                 </div>
                             </div>
@@ -684,15 +1029,38 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse31" aria-expanded="false"
                                             aria-controls="flush-collapse31">
-                                        AVL.get(key)
+                                        AVL.traversePreOrder()
                                     </button>
                                 </h2>
                                 <div id="flush-collapse31" class="accordion-collapse collapse"
                                      aria-labelledby="flush-heading31" data-bs-parent="#accordionFlush31">
                                     <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
+                                        Returns the pre-order traversal of the tree (an array of key-value pairs also represented as arrays).
+                                        Does this by making a new array and passing it into the private recursive function
+                                        AVL._buildPreOrderTraversal(currentNode, list). Then, creates a new array,
+                                        transfers its content to the new array in reverse order, and returns the new array.
+<pre><code>const pairList = new Array();
+this._buildPreOrderTraversal(this._root, pairList);
+const list = new Array();
+while(pairList.length != 0) {
+    list.push(pairList.pop());
+}
+return list;</code></pre>
+                                        AVL._buildPreOrderTraversal(currentNode, list):
+                                        <br><br>
+                                        Define node as an array with the first element being the currentNode's key
+                                        and the second as the currentNode's value. Add this array to the front of list.
+<pre><code>const node = [currentNode.getKey(), currentNode.getValue()];
+list.unshift(node);</code></pre>
+                                        If currentNode has a left child, recursively call this function with currentNode's
+                                        left child passed in. If currentNode has a right child, recursively call this function with currentNode's
+                                        right child passed in.
+<pre><code>if(currentNode.getLeft() != null) {
+    this._buildPreOrderTraversal(currentNode.getLeft(), list);
+}
+if(currentNode.getRight() != null) {
+    this._buildPreOrderTraversal(currentNode.getRight(), list);
+}</code></pre>
                                     </div>
                                 </div>
                             </div>
@@ -703,15 +1071,38 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse32" aria-expanded="false"
                                             aria-controls="flush-collapse32">
-                                        AVL.contains(key)
+                                        AVL.traversePostOrder()
                                     </button>
                                 </h2>
                                 <div id="flush-collapse32" class="accordion-collapse collapse"
                                      aria-labelledby="flush-heading32" data-bs-parent="#accordionFlush32">
                                     <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
+                                        Returns the post-order traversal of the tree (an array of key-value pairs also represented as arrays).
+                                        Does this by making a new array and passing it into the private recursive function
+                                        AVL._buildPostOrderTraversal(currentNode, list). Then, creates a new array,
+                                        transfers its content to the new array in reverse order, and returns the new array.
+<pre><code>const pairList = new Array();
+this._buildPostOrderTraversal(this._root, pairList);
+const list = new Array();
+while(pairList.length != 0) {
+    list.push(pairList.pop());
+}
+return list;</code></pre>
+                                        AVL._buildPostOrderTraversal(currentNode, list):
+                                        <br><br>
+                                        If currentNode has a left child, recursively call this function with currentNode's
+                                        left child passed in. If currentNode has a right child, recursively call this function with currentNode's
+                                        right child passed in.
+<pre><code>if(currentNode.getLeft() != null) {
+    this._buildPostOrderTraversal(currentNode.getLeft(), list);
+}
+if(currentNode.getRight() != null) {
+    this._buildPostOrderTraversal(currentNode.getRight(), list);
+}</code></pre>
+                                        Define node as an array with the first element being the currentNode's key
+                                        and the second as the currentNode's value. Add this array to the front of list.
+<pre><code>const node = [currentNode.getKey(), currentNode.getValue()];
+list.unshift(node);</code></pre>
                                     </div>
                                 </div>
                             </div>
@@ -722,15 +1113,39 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse33" aria-expanded="false"
                                             aria-controls="flush-collapse33">
-                                        AVL.remove(key)
+                                        AVL.traverseInOrder()
                                     </button>
                                 </h2>
                                 <div id="flush-collapse33" class="accordion-collapse collapse"
                                      aria-labelledby="flush-heading33" data-bs-parent="#accordionFlush33">
                                     <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
+                                        Returns the in-order traversal of the tree (an array of key-value pairs also represented as arrays).
+                                        Does this by making a new array and passing it into the private recursive function
+                                        AVL._buildInOrderTraversal(currentNode, list). Then, creates a new array,
+                                        transfers its content to the new array in reverse order, and returns the new array.
+<pre><code>const pairList = new Array();
+this._buildInOrderTraversal(this._root, pairList);
+const list = new Array();
+while(pairList.length != 0) {
+    list.push(pairList.pop());
+}
+return list;</code></pre>
+                                        AVL._buildInOrderTraversal(currentNode, list):
+                                        <br><br>
+                                        If currentNode has a left child, recursively call this function with currentNode's
+                                        left child passed in.
+<pre><code>if(currentNode.getLeft() != null) {
+    this._buildPostOrderTraversal(currentNode.getLeft(), list);
+}</code></pre>
+                                        Define node as an array with the first element being the currentNode's key
+                                        and the second as the currentNode's value. Add this array to the front of list.
+<pre><code>const node = [currentNode.getKey(), currentNode.getValue()];
+list.unshift(node);</code></pre>
+                                        If currentNode has a right child, recursively call this function with currentNode's
+                                        right child passed in.
+<code></pre>if(currentNode.getRight() != null) {
+    this._buildPostOrderTraversal(currentNode.getRight(), list);
+}</code></pre>
                                     </div>
                                 </div>
                             </div>
@@ -741,148 +1156,32 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#flush-collapse34" aria-expanded="false"
                                             aria-controls="flush-collapse34">
-                                        AVL.getKeys()
+                                        AVL.traverseLevelOrder()
                                     </button>
                                 </h2>
                                 <div id="flush-collapse34" class="accordion-collapse collapse"
                                      aria-labelledby="flush-heading34" data-bs-parent="#accordionFlush34">
                                     <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion accordion-flush" id="accordionFlush35">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-heading35">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#flush-collapse35" aria-expanded="false"
-                                            aria-controls="flush-collapse35">
-                                        AVL.getItems()
-                                    </button>
-                                </h2>
-                                <div id="flush-collapse35" class="accordion-collapse collapse"
-                                     aria-labelledby="flush-heading35" data-bs-parent="#accordionFlush35">
-                                    <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion accordion-flush" id="accordionFlush36">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-heading36">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#flush-collapse36" aria-expanded="false"
-                                            aria-controls="flush-collapse36">
-                                        AVL.getHeight()
-                                    </button>
-                                </h2>
-                                <div id="flush-collapse36" class="accordion-collapse collapse"
-                                     aria-labelledby="flush-heading36" data-bs-parent="#accordionFlush36">
-                                    <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion accordion-flush" id="accordionFlush37">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-heading37">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#flush-collapse37" aria-expanded="false"
-                                            aria-controls="flush-collapse37">
-                                        AVL.getMaxKey()
-                                    </button>
-                                </h2>
-                                <div id="flush-collapse37" class="accordion-collapse collapse"
-                                     aria-labelledby="flush-heading37" data-bs-parent="#accordionFlush37">
-                                    <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion accordion-flush" id="accordionFlush38">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-heading38">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#flush-collapse38" aria-expanded="false"
-                                            aria-controls="flush-collapse38">
-                                        AVL.traversePreOrder()
-                                    </button>
-                                </h2>
-                                <div id="flush-collapse38" class="accordion-collapse collapse"
-                                     aria-labelledby="flush-heading38" data-bs-parent="#accordionFlush38">
-                                    <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion accordion-flush" id="accordionFlush39">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-heading39">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#flush-collapse39" aria-expanded="false"
-                                            aria-controls="flush-collapse39">
-                                        AVL.traversePostOrder()
-                                    </button>
-                                </h2>
-                                <div id="flush-collapse39" class="accordion-collapse collapse"
-                                     aria-labelledby="flush-heading39" data-bs-parent="#accordionFlush39">
-                                    <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion accordion-flush" id="accordionFlush40">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-heading40">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#flush-collapse40" aria-expanded="false"
-                                            aria-controls="flush-collapse40">
-                                        AVL.traverseInOrder()
-                                    </button>
-                                </h2>
-                                <div id="flush-collapse40" class="accordion-collapse collapse"
-                                     aria-labelledby="flush-heading40" data-bs-parent="#accordionFlush40">
-                                    <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion accordion-flush" id="accordionFlush41">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-heading41">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#flush-collapse41" aria-expanded="false"
-                                            aria-controls="flush-collapse41">
-                                        AVL.traverseLevelOrder()
-                                    </button>
-                                </h2>
-                                <div id="flush-collapse41" class="accordion-collapse collapse"
-                                     aria-labelledby="flush-heading41" data-bs-parent="#accordionFlush41">
-                                    <div class="accordion-body">
-                                        Placeholder content for this accordion, which is intended to
-                                        demonstrate the <code>.accordion-flush</code> class. This is the first item's
-                                        accordion body.
+                                        Returns the in-order traversal of the tree (an array of key-value pairs also represented as arrays).
+                                        <br><br>
+                                        Create two new arrays, list and queue.
+<pre><code>const list = new Array();
+const queue = new Array();</code></pre>
+                                        Add root to queue. While the queue isn't empty, get the first element in queue,
+                                        add it to list, and add currentNode's child nodes to queue. After the tree has
+                                        been fully traversed, return list.
+<pre><code>queue.push(this._root);
+while(queue.length > 0) {
+    currentNode = queue.shift();
+    list.push([currentNode.getKey(), currentNode.getValue()]);
+    if(currentNode.getLeft() != null) {
+        queue.push(currentNode.getLeft());
+    }
+    if(currentNode.getRight() != null) {
+        queue.push(currentNode.getRight());
+    }
+}
+return list;</code></pre>
                                     </div>
                                 </div>
                             </div>

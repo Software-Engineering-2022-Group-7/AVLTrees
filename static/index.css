@@ -175,6 +175,10 @@ text .tree_hierarchy {
     margin: 10px 0;
 }
 
+.accordion-body {
+    background-color:#e8e8e8;
+}
+
 .main_content {
     margin-left: 70px;
     max-width: 1000px;
@@ -253,7 +257,7 @@ text .tree_hierarchy {
     margin-top: 150px;
 }
 
-.head__content 
+.head__content
 {
 	padding: 5px;
 }
@@ -263,7 +267,7 @@ text .tree_hierarchy {
 	margin: 10px;
 }
 
-.quiz__footer 
+.quiz__footer
 {
 	position: absolute;
 	bottom: 0;
@@ -272,7 +276,7 @@ text .tree_hierarchy {
     font-size: 30pt;
     margin-bottom: 3rem;
 }
-.quiz__points 
+.quiz__points
 {
 	position: absolute;
 	bottom: 0;
@@ -282,7 +286,7 @@ text .tree_hierarchy {
     margin-bottom: 9rem;
 }
 
-.footer__content 
+.footer__content
 {
 	padding: 5px;
 }
@@ -301,7 +305,7 @@ text .tree_hierarchy {
 	cursor: pointer;
 }
 
-.button_wrong 
+.button_wrong
 {
 	background: #EB6465;
 }

@@ -51,7 +51,7 @@ AVL.prototype.update = function(key, value) {
  * @throws {RuntimeError} If the key is not found in the AVL tree.
  */
 AVL.prototype.get = function(key) {
-  return this._findInSubtree(this._root, key)
+  return this._findInSubtree(this._root, key);
 };
 
 /**
@@ -180,7 +180,6 @@ AVL.prototype.traverseInOrder = function() {
 AVL.prototype.traverseLevelOrder = function() {
   const list = new Array();
   const queue = new Array();
-  const nodeCount = this._countNodes(this._root);
 
   queue.push(this._root);
   while(queue.length > 0) {
@@ -491,7 +490,7 @@ AVL.prototype._getMinInSubtree = function(currentNode) {
  * @param {Array} list The list into which the nodes should be added.
  */
 AVL.prototype._buildPreOrderTraversal = function(currentNode, list) {
-  node = [currentNode.getKey(), currentNode.getValue()];
+  const node = [currentNode.getKey(), currentNode.getValue()];
   list.unshift(node);
   if(currentNode.getLeft() != null) {
     this._buildPreOrderTraversal(currentNode.getLeft(), list);
@@ -514,7 +513,7 @@ AVL.prototype._buildPostOrderTraversal = function(currentNode, list) {
   if(currentNode.getRight() != null) {
     this._buildPostOrderTraversal(currentNode.getRight(), list);
   }
-  node = [currentNode.getKey(), currentNode.getValue()];
+  const node = [currentNode.getKey(), currentNode.getValue()];
   list.unshift(node);
 };
 
@@ -528,7 +527,7 @@ AVL.prototype._buildInOrderTraversal = function(currentNode, list) {
   if(currentNode.getLeft() != null) {
     this._buildInOrderTraversal(currentNode.getLeft(), list);
   }
-  node = [currentNode.getKey(), currentNode.getValue()];
+  const node = [currentNode.getKey(), currentNode.getValue()];
   list.unshift(node);
   if(currentNode.getRight() != null) {
     this._buildInOrderTraversal(currentNode.getRight(), list);
