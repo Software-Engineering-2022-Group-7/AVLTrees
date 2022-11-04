@@ -1,0 +1,16 @@
+AVL Tree
+- What is an AVL tree?
+    - Who made it?
+    - Quick background information on trees and Binary Search Trees specifically
+    - How does it differ from a Binary Search Tree?
+        - What can BSTs do? How do AVL trees modify/add to this?
+    - How will we represent it?
+        - What is a Node?
+            - What information does a Node have?
+- What is balance?
+    - What is height?
+    - What are the four ways in which a tree can be unbalanced?
+- What are rotations?
+    - What are the two types of rotation?
+- When do we use rotations?
+    - How do we use rotations to balance a tree?
