@@ -12,7 +12,7 @@ header.page_header h1 {
     /* words */
     font-family: "Trebuchet MS", Arial, serif;
     font-style: italic;
-    font-size: 300%;
+    font-size: 50px;
     font-weight: bold;
     text-align: center;
 }
@@ -211,6 +211,11 @@ text .tree_hierarchy {
     color: #24292F;
 }
 
+.card {
+    margin-bottom: 10px;
+}
+
+
 .card-body text, .card-body li {
     font-size: 110%;
     word-break: break-word;
@@ -254,7 +259,7 @@ text .tree_hierarchy {
 	font-size: 30pt;
 	margin: 10px;
 	margin-bottom: 50px;
-    margin-top: 150px;
+    margin-top: 100px;
 }
 
 .head__content
@@ -269,16 +274,16 @@ text .tree_hierarchy {
 
 .quiz__footer
 {
-	position: absolute;
+
 	bottom: 0;
 	display: block;
 	width: 100%;
     font-size: 30pt;
-    margin-bottom: 3rem;
+    /*margin-bottom: 3rem;*/
 }
 .quiz__points
 {
-	position: absolute;
+	
 	bottom: 0;
 	display: block;
 	width: 100%;

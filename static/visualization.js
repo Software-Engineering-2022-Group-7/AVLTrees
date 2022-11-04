@@ -1,4 +1,5 @@
-;(function () {
+window.onload=function(){
+/*;(function () {
     //searches for an HTML element that has the id of canvas.
     // Once it finds the element, we can then manipulate it with JavaScript.
     const canvas = document.getElementById('canvas')
@@ -8,8 +9,12 @@
   
   })()
   //function that is called to clear the canvas
-    function clearcanvas(){
-    var canvas = document.getElementById('canvas'),
-        ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  function clearcanvas()
+  */
+  let c = document.getElementById("canvas");
+  let ctx = c.getContext("2d");
+  
+  const canvas = document.getElementById('canvas')
+  const context = canvas.getContext('2d')
+  const clearcanvas = () => context.clearRect(0, 0, canvas.width, canvas.height)
 }
