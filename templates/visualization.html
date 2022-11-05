@@ -1,29 +1,33 @@
 {% extends "base.html" %}
 {% block title %}
-<title>Visualization</title>
-<script src="visualization.js"></script>
-<script src="circle.js"></script>
+    <title>Visualization</title>
 {% endblock %}
 
 {% block content %}
-<main>
-    <h1>Canvas</h1>
-    <div id="main-content"></div>
-        <div class="toolbox" >
-            <div class="action_btn">
-                <input id="numInput" type="number" class="action_btn numInput" placeholder="Enter">
-                <button onclick="node()" type="button" class="action_btn submit">Insert</button>
-                <input id="numDelete" type="number" class="action_btn numDelete" placeholder="Enter">
-                <button onclick="submitDelete()" type="button" class="action_btn numDelete">Delete</button>
-                <button onclick="reset()" id = "reset" type="reset">Reset the canvas</button>
+    <main>
+        <h1>Canvas</h1>
+        <div class="toolbox">
+            <div class="input-group">
+                <input id="numInput" type="text" class="form-control" placeholder="Enter Key"
+                       aria-label="Insert block">
+                <button onclick="getInput()" class="btn btn-outline-secondary" type="button">INSERT</button>
+                <input id="numDelete" type="text" class="form-control" placeholder="Enter Key"
+                       aria-label="Delete block">
+                <button onclick="deleteInput()" class="btn btn-outline-secondary" type="button">DELETE</button>
+                <button onclick="clearCanvas()" id="reset" type="reset"
+                    class="btn btn-outline-secondary">RESET</button>
             </div>
         </div>
-        <canvas id="canvas" width="500" height="400"></canvas>  
-        <script src="visualization.js"></script>
-        <script src="circle.js"></script>
+
+        {#canvas#}
+        <canvas id="canvas" width="1080" height="800"></canvas>
+        {#Js files#}
+        <script src="/static/AVL.js"></script>
+        <script src="/static/visualization.js"></script>
+        <script src="/static/circle.js"></script>
+
         <div class="explanation">
             <p><strong>Explanation</strong> Some text...</p>
         </div>
-    </div>
-</main>
+    </main>
 {% endblock %}

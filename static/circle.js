@@ -1,115 +1,77 @@
-/*
-make the circle a variable that takes in the objectID and object Label
-Each node will know its id, label, radius, thickness, x&y coordinates, color
+let startAngle = 0;
+let endAngle = Math.PI * 2;
 
-*/
-/*
-let c = document.getElementById("canvas");
-let ctx = c.getContext("2d");
 class Circle {
-	constructor(x, y, radius,color){
-		this.x = x;
-		this.y = y;
-		this.radius = radius;
-		this.color = color;
-	}
-	draw(ctx){
-		ctx.beginPath();
-		ctx.linewidth = 4;
-		ctx.arc(this.x, this.y, this.radius,0, Math.PI*2, false);
-		ctx.stroke();
-		ctx.closePath();
-	}
+    constructor(x, y, radius, color, key, parent) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.color = color;
+        this.key = key;
+        this.parent = parent;
+    }
+
+    draw(ctx) {
+        ctx.beginPath();
+        ctx.linewidth = 4;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.strokeStyle = this.color;
+        ctx.font = "15px Arial";
+        ctx.arc(this.x, this.y, this.radius, startAngle, endAngle, false);
+        ctx.fillText(this.key, this.x, this.y);
+        ctx.closePath();
+        ctx.stroke();
+        this.drawLine(ctx);
+    }
+
+    drawLine(ctx) {
+        if (this.parent == null) {
+            return;
+        }
+        const find_circle = (element) => element.getkey() === this.parent.getKey();
+        let index = all_circles.find(find_circle);
+        let parent_x = index.getX();
+        let parent_y = index.getY();
+        let distance = Math.sqrt((parent_x - this.x) * (parent_x - this.x) + (parent_y - this.y)
+            * (parent_y - this.y));
+        let adjust_y = this.radius * (parent_y - this.y) / distance;
+        let adjust_x = Math.sqrt(this.radius * this.radius - adjust_y * adjust_y);
+
+        let adjust_parent_x = this.radius * (parent_x - this.x) / distance;
+        let adjust_parent_y = Math.sqrt(this.radius * this.radius - adjust_parent_x * adjust_parent_x);
+
+        ctx.strokeStyle = this.color;
+        ctx.linewidth = 1;
+        ctx.beginPath();
+        if (this.key < this.parent.getKey()) {
+            ctx.moveTo(this.x + adjust_x, this.y + adjust_y);
+            ctx.lineTo(parent_x - adjust_parent_x, parent_y + adjust_parent_y);
+        } else {
+            ctx.moveTo(this.x - adjust_x, this.y + adjust_y);
+            ctx.lineTo(parent_x - adjust_parent_x, parent_y + adjust_parent_y);
+        }
+        ctx.closePath();
+        ctx.stroke();
+    }
+
+    getX() {
+        return this.x;
+    }
+
+    setX(current) {
+        this.x = current;
+    }
+
+    getY() {
+        return this.y;
+    }
+
+    setY(current) {
+        this.y = current;
+    }
+
+    getkey() {
+        return this.key;
+    }
 }
-
-
-let all_circles = [];
-
-let createCircle = function(circle){
-	my_circle.draw(ctx);
-}
-
-for(var num = 0; num < 10; num++){
-	let my_circle = new Circle(100, 75, 50, "black");
-	all_circles.push(my_circle);
-}
-*/
-
-function node(){
-let c = document.getElementById("canvas");
-let ctx = c.getContext("2d");
-ctx.beginPath();
-ctx.arc(100, 75, 50, 0, 2 * Math.PI);
-ctx.stroke();
-
-}
-
-/*
-const canvas = document.getElementById('canvas')
-const ctx = canvas.getContext('2d')
-let x = 200;
-let y = 200;
-const animate = () => {
-requestAnimationFrame(animate);
-c.clearRect(0, 0, innerWidth, innerHeight)
-    c.beginPath();
-    c.arc(x, y, 30, 0, Math.PI * 2, false );
-    c.strokeStyle = "pink";
-    c.stroke();
-    x += 1
-    y += 1
-}
-animate()
-
-
-/*
-// Single Animated Circle - Get Canvas element by Id
-var canvas3 = document.getElementById("canvas3");
-
-// Set Canvas dimensions
-canvas3.width   = 200;
-canvas3.height  = 200;
-
-// Get drawing context
-var c3 = canvas3.getContext( '2d' );
-
-// Radius
-var radius = 50;
-
-// Starting Position
-var x 	= radius + Math.random() * ( 200 - radius * 2 );
-var y 	= radius + Math.random() * ( 200 - radius * 2 );
-
-// Speed in x and y direction
-var dx 	= (Math.random() - 0.5) * 2;
-var dy 	= (Math.random() - 0.5) * 2;
-
-function animate3() {
-
-  	requestAnimationFrame( animate3 );
-
-  	c3.clearRect( 0, 0 , 200, 200 );
- 
-  	if( x + radius > 200 || x - radius < 0  ) {
-
-    		dx = -dx;
-  	}
-
-  	if(  y + radius > 200 || y - radius < 0 ) {
-
-    		dy = -dy;
-  	}
-    x += dx;
-  	y += dy;
-
-  	c3.beginPath();
-  	c3.arc( x, y,  50, 0, Math.PI * 2, false  );
-  	c3.stroke();
-}
-
-// Animate the Circle
-animate3();
-
-
-
-*/
