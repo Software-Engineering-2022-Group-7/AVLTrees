@@ -111,7 +111,7 @@ main p, ol {
 .tutorial_sidebar {
     position: sticky;
     float: right;
-    top:20px;
+    top: 20px;
     right: 0;
     width: 22%;
     font-size: 100%;
@@ -125,6 +125,7 @@ main p, ol {
     background-color: #d0d7de;
 }
 
+/* The main_content section is exclusively for implementation.html. */
 .main_content {
     margin-left: 70px;
     max-width: 1000px;
@@ -230,95 +231,79 @@ text .tree_hierarchy {
     margin: 10px 0;
 }
 
-.wrapper
-{
-	width: 100%;
-	height: 100%;
-	display: table;
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: table;
 }
 
-.main
-{
-	display: table-cell;
-	vertical-align: middle;
-	text-align: center;
+.main {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
 }
 
-.quiz-frame
-{
-	border: 0;
-	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+.quiz-frame {
+    border: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.quiz__head
-{
-	font-size: 30pt;
-	margin: 10px;
-	margin-bottom: 50px;
-    margin-top: 100px;
+.quiz__head {
+    font-size: 30pt;
+    margin: 100px 10px 50px;
 }
 
-.head__content 
-{
-	padding: 5px;
+.head__content {
+    padding: 5px;
 }
 
-.quiz__body
-{
-	margin: 10px;
+.quiz__body {
+    margin: 10px;
 }
 
-.quiz__footer 
-{
-
-	bottom: 0;
-	display: block;
-	width: 100%;
+.quiz__footer {
+    bottom: 0;
+    display: block;
+    width: 100%;
     font-size: 30pt;
     /*margin-bottom: 3rem;*/
 }
-.quiz__points 
-{
-	
-	bottom: 0;
-	display: block;
-	width: 100%;
+
+.quiz__points {
+    bottom: 0;
+    display: block;
+    width: 100%;
     font-size: 30pt;
     margin-bottom: 9rem;
 }
 
-.footer__content 
-{
-	padding: 5px;
+.footer__content {
+    padding: 5px;
 }
 
-.button
-{
-	border: 0;
-	border-radius: 10px;
-	background: #1d1f2b;
-	color: #fff;
-	padding: 10px 25px;
-	width: 70%;
-	font-size: 15pt;
-	display: block;
-	margin: 2px auto;
-	cursor: pointer;
+.button {
+    border: 0;
+    border-radius: 10px;
+    background: #1d1f2b;
+    color: #fff;
+    padding: 10px 25px;
+    width: 70%;
+    font-size: 15pt;
+    display: block;
+    margin: 2px auto;
+    cursor: pointer;
 }
 
-.button_wrong 
-{
-	background: #EB6465;
+.button_wrong {
+    background: #EB6465;
 }
 
-.button_correct
-{
-	background: #5EB97D;
+.button_correct {
+    background: #5EB97D;
 }
 
-.button_passive
-{
-	background: #B3B3B3;
+.button_passive {
+    background: #B3B3B3;
 }
 
 canvas {
@@ -330,29 +315,18 @@ canvas {
 }
 
 .toolbox {
-    width: 100px;
     margin-left: 70px;
-    /*margin: 0 auto;*/
-    display: inline;
+    display: inline-block;
 }
 
-.action_btn {
+.form-control {
     width: 100px;
-    margin: 0 auto;
-    display: inline;
 }
 
 .explanation {
     background-color: #a1c88d;
     border-left: 6px solid #6c8d5c;
     padding: 0;
-    margin: 0 auto;
-    margin-bottom: 4rem;
-    margin-left: 180px;
-    margin-right: 180px;
+    margin: 0 180px 4rem;
     display: block;
-}
-
-input {
-    margin-left: 40px;
 }
