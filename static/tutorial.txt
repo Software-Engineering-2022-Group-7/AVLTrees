@@ -1,12 +1,73 @@
 AVL Tree
-- What is an AVL tree?
-    - Who made it?
-    - Quick background information on trees and Binary Search Trees specifically
++ What is an AVL tree?
+    - What is a tree?
+        = A tree is a kind of data structure.
+        = Trees are a collection of nodes.
+            # Nodes have a key and a value associated with them.
+            # They can also have child nodes, or nodes on the level below that they are connected to.
+        = It's shaped like an upside down tree, or like tree roots, hence the name.
+        = We call the first node at the top the "root."
+        = We call a node without any children a "leaf" node.
+        = What is depth? What is height?
+            # Depth and height are important concepts of trees.
+            # Depth is the number of steps away from the root node a node is.
+            # Height is the maximum number of steps from a node to its leaf nodes.
+        = What are traversals?
+        = An example of a tree:
+              C
+           / / \ \
+          D A   F G
+          |      / \
+          B     E   H
+        = In the above example, node G has a depth of 1 and a height of 1.
+        Node B has a depth of 2 and a height of 0. Node C has a depth of 0 and a height of 2.
+        = What information can we get from a tree? What operations can we perform?
+            # Get the number of nodes in the tree (its size)
+            # Get the value associated with a node's key
+            # Get the height of the tree
+            # Get the maximum and minimum key in the tree
+            # Get the traversals for the tree
+
+            # Check if the tree has a node with a specific key
+            # Insert a new node into the tree
+            # Update an existing node's value
+            # Remove a node with a specific key from the tree
+    - What is a binary tree?
+        = A binary tree is a tree in which each node is allowed at most two children.
+        = An example of a binary tree:
+              C
+            /   \
+           D     A
+          / \     \
+         F   G     E
+              \     \
+               B     H
+    - What is a binary search tree?
+        = A binary search tree is a binary tree that has three properties. For any node:
+            1. The left subtree of the node only has nodes with keys less than the node's key.
+            2. The right subtree of the node only has nodes with keys more than the node's key.
+            3. The left and right subtree of the node must also be binary search trees.
+        = An example of a binary search tree:
+              D
+            /   \
+           B     F
+          / \     \
+         A   C     G
+              \     \
+               E     H
+    - What is a self balancing binary search tree?
+        = A self-balancing binary search tree is a binary search tree that performs some operation on itself
+        when it becomes unbalanced.
+        = What is balance?
+            # Balance is the difference in heights between the left and right subtrees of a node.
+    - Who made AVL trees?
+        = AVL trees were invented by Georgy Adelson-Velsky and Evgenii Landis.
+        = AVL trees were the first kind of self-balancing binary search tree.
     - How does it differ from a Binary Search Tree?
-        - What can BSTs do? How do AVL trees modify/add to this?
-    - How will we represent it?
-        - What is a Node?
-            - What information does a Node have?
+        = An AVL tree is a kind of self-balancing binary search tree that performs rotations on nodes when
+        it becomes unbalanced.
+        =
+        = What can BSTs do? How do AVL trees modify/add to this?
 - What is balance?
     - What is height?
     - What are the four ways in which a tree can be unbalanced?
