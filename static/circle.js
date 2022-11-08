@@ -1,6 +1,3 @@
-let startAngle = 0;
-let endAngle = Math.PI * 2;
-
 class Circle {
     constructor(x, y, radius, color, key, parent) {
         this.x = x;
@@ -18,7 +15,7 @@ class Circle {
         ctx.textBaseline = 'middle';
         ctx.strokeStyle = this.color;
         ctx.font = "15px Arial";
-        ctx.arc(this.x, this.y, this.radius, startAngle, endAngle, false);
+        ctx.arc(this.x, this.y, this.radius, startAngle, endAngle, counterClockwise);
         ctx.fillText(this.key, this.x, this.y);
         ctx.closePath();
         ctx.stroke();
