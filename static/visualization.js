@@ -143,3 +143,18 @@ AVL.prototype.findParent = function (currentNode, key) {
         return this.findParent(currentNode.getLeft(), key);
     }
 }
+
+// Execute Input/Delete when users click Enter
+document.getElementById("numInput").addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("InputBtn").click();
+  }
+});
+
+document.getElementById("numDelete").addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("DeleteBtn").click();
+  }
+});
