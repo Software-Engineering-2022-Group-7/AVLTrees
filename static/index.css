@@ -101,11 +101,27 @@ main h2 {
     margin-left: 70px;
 }
 
+main h3 {
+    font-size: 150%;
+    font-weight: bold;
+    margin-left: 70px;
+}
+
 main p, ol {
-    font-size: 110%;
+    font-size: 20px;
     width: 800px;
     word-break: break-word;
     margin-left: 70px;
+}
+main ul{
+    font-size: 20px;
+    width: 800px;
+    word-break: break-word;
+    margin-left: 70px;
+}
+
+.secondary_list {
+    margin-left: 0px;
 }
 
 .tutorial_sidebar {
@@ -283,7 +299,7 @@ text .tree_hierarchy {
 }
 .quiz__points
 {
-	
+
 	bottom: 0;
 	display: block;
 	width: 100%;
