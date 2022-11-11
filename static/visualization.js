@@ -20,14 +20,32 @@ let counterClockwise = false;
 function getInput() {
     let input = document.getElementById("numInput").value;
     input = parseInt(input, 10);
-    tree.insert(input, 0);
+    // Check input validity
+    if (!Number.isInteger(input)) {
+        console.log(new Error("Please enter an integer."));
+        return;
+    }
+    try {
+        tree.insert(input, 0);
+    } catch (error) {
+        console.log(error);
+    }
     LevelOrderDraw(tree);
 }
 
 function deleteInput() {
     let input = document.getElementById("numDelete").value;
     input = parseInt(input, 10);
-    tree.remove(input, 0);
+    // Check input validity
+    if (!Number.isInteger(input)) {
+        console.log(new Error("Please enter an integer."));
+        return;
+    }
+    try {
+        tree.remove(input, 0);
+    } catch (error) {
+        console.log(error);
+    }
     LevelOrderDraw(tree);
 }
 
@@ -159,6 +177,7 @@ document.getElementById("numDelete").addEventListener("keypress", function(event
   }
 });
 
+// Delete content after input
 document.getElementById("InputBtn").addEventListener("click", function handleClick(event) {
     event.preventDefault();
     const numInput = document.getElementById("numInput");
