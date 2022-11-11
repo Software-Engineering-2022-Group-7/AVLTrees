@@ -158,3 +158,17 @@ document.getElementById("numDelete").addEventListener("keypress", function(event
     document.getElementById("DeleteBtn").click();
   }
 });
+
+document.getElementById("InputBtn").addEventListener("click", function handleClick(event) {
+    event.preventDefault();
+    const numInput = document.getElementById("numInput");
+    numInput.value = "";
+    numInput.placeholder = "Enter Key";
+});
+
+document.getElementById("DeleteBtn").addEventListener("click", function handleClick(event) {
+    event.preventDefault();
+    const numDelete = document.getElementById("numDelete");
+    numDelete.value = "";
+    numDelete.placeholder = "Enter Key";
+});
