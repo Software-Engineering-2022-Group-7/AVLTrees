@@ -288,20 +288,18 @@ text .tree_hierarchy {
     font-size: 30pt;
     /*margin-bottom: 3rem;*/
 }
-<<<<<<< HEAD
-.quiz__points
-{
+
+.quiz__points {
 
 	bottom: 0;
 	display: block;
 	width: 100%;
-=======
-
+}
 .quiz__points {
     bottom: 0;
     display: block;
     width: 100%;
->>>>>>> 6cf1ee3fbe28b804851b4121f74772d9beb1bb9b
+
     font-size: 30pt;
     margin-bottom: 9rem;
 }
