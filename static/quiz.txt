@@ -1,0 +1,33 @@
+Quiz questions:
+
+1. In this implementation of an AVL tree, what information does a node have associated with it?
+    a. A key, a value, a left child, and a right child
+    b. A key
+    c. A key, a value, a left child, a right child, and a color
+    d. A key and children
+2. What do we call the first node of a tree?
+    a. The "leaf"
+    b. The "root"
+    c. The "top"
+    d. The "core"
+3. What is depth in a tree?
+    a. The distance of a node from the center of the tree
+    b. The distance of a node from the root node
+    c. The maximum distance of a node to a leaf node
+    d. The minimum distance of a node to a leaf node
+4. In this example tree, what is the height of node D?
+    C
+/ /   \ \
+D A     F G
+|        / \
+B       E   H
+    a. 0
+    b. 1
+    c. 2
+    d. 3
+5. Which of the following is not a kind of traversal?
+    a. Pre-order
+    b. Level-order
+    c. Height-order
+    d. In-order
+6. 
