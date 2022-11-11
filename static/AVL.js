@@ -19,7 +19,7 @@ AVL.prototype.getSize = function() {
  * @return {Boolean} true if there are no elements in the AVL tree.
  */
 AVL.prototype.isEmpty = function() {
-  return this._size == 0;
+  return this._size === 0;
 };
 
 /**
@@ -132,7 +132,7 @@ AVL.prototype.traversePreOrder = function() {
   const pairList = new Array();
   this._buildPreOrderTraversal(this._root, pairList);
   const list = new Array();
-  while(pairList.length != 0) {
+  while(pairList.length !== 0) {
     list.push(pairList.pop());
   }
   return list;
@@ -148,7 +148,7 @@ AVL.prototype.traversePostOrder = function() {
   const pairList = new Array();
   this._buildPostOrderTraversal(this._root, pairList);
   const list = new Array();
-  while(pairList.length != 0) {
+  while(pairList.length !== 0) {
     list.push(pairList.pop());
   }
   return list;
@@ -164,7 +164,7 @@ AVL.prototype.traverseInOrder = function() {
   const pairList = new Array();
   this._buildInOrderTraversal(this._root, pairList);
   const list = new Array();
-  while(pairList.length != 0) {
+  while(pairList.length !== 0) {
     list.push(pairList.pop());
   }
   return list;
@@ -210,7 +210,7 @@ AVL.prototype.displayTree = function() {
 * @throws {RuntimeError} If inconsistencies are found.
 */
 AVL.prototype.checkInvariants = function() {
-  if(this._countNodes(this._root) != this._size) {
+  if(this._countNodes(this._root) !== this._size) {
     throw "Problem in AVL: Node count doesn't match tree size";
   }
   if(this._root != null) {
@@ -275,9 +275,8 @@ AVL.prototype._leftRotate = function(currentNode) {
  */
 AVL.prototype._insertInSubtree = function(currentNode, key, value) {
   if(currentNode == null) {
-    const newNode = new Node(key, value);
-    return newNode;
-  } else if(currentNode.getKey() == key) {
+    return new Node(key, value);
+  } else if(currentNode.getKey() === key) {
     throw "The key already exists.";
   } else if(key > currentNode.getKey()) {
     currentNode.setRight(this._insertInSubtree(currentNode.getRight(), key,
@@ -380,7 +379,7 @@ AVL.prototype._removeFromSubtree = function(currentNode, key) {
 AVL.prototype._findInSubtree = function(currentNode, key) {
   if(currentNode == null) {
     throw "The key is not found.";
-  } else if(currentNode.getKey() == key) {
+  } else if(currentNode.getKey() === key) {
     return currentNode.getValue();
   }
 
@@ -400,7 +399,7 @@ AVL.prototype._findInSubtree = function(currentNode, key) {
 AVL.prototype._containsInSubtree = function(currentNode, key) {
   if(currentNode == null) {
     return false;
-  } else if(currentNode.getKey() == key) {
+  } else if(currentNode.getKey() === key) {
     return true;
   }
 
@@ -421,7 +420,7 @@ AVL.prototype._containsInSubtree = function(currentNode, key) {
 AVL.prototype._updateInSubtree = function(currentNode, key, value) {
   if(currentNode == null) {
     throw "The key is not found.";
-  } else if (currentNode.getKey() == key) {
+  } else if (currentNode.getKey() === key) {
     currentNode.setValue(value);
     return;
   }
@@ -607,12 +606,12 @@ AVL.prototype._verifyKeysBoundedBy = function(currentNode, minApplies, minBound,
 function Node(key, value, left, right) {
   this._key = key;
   this._value = value;
-  if(left != undefined) {
+  if(left !== undefined) {
     this._left = left;
   } else {
     this._left = null;
   }
-  if(right != undefined) {
+  if(right !== undefined) {
     this._right = right;
   } else {
     this._right = null;
