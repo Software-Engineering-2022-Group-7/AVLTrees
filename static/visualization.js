@@ -2,8 +2,12 @@
 let c = document.getElementById("canvas");
 let ctx = c.getContext("2d");
 
-// generate the circle list and the tree
+// generate the circle list, edge list, and tree
 let all_circles = [];
+let all_edges = [];
+let prev_circles = [];
+let prev_edges = [];
+let rotation_content = [];
 let tree = new AVL();
 
 // parameters
@@ -16,7 +20,11 @@ let initial_y = radius * 5;
 let startAngle = 0;
 let endAngle = Math.PI * 2;
 let counterClockwise = false;
+let Rotation_status = false;
+let startTime;
+let duration = 1500;
 
+// Start insertion
 function getInput() {
     let input = document.getElementById("numInput").value;
     input = parseInt(input, 10);
@@ -30,9 +38,9 @@ function getInput() {
     } catch (error) {
         console.log(error);
     }
-    LevelOrderDraw(tree);
 }
 
+// Start deletion
 function deleteInput() {
     let input = document.getElementById("numDelete").value;
     input = parseInt(input, 10);
@@ -46,57 +54,16 @@ function deleteInput() {
     } catch (error) {
         console.log(error);
     }
-    LevelOrderDraw(tree);
 }
 
-function LevelOrderDraw(tree) {
-    // Set up
-    ctx.clearRect(0, 0, canvas_width, canvas_height);
-    all_circles = [];
-
-    const queue = [];
-    queue.push(tree.getRoot());
-    all_circles.push(new Circle(initial_x, initial_y, radius, circleColor, tree.getRoot().getKey(), null));
-    while (queue.length > 0) {
-        let currentNode = queue.shift();
-        if (currentNode.getLeft() != null) {
-            queue.push(currentNode.getLeft());
-            let temp;
-            if (currentNode === tree.getRoot()) {
-                temp = initial_update(currentNode.getLeft().getKey(), currentNode);
-            } else {
-                temp = pre_updateParameters(currentNode.getLeft().getKey(), currentNode);
-            }
-            all_circles.push(new Circle(temp[0], temp[1], radius, circleColor, currentNode.getLeft().getKey(),
-                currentNode))
-        }
-        if (currentNode.getRight() != null) {
-            queue.push(currentNode.getRight());
-            let temp;
-            if (currentNode === tree.getRoot()) {
-                temp = initial_update(currentNode.getRight().getKey(), currentNode);
-            } else {
-                temp = pre_updateParameters(currentNode.getRight().getKey(), currentNode);
-            }
-            all_circles.push(new Circle(temp[0], temp[1], radius, circleColor, currentNode.getRight().getKey(),
-                currentNode))
-        }
-    }
-    drawWholeTree();
-}
-
-function drawWholeTree() {
-    for (let i = 0; i < all_circles.length; i++) {
-        all_circles[i].draw(ctx);
-    }
-}
-
+// Clear canvas for reset button
 function clearCanvas() {
     ctx.clearRect(0, 0, canvas_width, canvas_height);
     all_circles = [];
     tree = new AVL();
 }
 
+// Position adjustment for nodes > level 1
 function pre_updateParameters(input, current_parent) {
     const find_circle = (element) => element.getkey() === current_parent.getKey();
     let index = all_circles.find(find_circle);
@@ -125,6 +92,7 @@ function pre_updateParameters(input, current_parent) {
     return temp;
 }
 
+// Position adjustment for nodes == level 1
 function initial_update(input, current_parent) {
     const find_circle = (element) => element.getkey() === current_parent.getKey();
     let index = all_circles.find(find_circle);
@@ -142,39 +110,127 @@ function initial_update(input, current_parent) {
     return temp;
 }
 
-AVL.prototype.getRoot = function () {
-    return this._root;
+// Draw circles and edges on the canvas
+function drawWholeTree() {
+    ctx.clearRect(0, 0, canvas_width, canvas_height);
+    for (let i = 0; i < all_circles.length; i++) {
+        // console.log(all_circles[i]);
+        all_circles[i].draw(ctx);
+        if (all_edges[i]) {
+            all_edges[i].drawLine(ctx, all_circles);
+        }
+    }
 }
 
-AVL.prototype.findParent = function (currentNode, key) {
-    if (currentNode == null) {
-        return null;
-    } else if (currentNode.getLeft() != null && currentNode.getLeft().getKey() === key) {
-        return currentNode;
-    } else if (currentNode.getRight() != null && currentNode.getRight().getKey() === key) {
-        return currentNode;
-    }
+// Collect info and draw the tree before rotation
+AVL.prototype.LevelOrderDrawBeforeRotation = function () {
+    // Set up
+    ctx.clearRect(0, 0, canvas_width, canvas_height);
+    all_circles = [];
+    all_edges = [];
 
-    if (key > currentNode.getKey()) {
-        return this.findParent(currentNode.getRight(), key);
-    } else {
-        return this.findParent(currentNode.getLeft(), key);
+    const queue = [];
+    queue.push(this._root);
+    all_circles.push(new Circle(initial_x, initial_y, radius, circleColor, this._root.getKey()));
+    while (queue.length > 0) {
+        let currentNode = queue.shift();
+        if (currentNode.getLeft() != null) {
+            queue.push(currentNode.getLeft());
+            let temp;
+            if (currentNode === this._root) {
+                temp = initial_update(currentNode.getLeft().getKey(), currentNode);
+            } else {
+                temp = pre_updateParameters(currentNode.getLeft().getKey(), currentNode);
+            }
+            let childNode = new Circle(temp[0], temp[1], radius, circleColor, currentNode.getLeft().getKey());
+            all_circles.push(childNode);
+            all_edges.push(new Edge(childNode, currentNode));
+        }
+        if (currentNode.getRight() != null) {
+            queue.push(currentNode.getRight());
+            let temp;
+            if (currentNode === this._root) {
+                temp = initial_update(currentNode.getRight().getKey(), currentNode);
+            } else {
+                temp = pre_updateParameters(currentNode.getRight().getKey(), currentNode);
+            }
+            let childNode = new Circle(temp[0], temp[1], radius, circleColor, currentNode.getRight().getKey());
+            all_circles.push(childNode);
+            all_edges.push(new Edge(childNode, currentNode));
+        }
     }
+    drawWholeTree();
+}
+
+// Collect info and draw the animation process and final tree
+AVL.prototype.LevelOrderDrawInsideTree = function () {
+    // Set up
+    ctx.clearRect(0, 0, canvas_width, canvas_height);
+    prev_circles = all_circles;
+    prev_edges = all_edges;
+    rotation_content = [];
+    all_circles = [];
+    all_edges = [];
+
+    const queue = [];
+    queue.push(this._root);
+    all_circles.push(new Circle(initial_x, initial_y, radius, circleColor, this._root.getKey()));
+    let rotation_root = rotationNodes(all_circles[all_circles.length - 1], prev_circles);
+    if (rotation_root != null) {
+        rotation_content.push(rotation_root);
+    }
+    while (queue.length > 0) {
+        let currentNode = queue.shift();
+        if (currentNode.getLeft() != null) {
+            queue.push(currentNode.getLeft());
+            let temp;
+            if (currentNode === this._root) {
+                temp = initial_update(currentNode.getLeft().getKey(), currentNode);
+            } else {
+                temp = pre_updateParameters(currentNode.getLeft().getKey(), currentNode);
+            }
+            let childNode = new Circle(temp[0], temp[1], radius, circleColor, currentNode.getLeft().getKey());
+            let rotation_node = rotationNodes(childNode, prev_circles);
+            if (rotation_node != null) {
+                rotation_content.push(rotation_node);
+            }
+            all_circles.push(childNode);
+            all_edges.push(new Edge(childNode, currentNode));
+        }
+        if (currentNode.getRight() != null) {
+            queue.push(currentNode.getRight());
+            let temp;
+            if (currentNode === this._root) {
+                temp = initial_update(currentNode.getRight().getKey(), currentNode);
+            } else {
+                temp = pre_updateParameters(currentNode.getRight().getKey(), currentNode);
+            }
+            let childNode = new Circle(temp[0], temp[1], radius, circleColor, currentNode.getRight().getKey());
+            let rotation_node = rotationNodes(childNode, prev_circles);
+            if (rotation_node != null) {
+                rotation_content.push(rotation_node);
+            }
+            all_circles.push(childNode);
+            all_edges.push(new Edge(childNode, currentNode));
+        }
+    }
+    rotationAnimation(performance.now());
+    drawWholeTree();
 }
 
 // Execute Input/Delete when users click Enter
-document.getElementById("numInput").addEventListener("keypress", function(event) {
-  if (event.key === "Enter") {
-    event.preventDefault();
-    document.getElementById("InputBtn").click();
-  }
+document.getElementById("numInput").addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("InputBtn").click();
+    }
 });
 
-document.getElementById("numDelete").addEventListener("keypress", function(event) {
-  if (event.key === "Enter") {
-    event.preventDefault();
-    document.getElementById("DeleteBtn").click();
-  }
+document.getElementById("numDelete").addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("DeleteBtn").click();
+    }
 });
 
 // Delete content after input
@@ -191,3 +247,55 @@ document.getElementById("DeleteBtn").addEventListener("click", function handleCl
     numDelete.value = "";
     numDelete.placeholder = "Enter Key";
 });
+
+// for async function to achieve sleep functionality
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+/* Functions that are not currently using */
+AVL.prototype.getRoot = function () {
+    return this._root;
+}
+
+function LevelOrderDraw(tree) {
+    // Set up
+    ctx.clearRect(0, 0, canvas_width, canvas_height);
+    let prev_circles = all_circles;
+    all_circles = [];
+    all_edges = [];
+
+    const queue = [];
+    queue.push(tree.getRoot());
+    all_circles.push(new Circle(initial_x, initial_y, radius, circleColor, tree.getRoot().getKey(), null));
+    while (queue.length > 0) {
+        let currentNode = queue.shift();
+        if (currentNode.getLeft() != null) {
+            queue.push(currentNode.getLeft());
+            let temp;
+            if (currentNode === tree.getRoot()) {
+                temp = initial_update(currentNode.getLeft().getKey(), currentNode);
+            } else {
+                temp = pre_updateParameters(currentNode.getLeft().getKey(), currentNode);
+            }
+            let childNode = new Circle(temp[0], temp[1], radius, circleColor, currentNode.getLeft().getKey(),
+                currentNode);
+            all_circles.push(childNode);
+            all_edges.push(new Edge(childNode, currentNode));
+        }
+        if (currentNode.getRight() != null) {
+            queue.push(currentNode.getRight());
+            let temp;
+            if (currentNode === tree.getRoot()) {
+                temp = initial_update(currentNode.getRight().getKey(), currentNode);
+            } else {
+                temp = pre_updateParameters(currentNode.getRight().getKey(), currentNode);
+            }
+            let childNode = new Circle(temp[0], temp[1], radius, circleColor, currentNode.getRight().getKey(),
+                currentNode);
+            all_circles.push(childNode);
+            all_edges.push(new Edge(childNode, currentNode));
+        }
+    }
+    drawWholeTree();
+}
