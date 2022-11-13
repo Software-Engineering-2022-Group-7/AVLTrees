@@ -1,9 +1,10 @@
 class Circle {
-    constructor(x, y, radius, color, key) {
+    constructor(x, y, radius, color, fillColor, key) {
         this.x = x;
         this.y = y;
         this.radius = radius;
         this.color = color;
+        this.fillColor = fillColor;
         this.key = key;
     }
 
@@ -13,10 +14,10 @@ class Circle {
         ctx.strokeStyle = this.color;
         ctx.arc(this.x, this.y, this.radius, startAngle, endAngle, counterClockwise);
         // fill background color
-        ctx.fillStyle = "white";
+        ctx.fillStyle = this.fillColor;
         ctx.fill();
         // fill text
-        ctx.fillStyle = "black";
+        ctx.fillStyle = circleFillTextColor;
         ctx.font = "15px Arial";
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
@@ -43,5 +44,9 @@ class Circle {
 
     getkey() {
         return this.key;
+    }
+
+    setFillColor(current) {
+        this.fillColor = current;
     }
 }

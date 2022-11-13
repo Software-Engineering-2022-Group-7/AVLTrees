@@ -7,6 +7,9 @@ function rotationNodes(current, prev_circles) {
     if (find_circle === undefined) return null;
     if (find_circle.getX() === current.getX() && find_circle.getY() === current.getY()) return null;
 
+    // change the fill color of the rotation node
+    find_circle.setFillColor("#FDF2E9");
+
     return [find_circle, current.getX() - find_circle.getX(), current.getY() - find_circle.getY(),
         find_circle.getX(), find_circle.getY()];
 }
@@ -15,9 +18,8 @@ function rotationNodes(current, prev_circles) {
 function rotationAnimation(time) {
     if (!Rotation_status) return;
     if (!startTime) {
-        startTime = time || performance.now();
+        startTime = time;
     }
-
 
     let deltaTime = (time - startTime) / duration;
     let rotation_nodes = rotationSubAnimation(rotation_content, deltaTime);
@@ -50,7 +52,6 @@ function rotationSubAnimation(rotation_content, deltaTime) {
 function drawSpecifiedTree(circles, edges, rotation_nodes) {
     ctx.clearRect(0, 0, canvas_width, canvas_height);
     for (let i = 0; i < circles.length; i++) {
-        // console.log(circles[i]);
         circles[i].draw(ctx);
         if (edges[i]) {
             // disable edges connecting the rotation nodes

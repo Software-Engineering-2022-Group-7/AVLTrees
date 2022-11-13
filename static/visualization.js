@@ -10,19 +10,23 @@ let prev_edges = [];
 let rotation_content = [];
 let tree = new AVL();
 
-// parameters
+// canvas parameters
 let canvas_height = c.height;
 let canvas_width = c.width;
+// circle parameters
 let radius = 20;
 let circleColor = "black";
+let circleFillColor = "white";
+let circleFillTextColor = "black";
 let initial_x = canvas_width / 2;
-let initial_y = radius * 5;
+let initial_y = radius * 3;
 let startAngle = 0;
 let endAngle = Math.PI * 2;
 let counterClockwise = false;
+// rotation parameters
 let Rotation_status = false;
 let startTime;
-let duration = 1500;
+let duration = 1000;
 
 // Start insertion
 function getInput() {
@@ -71,14 +75,14 @@ function pre_updateParameters(input, current_parent) {
     let curr_y = index.getY() * 1.2 + radius * 3;
     let current_key = parseInt(current_parent.getKey(), 10);
     if (input < current_key) {
-        curr_x = index.getX() - radius * 8 + (index.getY() + radius * 2) * 0.2;
+        curr_x = index.getX() - radius * 5 + (index.getY() + radius * 2) * 0.2;
         if (Math.abs(curr_x - initial_x) < radius) {
             curr_x = curr_x + radius;
         } else if (curr_x < radius * 1.5) {
             curr_x = curr_x + radius * 2;
         }
     } else {
-        curr_x = index.getX() + radius * 8 - (index.getY() + radius * 2) * 0.2;
+        curr_x = index.getX() + radius * 5 - (index.getY() + radius * 2) * 0.2;
         // console.log(canvas_width);
         if (Math.abs(curr_x - initial_x) < radius) {
             curr_x = curr_x - radius;
@@ -100,9 +104,9 @@ function initial_update(input, current_parent) {
     let curr_y = index.getY() * 1.2 + radius * 3;
     let current_key = parseInt(current_parent.getKey(), 10);
     if (input < current_key) {
-        curr_x = index.getX() - radius * 15 + (index.getY() + radius * 2) * 0.2;
+        curr_x = index.getX() - radius * 10 + (index.getY() + radius * 2) * 0.2;
     } else {
-        curr_x = index.getX() + radius * 15 - (index.getY() + radius * 2) * 0.2;
+        curr_x = index.getX() + radius * 10 - (index.getY() + radius * 2) * 0.2;
     }
     let temp = [];
     temp.push(curr_x);
@@ -131,7 +135,7 @@ AVL.prototype.LevelOrderDrawBeforeRotation = function () {
 
     const queue = [];
     queue.push(this._root);
-    all_circles.push(new Circle(initial_x, initial_y, radius, circleColor, this._root.getKey()));
+    all_circles.push(new Circle(initial_x, initial_y, radius, circleColor, circleFillColor, this._root.getKey()));
     while (queue.length > 0) {
         let currentNode = queue.shift();
         if (currentNode.getLeft() != null) {
@@ -142,7 +146,7 @@ AVL.prototype.LevelOrderDrawBeforeRotation = function () {
             } else {
                 temp = pre_updateParameters(currentNode.getLeft().getKey(), currentNode);
             }
-            let childNode = new Circle(temp[0], temp[1], radius, circleColor, currentNode.getLeft().getKey());
+            let childNode = new Circle(temp[0], temp[1], radius, circleColor, circleFillColor, currentNode.getLeft().getKey());
             all_circles.push(childNode);
             all_edges.push(new Edge(childNode, currentNode));
         }
@@ -154,7 +158,7 @@ AVL.prototype.LevelOrderDrawBeforeRotation = function () {
             } else {
                 temp = pre_updateParameters(currentNode.getRight().getKey(), currentNode);
             }
-            let childNode = new Circle(temp[0], temp[1], radius, circleColor, currentNode.getRight().getKey());
+            let childNode = new Circle(temp[0], temp[1], radius, circleColor, circleFillColor, currentNode.getRight().getKey());
             all_circles.push(childNode);
             all_edges.push(new Edge(childNode, currentNode));
         }
@@ -174,7 +178,7 @@ AVL.prototype.LevelOrderDrawInsideTree = function () {
 
     const queue = [];
     queue.push(this._root);
-    all_circles.push(new Circle(initial_x, initial_y, radius, circleColor, this._root.getKey()));
+    all_circles.push(new Circle(initial_x, initial_y, radius, circleColor, circleFillColor, this._root.getKey()));
     let rotation_root = rotationNodes(all_circles[all_circles.length - 1], prev_circles);
     if (rotation_root != null) {
         rotation_content.push(rotation_root);
@@ -189,7 +193,7 @@ AVL.prototype.LevelOrderDrawInsideTree = function () {
             } else {
                 temp = pre_updateParameters(currentNode.getLeft().getKey(), currentNode);
             }
-            let childNode = new Circle(temp[0], temp[1], radius, circleColor, currentNode.getLeft().getKey());
+            let childNode = new Circle(temp[0], temp[1], radius, circleColor, circleFillColor, currentNode.getLeft().getKey());
             let rotation_node = rotationNodes(childNode, prev_circles);
             if (rotation_node != null) {
                 rotation_content.push(rotation_node);
@@ -205,7 +209,7 @@ AVL.prototype.LevelOrderDrawInsideTree = function () {
             } else {
                 temp = pre_updateParameters(currentNode.getRight().getKey(), currentNode);
             }
-            let childNode = new Circle(temp[0], temp[1], radius, circleColor, currentNode.getRight().getKey());
+            let childNode = new Circle(temp[0], temp[1], radius, circleColor, circleFillColor, currentNode.getRight().getKey());
             let rotation_node = rotationNodes(childNode, prev_circles);
             if (rotation_node != null) {
                 rotation_content.push(rotation_node);
