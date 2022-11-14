@@ -21,6 +21,22 @@
 
         {#canvas#}
         <canvas id="canvas" width="1080" height="450"></canvas>
+        {#explanation#}
+        <center>
+            <h2>Explanation</h2>
+            <div class ="fontop">
+                <div class ="options">
+                    <button id="small" onclick="size(15)" class="btn btn-outline-secondary" type="button">-A</button>
+                    <button id="med" onclick="size(20)" class="btn btn-outline-secondary" type="button">A</button>
+                    <button id="large" onclick="size(25)" class="btn btn-outline-secondary" type="button">A+</button>
+                </div>
+            </div>
+            <br /><br />
+            <div class="outputbox" id="outputbox"></div>
+            <input type="range" min="10" max="30" id="slider"
+            onchange="size()" value="20" />
+        </center>
+
         {#Js files#}
         <script src="/static/AVL.js"></script>
         <script src="/static/AVL-private.js"></script>
@@ -28,7 +44,7 @@
         <script src="/static/animation.js"></script>
         <script src="/static/circle.js"></script>
         <script src="/static/edge.js"></script>
+        <script src="/static/outputBox.js"></script>
 
-        <div id="dialog"></div>
     </main>
 {% endblock %}

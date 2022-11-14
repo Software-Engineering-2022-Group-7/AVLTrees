@@ -14,6 +14,24 @@ resize font size within the explanation box (Want button on the right of the exp
 Want an initial message on dialog box
 
 */
+var cont = document.getElementById("outputbox");
+  
+        function size(size) {
+  
+            // Set value of the parameter as fontSize
+            cont.style.fontSize = size;
+        }
+  
+        function changeSizeBySlider() {
+            var slider = document.getElementById("slider");
+  
+            // Set slider value as fontSize
+            cont.style.fontSize = slider.value;
+        }
+
+
+
+/*
 var output = ["Hello !"],
 
 initial =0;
@@ -39,3 +57,6 @@ function createdialog(dialog){
     }
 }
 createdialog(individual);
+*/
+
+
