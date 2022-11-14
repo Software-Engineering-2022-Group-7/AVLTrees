@@ -300,10 +300,17 @@ canvas {
     width: 100px;
 }
 
-.explanation {
-    background-color: #a1c88d;
-    border-left: 6px solid #6c8d5c;
-    padding: 0;
-    margin: 0 180px 4rem;
-    display: block;
+.dialog{
+    height: 70; 
+    background:#1c1c1c;
+    border=radius: 5px;
+    box-shadow: 0 0 0 60px #F5EAC8, 0 0 0 120px #251000;
+    color: #F5EAC8;
+    font-family: Arial;
+    font-size: 180X;
+    padding: 20px 20px 20px 20px;
+    position: relative;
+    text-transform: uppercase;
+    word-spacing: 3pX;
+    width: 400px;
 }
