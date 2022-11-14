@@ -1,16 +1,16 @@
 Quiz questions:
 
-. In this implementation of an AVL tree, what information does a node have associated with it?
+1. In this implementation of an AVL tree, what information does a node have associated with it?
     a. A key, a value, a left child, and a right child
     b. A key
     c. A key, a value, a left child, a right child, and a color
     d. A key and children
-. What do we call the first node of a tree?
+2. What do we call the first node of a tree?
     a. The "leaf"
     b. The "root"
     c. The "top"
     d. The "core"
-. In this example tree, which node is not a leaf?
+3. In this example tree, which node is not a leaf?
      C
  / /   \ \
 D A     F G
@@ -20,12 +20,12 @@ B       E   H
     b. E
     c. F
     d. G
-. What is depth in a tree?
+4. What is depth in a tree?
     a. The distance of a node from the center of the tree
     b. The distance of a node from the root node
     c. The maximum distance of a node to a leaf node
     d. The minimum distance of a node to a leaf node
-. In this example tree, what is the height of node D?
+5. In this example tree, what is the height of node D?
      C
  / /   \ \
 D A     F G
@@ -35,20 +35,33 @@ B       E   H
     b. 1
     c. 2
     d. 3
-. Which of the following is not a kind of traversal?
+6. Which of the following trees is not a binary tree?
+    a. A
+      / \
+     C   B
+    b.  A
+      / | \
+     B  C  D
+    c. A
+       |
+       B
+    d. B
+       |
+       A
+7. Which of the following is not a kind of traversal?
     a. Pre-order
     b. Level-order
     c. Height-order
     d. In-order
-. In what order does an in-order traversal visit a node and its children?
+8. In what order does an in-order traversal visit a node and its children?
     a. The current node's right subtree, the current node, and the current node's left subtree
     b. The current node, the current node's left subtree, and the current node's right subtree
     c. The current node's left subtree, the current node's right subtree, and the current node
     d. The current node's left subtree, the current node, and the current node's right subtree
-. A level-order traversal uses a depth-first approach -- true or false?
+9. A level-order traversal uses a depth-first approach -- true or false?
     a. True
     b. False
-. Which of the following is NOT an example of a binary search tree?
+10. Which of the following is NOT an example of a binary search tree?
     a.    A
         / | \
        D  B  C
@@ -63,22 +76,22 @@ B       E   H
           C
          / \
         A   B
-. What are the four kinds of unbalance in a tree?
+11. What are the four kinds of unbalance in a tree?
     a. Left-left, left-right, right-right, right-left
     b. Left, right
     c. Left-child, left-forward, right-child, right-forward
     d. Node-left, node-middle, node-right
-. When can a tree become unbalanced?
+12. When can a tree become unbalanced?
     a. When updating the value of a node with a specific key
     b. When checking if a tree contains a node with a specific key
     c. When getting the size of the tree
     d. When inserting or removing a node
-. In an AVL tree, what kind of rotation(s) occur to fix a case of left-right unbalance?
+13. In an AVL tree, what kind of rotation(s) occur to fix a case of left-right unbalance?
     a. Right
     b. Left
     c. Right and then left
     d. Left and then right
-. The image below correctly demonstrates how to fix a case of left-left unbalance -- true or false?
+14. The image below correctly demonstrates how to fix a case of left-left unbalance -- true or false?
     C                          B
    /     rightRotate(C)       / \
   B     --------------->     A   C
