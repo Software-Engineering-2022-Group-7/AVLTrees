@@ -1,4 +1,5 @@
 const headElem = document.getElementById("head");
+const pngElem = document.getElementById("png");
 const buttonsElem = document.getElementById("buttons");
 const pagesElem = document.getElementById("pages");
 const pointsElem = document.getElementById("points");
@@ -6,10 +7,8 @@ const pointsElem = document.getElementById("points");
 //Class that represents the quiz
 class Quiz
 {
-	constructor(type, questions, results)
+	constructor(questions, results)
 	{
-		//Type of the quiz: 1 - quiz with right answers, 2 - quiz without right answers
-		this.type = type;
 
 		//Questions
 		this.questions = questions;
@@ -85,9 +84,10 @@ class Quiz
 //Questions class
 class Question 
 {
-	constructor(text, answers)
+	constructor(text, png, answers)
 	{
 		this.text = text; 
+		this.png = png;
 		this.answers = answers; 
 	}
 
@@ -142,7 +142,7 @@ const results =
 //Questions
 const questions = 
 [
-	new Question("A height balanced binary search tree is called: ", 
+	new Question("A height balanced binary search tree is called: ", "",
 	[
 		new Answer("height tree", 0),
 		new Answer("AVL tree", 1),
@@ -150,7 +150,7 @@ const questions =
 		new Answer("binary search tree", 0)
 	]),
 
-	new Question("2 * 2 = ", 
+	new Question("Test Question with the png:", "<img src=../static/question2.png />",
 	[
 		new Answer("2", 0),
 		new Answer("3", 0),
@@ -158,7 +158,7 @@ const questions =
 		new Answer("0", 0)
 	]),
 
-	new Question("2 / 2 = ", 
+	new Question("2 / 2 = ", "",
 	[
 		new Answer("0", 0),
 		new Answer("1", 1),
@@ -166,7 +166,7 @@ const questions =
 		new Answer("3", 0)
 	]),
 
-	new Question("2 - 2 = ", 
+	new Question("2 - 2 = ", "",
 	[
 		new Answer("0", 1),
 		new Answer("1", 0),
@@ -174,7 +174,7 @@ const questions =
 		new Answer("3", 0)
 	]),
 
-	new Question("2 + 2 * 2 = ", 
+	new Question("2 + 2 * 2 = ", "",
 	[
 		new Answer("4", 0),
 		new Answer("6", 1),
@@ -182,7 +182,7 @@ const questions =
 		new Answer("10", 0)
 	]),
 
-	new Question("2 + 2 / 2 = ", 
+	new Question("2 + 2 / 2 = ", "",
 	[
 		new Answer("1", 0),
 		new Answer("2", 0),
@@ -192,7 +192,7 @@ const questions =
 ];
 
 //The quiz itself
-const quiz = new Quiz(1, questions, results);
+const quiz = new Quiz(questions, results);
 
 Update();
 
@@ -204,6 +204,7 @@ function Update()
 	{
 		//If yes -> change the question
 		headElem.innerHTML = quiz.questions[quiz.current].text;
+		pngElem.innerHTML = quiz.questions[quiz.current].png;
 
 		//Delete the old variants
 		buttonsElem.innerHTML = "";
@@ -222,7 +223,8 @@ function Update()
 		}
 		
 		//Current number of the question
-		pagesElem.innerHTML = (quiz.current + 1) + " / " + quiz.questions.length;
+		
+		pagesElem.innerHTML = "Questions: " + (quiz.current + 1) + " / " + quiz.questions.length;
 		
 		pointsElem.innerHTML = "Points: " + quiz.score;
 		
@@ -260,22 +262,15 @@ function Click(index)
 		btns[i].className = "button button_passive";
 	}
 
-	if(quiz.type == 1)
+	if(correct >= 0)
 	{
-		if(correct >= 0)
-		{
-			btns[correct].className = "button button_correct";
-		}
+		btns[correct].className = "button button_correct";
+	}
 
-		if(index != correct) 
-		{
-			btns[index].className = "button button_wrong";
-		} 
-	}
-	else
+	if(index != correct) 
 	{
-		btns[index].className = "button button_correct";
-	}
+		btns[index].className = "button button_wrong";
+	} 
 
 	setTimeout(Update, 1000);
 }

@@ -226,7 +226,7 @@ text .tree_hierarchy {
 
 .quiz__head {
     font-size: 30pt;
-    margin: 100px 10px 50px;
+    margin: 50px 10px 50px;
 }
 
 .head__content {
@@ -306,4 +306,9 @@ canvas {
     padding: 0;
     margin: 0 180px 4rem;
     display: block;
+}
+
+img {
+    width: 50%;
+    height: auto;
 }
