@@ -107,37 +107,37 @@ AVL.prototype._removeFromSubtree = function (currentNode, key) {
     }
 };
 
-AVL.prototype._rotationAdjustment = function (currentNode) {
+AVL.prototype._rotationAdjustment = function (currentNode, rotations) {
     if (currentNode == null) {
         return currentNode;
     }
     if (currentNode.getLeft() != null) {
-        currentNode.setLeft(this._rotationAdjustment(currentNode.getLeft()));
+        currentNode.setLeft(this._rotationAdjustment(currentNode.getLeft(), rotations));
     }
     if (currentNode.getRight() != null) {
-        currentNode.setRight(this._rotationAdjustment(currentNode.getRight()));
+        currentNode.setRight(this._rotationAdjustment(currentNode.getRight(), rotations));
     }
 
     const balance = this._getBalance(currentNode);
     //left left
     if (balance > 1 && this._getBalance(currentNode.getLeft()) >= 0) {
-        Rotation_status = true;
+        rotations.push(["left-left", currentNode]);
         return this._rightRotate(currentNode);
     }
     //left right
     if (balance > 1 && this._getBalance(currentNode.getLeft()) < 0) {
-        Rotation_status = true;
+        rotations.push(["left-right", currentNode]);
         currentNode.setLeft(this._leftRotate(currentNode.getLeft()));
         return this._rightRotate(currentNode);
     }
     //right right
     if (balance < -1 && this._getBalance(currentNode.getRight()) <= 0) {
-        Rotation_status = true;
+        rotations.push(["right-right", currentNode]);
         return this._leftRotate(currentNode);
     }
     //right left
     if (balance < -1 && this._getBalance(currentNode.getRight()) > 0) {
-        Rotation_status = true;
+        rotations.push(["right-left", currentNode]);
         currentNode.setRight(this._rightRotate(currentNode.getRight()));
         return this._leftRotate(currentNode);
     }

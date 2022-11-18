@@ -33,3 +33,8 @@ document.getElementById("SpeedRange").oninput = function() {
     framePerMovement = framePerSecond * this.value * 0.01;
     document.getElementById("SpeedIndication").innerHTML = parseFloat(framePerMovement).toFixed(2);
 }
+
+// update error in code box
+function printError(e) {
+    document.getElementById("code_display").innerHTML = e;
+}

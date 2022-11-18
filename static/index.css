@@ -299,8 +299,7 @@ canvas {
 .explanation_card {
     float: right;
     margin-top: 10px;
-    margin-right: 14px;
-    height: 450px;
+    margin-right: 12px;
 }
 
 /*.explanation_card .card {*/

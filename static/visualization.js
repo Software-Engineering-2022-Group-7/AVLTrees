@@ -23,7 +23,6 @@ let initial_y = radius * 2;
 // animation parameters
 let framePerSecond = 60;
 let framePerMovement = 30;
-let Rotation_status = false;
 
 // Start insertion
 function getInput() {
@@ -31,13 +30,13 @@ function getInput() {
     input = parseInt(input, 10);
     // Check input validity
     if (!Number.isInteger(input)) {
-        console.log(new Error("Please enter an integer."));
+        printError(new Error("Please enter an integer."));
         return;
     }
     try {
         tree.insert(input, 0);
     } catch (error) {
-        console.log(error);
+        printError(error);
     }
 }
 
@@ -47,13 +46,13 @@ function deleteInput() {
     input = parseInt(input, 10);
     // Check input validity
     if (!Number.isInteger(input)) {
-        console.log(new Error("Please enter an integer."));
+        printError(new Error("Please enter an integer."));
         return;
     }
     try {
         tree.remove(input, 0);
     } catch (error) {
-        console.log(error);
+        printError(error);
     }
 }
 
@@ -61,6 +60,11 @@ function deleteInput() {
 function ResetCanvas() {
     ctx.clearRect(0, 0, canvas_width, canvas_height);
     tree = new AVL();
+    document.getElementById("explanationTitle").innerHTML = "Current Action: None";
+    document.getElementById("explanation").innerHTML = "As you perform an action on the canvas, " +
+        "the corresponding explanation will be displayed here. Have fun!";
+    document.getElementById("code_display").innerHTML = "As you perform an action on the canvas, the " +
+        "corresponding pseudocode will be displayed here.";
 }
 
 // Normal clear function
@@ -72,9 +76,9 @@ function clearCanvas() {
 function drawOnCanvas() {
     if (treeQueue.length > 0) {
         let curr_tree = treeQueue.shift();
-        console.log("drawOnCanvas");
         clearCanvas();
         drawTree(curr_tree);
+        displayMessage(curr_tree[2][0], curr_tree[2][1], curr_tree[2][2]);
     }
 }
 
@@ -100,17 +104,17 @@ function setPrevTree(root) {
 }
 
 // Add drawable trees
-function addTreeToQueue(root, prev_set) {
+function addTreeToQueue(root, prev_set, insert_mes, rotation_mes) {
     treeQueue = [];
-    for (let i = 0; i < framePerMovement; i++) {
-        treeQueue.push([createArrayCopyCircle(prev_set[0]), createArrayCopyEdge(prev_set[1])]);
+    for (let i = 0; i < framePerMovement * 2; i++) {
+        treeQueue.push([createArrayCopyCircle(prev_set[0]), createArrayCopyEdge(prev_set[1]), insert_mes]);
     }
     let current_set = levelOrderStore(root);
-    positionAdjustment(prev_set, current_set);
+    positionAdjustment(prev_set, current_set, rotation_mes);
 }
 
 // Animation Process
-function positionAdjustment(prev_set, current_set) {
+function positionAdjustment(prev_set, current_set, rotation_mes) {
     let prev_circles = createArrayCopyCircle(prev_set[0]);
     let prev_circles_copy = createArrayCopyCircle(prev_set[0]);
     let prev_edges = createArrayCopyEdge(prev_set[1]);
@@ -132,39 +136,10 @@ function positionAdjustment(prev_set, current_set) {
             prev_one.setY(newY);
         }
         // Draw each frame
-        treeQueue.push([createArrayCopyCircle(prev_circles), createArrayCopyEdge(prev_edges)]);
+        treeQueue.push([createArrayCopyCircle(prev_circles), createArrayCopyEdge(prev_edges), rotation_mes]);
     }
     // Draw the tree after rotation
-    treeQueue.push([createArrayCopyCircle(current_set[0]), createArrayCopyEdge(current_set[1])]);
-}
-
-// Position adjustment for nodes > level 1
-function pre_updateParameters(input, current_parent, circle_list) {
-    const find_circle = (element) => element.getkey() === current_parent.getKey();
-    let index = circle_list.find(find_circle);
-    let curr_x;
-    let curr_y = index.getY() * 1.2 + radius * 3;
-    let current_key = parseInt(current_parent.getKey(), 10);
-    if (input < current_key) {
-        curr_x = index.getX() - radius * 5 + (index.getY() + radius * 2) * 0.2;
-        if (Math.abs(curr_x - initial_x) < radius) {
-            curr_x = curr_x + radius;
-        } else if (curr_x < radius * 1.5) {
-            curr_x = curr_x + radius * 2;
-        }
-    } else {
-        curr_x = index.getX() + radius * 5 - (index.getY() + radius * 2) * 0.2;
-        // console.log(canvas_width);
-        if (Math.abs(curr_x - initial_x) < radius) {
-            curr_x = curr_x - radius;
-        } else if (Math.abs(curr_x - canvas_width) < radius * 1.5) {
-            curr_x = curr_x - radius * 2;
-        }
-    }
-    let temp = [];
-    temp.push(curr_x);
-    temp.push(curr_y);
-    return temp;
+    treeQueue.push([createArrayCopyCircle(current_set[0]), createArrayCopyEdge(current_set[1]), rotation_mes]);
 }
 
 // Position adjustment for nodes == level 1
@@ -175,14 +150,41 @@ function initial_update(input, current_parent, circle_list) {
     let curr_y = index.getY() * 1.2 + radius * 3;
     let current_key = parseInt(current_parent.getKey(), 10);
     if (input < current_key) {
-        curr_x = index.getX() - radius * 10 + (index.getY() + radius * 2) * 0.2;
+        curr_x = index.getX() - radius * 11.5 + (index.getY() + radius * 2) * 0.2;
     } else {
-        curr_x = index.getX() + radius * 10 - (index.getY() + radius * 2) * 0.2;
+        curr_x = index.getX() + radius * 11.5 - (index.getY() + radius * 2) * 0.2;
     }
-    let temp = [];
-    temp.push(curr_x);
-    temp.push(curr_y);
-    return temp;
+    return [curr_x, curr_y];
+}
+
+// Position adjustment for nodes == level 2
+function SecondLevel_updateParameters(input, current_parent, circle_list) {
+    const find_circle = (element) => element.getkey() === current_parent.getKey();
+    let index = circle_list.find(find_circle);
+    let curr_x;
+    let curr_y = index.getY() * 1.2 + radius * 3;
+    let current_key = parseInt(current_parent.getKey(), 10);
+    if (input < current_key) {
+        curr_x = index.getX() - radius * 6.5 + (index.getY() + radius * 2) * 0.2;
+    } else {
+        curr_x = index.getX() + radius * 6.5 - (index.getY() + radius * 2) * 0.2;
+    }
+    return [curr_x, curr_y];
+}
+
+// Position adjustment for nodes > level 1
+function pre_updateParameters(input, current_parent, circle_list) {
+    const find_circle = (element) => element.getkey() === current_parent.getKey();
+    let index = circle_list.find(find_circle);
+    let curr_x;
+    let curr_y = index.getY() * 1.2 + radius * 3;
+    let current_key = parseInt(current_parent.getKey(), 10);
+    if (input < current_key) {
+        curr_x = index.getX() - radius * 6 + (index.getY() + radius * 2) * 0.3;
+    } else {
+        curr_x = index.getX() + radius * 6 - (index.getY() + radius * 2) * 0.3;
+    }
+    return [curr_x, curr_y];
 }
 
 // level order store tree
@@ -200,6 +202,8 @@ function levelOrderStore(root) {
             let temp;
             if (currentNode === root) {
                 temp = initial_update(currentNode.getLeft().getKey(), currentNode, circle_list);
+            } else if (root.getLeft() === currentNode || root.getRight() === currentNode) {
+                temp = SecondLevel_updateParameters(currentNode.getLeft().getKey(), currentNode, circle_list);
             } else {
                 temp = pre_updateParameters(currentNode.getLeft().getKey(), currentNode, circle_list);
             }
@@ -213,6 +217,8 @@ function levelOrderStore(root) {
             let temp;
             if (currentNode === root) {
                 temp = initial_update(currentNode.getRight().getKey(), currentNode, circle_list);
+            } else if (root.getLeft() === currentNode || root.getRight() === currentNode) {
+                temp = SecondLevel_updateParameters(currentNode.getRight().getKey(), currentNode, circle_list);
             } else {
                 temp = pre_updateParameters(currentNode.getRight().getKey(), currentNode, circle_list);
             }

@@ -29,9 +29,19 @@
 
     {#explanation#}
     <div class="explanation_card">
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 285px; margin-bottom: 10px;">
+            <div class="card-body">
+                <h5 class="card-title">Code Box</h5>
+                <div class="card-text" id="code_display">
+                    As you perform an action on the canvas, the corresponding pseudocode will be displayed here.<br><br>
+                    Note due to the scale of the canvas, any node after level 4 cannot be properly shown.
+                </div>
+            </div>
+        </div>
+        <div class="card" style="width: 285px;">
             <div class="card-body">
                 <h5 class="card-title">Explanation Box</h5>
+                <h6 class="card-subtitle mb-2 text-muted" id="explanationTitle">Current Action: None</h6>
                 <div class="card-text" id="explanation">
                     As you perform an action on the canvas, the corresponding explanation
                     will be displayed here. Have fun!
@@ -39,7 +49,6 @@
             </div>
         </div>
     </div>
-
 
     <!--    <h2>Explanation</h2>-->
     <!--    <div class="fontop">-->
