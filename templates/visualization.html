@@ -1,50 +1,67 @@
 {% extends "base.html" %}
 {% block title %}
-    <title>Visualization</title>
+<title>Visualization</title>
 {% endblock %}
 
 {% block content %}
-    <main>
-        <h1>Canvas</h1>
-        <div class="toolbox">
-            <div class="input-group">
-                <input id="numInput" type="text" class="form-control" placeholder="Enter Key"
-                       aria-label="Insert block">
-                <button id="InputBtn" onclick="getInput()" class="btn btn-outline-secondary" type="button">INSERT</button>
-                <input id="numDelete" type="text" class="form-control" placeholder="Enter Key"
-                       aria-label="Delete block">
-                <button id="DeleteBtn" onclick="deleteInput()" class="btn btn-outline-secondary" type="button">DELETE</button>
-                <button onclick="clearCanvas()" id="reset" type="reset"
-                    class="btn btn-outline-secondary">RESET</button>
-            </div>
+<main>
+    <h1>Canvas</h1>
+    <div class="toolbox">
+        <div class="input-group">
+            <input id="numInput" type="text" class="form-control" placeholder="Enter Key"
+                   aria-label="Insert block">
+            <button id="InputBtn" onclick="getInput()" class="btn btn-outline-secondary" type="button">INSERT</button>
+            <input id="numDelete" type="text" class="form-control" placeholder="Enter Key"
+                   aria-label="Delete block">
+            <button id="DeleteBtn" onclick="deleteInput()" class="btn btn-outline-secondary" type="button">DELETE
+            </button>
+            <button onclick="ResetCanvas()" id="reset" type="reset"
+                    class="btn btn-outline-secondary">RESET
+            </button>
+            <div class="input-group-text" id="rangeBar">SPEED</div>
+            <label for="SpeedRange"></label><input type="range" class="form-range" id="SpeedRange">
+            <div class="input-group-text" id="SpeedIndication">30</div>
         </div>
+    </div>
 
-        {#canvas#}
-        <canvas id="canvas" width="1080" height="450"></canvas>
-        {#explanation#}
-        <center>
-            <h2>Explanation</h2>
-            <div class ="fontop">
-                <div class ="options">
-                    <button id="small" onclick="size(15)" class="btn btn-outline-secondary" type="button">-A</button>
-                    <button id="med" onclick="size(20)" class="btn btn-outline-secondary" type="button">A</button>
-                    <button id="large" onclick="size(25)" class="btn btn-outline-secondary" type="button">A+</button>
+    {#canvas#}
+    <canvas id="canvas" width="850" height="500"></canvas>
+
+    {#explanation#}
+    <div class="explanation_card">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Explanation Box</h5>
+                <div class="card-text" id="explanation">
+                    As you perform an action on the canvas, the corresponding explanation
+                    will be displayed here. Have fun!
                 </div>
             </div>
-            <br /><br />
-            <div class="outputbox" id="outputbox"></div>
-            <input type="range" min="10" max="30" id="slider"
-            onchange="size()" value="20" />
-        </center>
+        </div>
+    </div>
 
-        {#Js files#}
-        <script src="/static/AVL.js"></script>
-        <script src="/static/AVL-private.js"></script>
-        <script src="/static/visualization.js"></script>
-        <script src="/static/animation.js"></script>
-        <script src="/static/circle.js"></script>
-        <script src="/static/edge.js"></script>
-        <script src="/static/outputBox.js"></script>
 
-    </main>
+    <!--    <h2>Explanation</h2>-->
+    <!--    <div class="fontop">-->
+    <!--        <div class="options">-->
+    <!--            <button id="small" onclick="size(15)" class="btn btn-outline-secondary" type="button">-A</button>-->
+    <!--            <button id="med" onclick="size(20)" class="btn btn-outline-secondary" type="button">A</button>-->
+    <!--            <button id="large" onclick="size(25)" class="btn btn-outline-secondary" type="button">A+</button>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--    <br/><br/>-->
+    <!--    <div class="outputbox" id="outputbox"></div>-->
+    <!--    <input type="range" min="10" max="30" id="slider"-->
+    <!--           onchange="size()" value="20"/>-->
+
+    {#Js files#}
+    <script src="/static/AVL.js"></script>
+    <script src="/static/AVL-private.js"></script>
+    <script src="/static/visualization.js"></script>
+    <script src="/static/visualization_listeners.js"></script>
+    <script src="/static/circle.js"></script>
+    <script src="/static/edge.js"></script>
+    <script src="/static/outputBox.js"></script>
+
+</main>
 {% endblock %}

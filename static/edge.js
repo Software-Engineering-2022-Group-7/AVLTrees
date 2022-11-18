@@ -4,7 +4,7 @@ class Edge {
         this.parentNode = parentNode;
     }
 
-    drawLine(ctx, circles) {
+    drawLine(circles) {
         if (this.parentNode == null) {
             return;
         }
@@ -38,11 +38,15 @@ class Edge {
         return this.childNode;
     }
 
-    getParentNode(circles) {
+    getParentCircle(circles) {
         if (this.parentNode == null) {
             return;
         }
         const find_circle = (element) => element.getkey() === this.parentNode.getKey();
         return circles.find(find_circle);
+    }
+
+    getParentNode() {
+        return this.parentNode;
     }
 }

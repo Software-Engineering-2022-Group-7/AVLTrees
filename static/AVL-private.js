@@ -60,36 +60,12 @@ AVL.prototype._insertInSubtree = function (currentNode, key, value) {
     } else if (key > currentNode.getKey()) {
         currentNode.setRight(this._insertInSubtree(currentNode.getRight(), key,
             value));
-    } else if (key < currentNode.getKey()) {
+        return currentNode;
+    } else {
         currentNode.setLeft(this._insertInSubtree(currentNode.getLeft(), key,
             value));
+        return currentNode;
     }
-    const balance = this._getBalance(currentNode);
-    if (balance > 1) {
-        Rotation_status = true;
-        this.LevelOrderDrawBeforeRotation();
-        if (key < currentNode.getLeft().getKey()) {
-            //left left
-            currentNode = this._rightRotate(currentNode);
-        } else {
-            //left right
-            currentNode.setLeft(this._leftRotate(currentNode.getLeft()));
-            return this._rightRotate(currentNode);
-        }
-    }
-    if (balance < -1) {
-        Rotation_status = true;
-        this.LevelOrderDrawBeforeRotation();
-        if (key > currentNode.getRight().getKey()) {
-            //right right
-            currentNode = this._leftRotate(currentNode);
-        } else {
-            //right left
-            currentNode.setRight(this._rightRotate(currentNode.getRight()));
-            return this._leftRotate(currentNode);
-        }
-    }
-    return currentNode;
 };
 
 /**
@@ -107,58 +83,67 @@ AVL.prototype._removeFromSubtree = function (currentNode, key) {
         throw new Error("The key does not exist.");
     } else if (key > currentNode.getKey()) {
         currentNode.setRight(this._removeFromSubtree(currentNode.getRight(), key));
+        return currentNode;
     } else if (key < currentNode.getKey()) {
         currentNode.setLeft(this._removeFromSubtree(currentNode.getLeft(), key));
+        return currentNode;
     } else {
         if (currentNode.getLeft() == null && currentNode.getRight() == null) {
             currentNode = null;
         } else if (currentNode.getLeft() == null && currentNode.getRight() != null) {
             currentNode = currentNode.getRight();
+            return currentNode;
         } else if (currentNode.getRight() == null && currentNode.getLeft() != null) {
             currentNode = currentNode.getLeft();
+            return currentNode;
         } else {
             const min = this._getMinInSubtree(currentNode.getRight());
             currentNode.setKey(min[0]);
             currentNode.setValue(min[1]);
             currentNode.setRight(this._removeFromSubtree(currentNode.getRight(),
                 min[0]));
+            return currentNode;
         }
     }
+};
 
+AVL.prototype._rotationAdjustment = function (currentNode) {
     if (currentNode == null) {
         return currentNode;
+    }
+    if (currentNode.getLeft() != null) {
+        currentNode.setLeft(this._rotationAdjustment(currentNode.getLeft()));
+    }
+    if (currentNode.getRight() != null) {
+        currentNode.setRight(this._rotationAdjustment(currentNode.getRight()));
     }
 
     const balance = this._getBalance(currentNode);
     //left left
     if (balance > 1 && this._getBalance(currentNode.getLeft()) >= 0) {
         Rotation_status = true;
-        this.LevelOrderDrawBeforeRotation();
         return this._rightRotate(currentNode);
     }
     //left right
     if (balance > 1 && this._getBalance(currentNode.getLeft()) < 0) {
         Rotation_status = true;
-        this.LevelOrderDrawBeforeRotation();
         currentNode.setLeft(this._leftRotate(currentNode.getLeft()));
         return this._rightRotate(currentNode);
     }
     //right right
     if (balance < -1 && this._getBalance(currentNode.getRight()) <= 0) {
         Rotation_status = true;
-        this.LevelOrderDrawBeforeRotation();
         return this._leftRotate(currentNode);
     }
     //right left
     if (balance < -1 && this._getBalance(currentNode.getRight()) > 0) {
         Rotation_status = true;
-        this.LevelOrderDrawBeforeRotation();
         currentNode.setRight(this._rightRotate(currentNode.getRight()));
         return this._leftRotate(currentNode);
     }
 
     return currentNode;
-};
+}
 
 /**
  * Given a node, returns the value associated with the given key in the subtree.
