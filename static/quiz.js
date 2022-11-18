@@ -61,8 +61,8 @@ class Quiz
 	Next()
 	{
 		this.current++;
-		
-		if(this.current >= this.questions.length) 
+
+		if(this.current >= this.questions.length)
 		{
 			this.End();
 		}
@@ -79,36 +79,37 @@ class Quiz
 			}
 		}
 	}
-} 
+}
 
 //Questions class
-class Question 
+class Question
 {
 	constructor(text, png, answers)
 	{
-		this.text = text; 
+		this.text = text;
 		this.png = png;
-		this.answers = answers; 
+		this.answers = answers;
 	}
 
-	Click(index) 
+	Click(index)
 	{
-		return this.answers[index].value; 
+		return this.answers[index].value;
 	}
 }
 
 //Answers class
-class Answer 
+class Answer
 {
-	constructor(text, value) 
+	constructor(text, png, value)
 	{
-		this.text = text; 
-		this.value = value; 
+		this.text = text;
+		this.png = png;
+		this.value = value;
 	}
 }
 
 //Results class
-class Result 
+class Result
 {
 	constructor(text, value)
 	{
@@ -123,7 +124,7 @@ class Result
 		{
 			return true;
 		}
-		else 
+		else
 		{
 			return false;
 		}
@@ -131,64 +132,124 @@ class Result
 }
 
 //Messages for the results
-const results = 
+const results =
 [
 	new Result("You should study more", 0),
-	new Result("Not bad, not bad", 2),
-	new Result("You are above average", 4),
-	new Result("You nailed it!", 6)
+	new Result("Not bad, not bad", 4),
+	new Result("You are above average", 10),
+	new Result("You nailed it!", 14)
 ];
 
 //Questions
-const questions = 
+const questions =
 [
-	new Question("A height balanced binary search tree is called: ", "",
+	new Question("In this implementation of an AVL tree, what information does a node have associated with it?", "",
 	[
-		new Answer("height tree", 0),
-		new Answer("AVL tree", 1),
-		new Answer("binary tree", 0),
-		new Answer("binary search tree", 0)
+		new Answer("A key, a value, a left child, and a right child", "", 1),
+		new Answer("A key", "", 0),
+		new Answer("A key, a value, a left child, a right child, and a color", "", 0),
+		new Answer("A key and children", "", 0)
 	]),
 
-	new Question("Test Question with the png:", "<img src=../static/question2.png />",
+	new Question("What do we call the first node of a tree?", "",
 	[
-		new Answer("2", 0),
-		new Answer("3", 0),
-		new Answer("4", 1),
-		new Answer("0", 0)
+		new Answer("The 'leaf'", "", 0),
+		new Answer("The 'root'", "", 1),
+		new Answer("The 'top'", "", 0),
+		new Answer("The 'core'", "", 0)
 	]),
 
-	new Question("2 / 2 = ", "",
+	new Question("In this example tree, which node is not a leaf?", "<img class='questImg' src=../static/questions/question3.png/>",
 	[
-		new Answer("0", 0),
-		new Answer("1", 1),
-		new Answer("2", 0),
-		new Answer("3", 0)
+		new Answer("B", "", 0),
+		new Answer("E", "", 0),
+		new Answer("F", "", 0),
+		new Answer("G", "", 1)
 	]),
 
-	new Question("2 - 2 = ", "",
+	new Question("What is depth in a tree?", "",
 	[
-		new Answer("0", 1),
-		new Answer("1", 0),
-		new Answer("2", 0),
-		new Answer("3", 0)
+		new Answer("The distance of a node from the center of the tree", "", 0),
+		new Answer("The distance of a node from the root node", "", 1),
+		new Answer("The maximum distance of a node to a leaf node", "", 0),
+		new Answer("The minimum distance of a node to a leaf node", "", 0)
 	]),
 
-	new Question("2 + 2 * 2 = ", "",
+	new Question("In this example tree, what is the height of node D?", "<img class='questImg' src=../static/questions/question5.png/>",
 	[
-		new Answer("4", 0),
-		new Answer("6", 1),
-		new Answer("8", 0),
-		new Answer("10", 0)
+		new Answer("0", "", 0),
+		new Answer("1", "", 1),
+		new Answer("2", "", 0),
+		new Answer("3", "", 0)
 	]),
 
-	new Question("2 + 2 / 2 = ", "",
+	new Question("Which of the following trees is not a binary tree?", "",
 	[
-		new Answer("1", 0),
-		new Answer("2", 0),
-		new Answer("3", 1),
-		new Answer("4", 0)
-	])
+		new Answer("", "<img class='buttonImg' src=../static/questions/question6a.png/>", 0),
+		new Answer("", "<img class='buttonImg' src=../static/questions/question6b.png/>", 1),
+		new Answer("", "<img class='buttonImg' src=../static/questions/question6c.png/>", 0),
+		new Answer("", "<img class='buttonImg' src=../static/questions/question6d.png/>", 0)
+	]),
+
+	new Question("Which of the following is not a kind of traversal?", "",
+	[
+		new Answer("Pre-order", "", 0),
+		new Answer("Level-order", "", 0),
+		new Answer("Height-order", "", 1),
+		new Answer("In-order", "", 0)
+	]),
+
+	new Question("In what order does an in-order traversal visit a node and its children?", "",
+	[
+		new Answer("The current node's right subtree, the current node, and the current node's left subtree", "", 0),
+		new Answer("The current node, the current node's left subtree, and the current node's right subtree", "", 0),
+		new Answer("The current node's left subtree, the current node's right subtree, and the current node", "", 0),
+		new Answer("The current node's left subtree, the current node, and the current node's right subtree", "", 1)
+	]),
+
+	new Question("A level-order traversal uses a depth-first approach -- true or false?", "",
+	[
+		new Answer("True", "", 0),
+		new Answer("False", "", 1),
+	]),
+
+	new Question("Which of the following is NOT an example of a binary search tree?", "",
+	[
+		new Answer("", "<img class='buttonImg' src=../static/questions/question10a.png/>", 1),
+		new Answer("", "<img class='buttonImg' src=../static/questions/question10b.png/>", 0),
+		new Answer("", "<img class='buttonImg' src=../static/questions/question10c.png/>", 0),
+		new Answer("", "<img class='buttonImg' src=../static/questions/question10d.png/>", 0)
+	]),
+
+	new Question("What are the four kinds of unbalance in a tree?", "",
+	[
+		new Answer("Left-left, left-right, right-right, right-left", "", 1),
+		new Answer("Left, right", "", 0),
+		new Answer("Left-child, left-forward, right-child, right-forward", "", 0),
+		new Answer("Node-left, node-middle, node-right", "", 0)
+	]),
+
+	new Question("When can a tree become unbalanced?", "",
+	[
+		new Answer("When updating the value of a node with a specific key, inserting a node, or removing a node", "", 0),
+		new Answer("When checking if a tree contains a node with a specific key", "", 0),
+		new Answer("When getting the size of the tree", "", 0),
+		new Answer("When inserting or removing a node", "", 1)
+	]),
+
+	new Question("In an AVL tree, what kind of rotation(s) occur to fix a case of left-right unbalance?", "",
+	[
+		new Answer("Right", "", 0),
+		new Answer("Left", "", 0),
+		new Answer("Right and then left", "", 0),
+		new Answer("Left and then right", "", 1)
+	]),
+
+	new Question("The image below correctly demonstrates how to fix a case of left-left unbalance -- true or false?", "<img class='questImg' src=../static/questions/question14.png/>",
+	[
+		new Answer("True", "", 1),
+		new Answer("False", "", 0),
+	]),
 ];
 
 //The quiz itself
@@ -196,11 +257,11 @@ const quiz = new Quiz(questions, results);
 
 Update();
 
-//Update 
+//Update
 function Update()
 {
 	//Checks whether there are more questions
-	if(quiz.current < quiz.questions.length) 
+	if(quiz.current < quiz.questions.length)
 	{
 		//If yes -> change the question
 		headElem.innerHTML = quiz.questions[quiz.current].text;
@@ -215,19 +276,23 @@ function Update()
 			let btn = document.createElement("button");
 			btn.className = "button";
 
-			btn.innerHTML = quiz.questions[quiz.current].answers[i].text;
+			if(quiz.questions[quiz.current].answers[i].text != ""){
+				btn.innerHTML = quiz.questions[quiz.current].answers[i].text;
+			} else {
+				btn.innerHTML = quiz.questions[quiz.current].answers[i].png;
+			}
 
 			btn.setAttribute("index", i);
 
 			buttonsElem.appendChild(btn);
 		}
-		
+
 		//Current number of the question
-		
+
 		pagesElem.innerHTML = "Questions: " + (quiz.current + 1) + " / " + quiz.questions.length;
-		
+
 		pointsElem.innerHTML = "Points: " + quiz.score;
-		
+
 		Init();
 	}
 	else
@@ -235,6 +300,7 @@ function Update()
 		//If ends -> display results
 		buttonsElem.innerHTML = "";
 		headElem.innerHTML = quiz.results[quiz.result].text;
+		pngElem.innerHTML = "";
 		pagesElem.innerHTML = "";
 		pointsElem.innerHTML = "Points: " + quiz.score;
 	}
@@ -251,7 +317,7 @@ function Init()
 	}
 }
 
-function Click(index) 
+function Click(index)
 {
 	let correct = quiz.Click(index);
 
@@ -267,10 +333,10 @@ function Click(index)
 		btns[correct].className = "button button_correct";
 	}
 
-	if(index != correct) 
+	if(index != correct)
 	{
 		btns[index].className = "button button_wrong";
-	} 
+	}
 
-	setTimeout(Update, 1000);
+	setTimeout(Update, 500);
 }
