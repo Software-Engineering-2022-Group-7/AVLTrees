@@ -30,8 +30,9 @@ document.getElementById("DeleteBtn").addEventListener("click", function handleCl
 
 // Speed bar
 document.getElementById("SpeedRange").oninput = function() {
-    framePerMovement = framePerSecond * this.value * 0.01;
-    document.getElementById("SpeedIndication").innerHTML = parseFloat(framePerMovement).toFixed(2);
+    framePerMovement = framePerSecond - framePerSecond * this.value * 0.01;
+    document.getElementById("SpeedIndication").innerHTML =
+        parseFloat(framePerSecond - framePerMovement).toFixed(2);
 }
 
 // update error in code box
