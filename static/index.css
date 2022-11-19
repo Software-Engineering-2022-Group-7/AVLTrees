@@ -148,6 +148,10 @@ main ul {
     max-width: 1000px;
 }
 
+.main_content .card {
+    margin-bottom: 10px;
+}
+
 .main_content h2 {
     margin-left: 0;
 }
@@ -164,7 +168,7 @@ main ul {
     padding-top: 15px;
 }
 
-.card-title {
+.main_content .card-title {
     margin-left: 0;
 }
 
@@ -181,9 +185,13 @@ main ul {
     color: #24292F;
 }
 
-.card-body text, .card-body li {
+.main_content .card-body text, .card-body li {
     font-size: 110%;
     word-break: break-word;
+}
+
+.main_content .card-header ul {
+    font-size: 110%;
 }
 
 code {
@@ -201,10 +209,6 @@ text .tree_hierarchy {
 
 .accordion-body {
     background-color: #e8e8e8;
-}
-
-.card {
-    margin-bottom: 10px;
 }
 
 .wrapper {
@@ -285,10 +289,26 @@ text .tree_hierarchy {
 
 canvas {
     background: #f8f8f8;
-    padding: 0;
-    margin: 10px auto 1rem;
-    display: block;
-    border: 1px solid black;
+    margin-top: 10px;
+    margin-left: 70px;
+    display: inline-block;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+.explanation_card {
+    float: right;
+    margin-top: 10px;
+    margin-right: 12px;
+}
+
+/*.explanation_card .card {*/
+/*    background: #f8f8f8;*/
+/*}*/
+
+.explanation_card .card .card-body .card-title {
+    font-style: italic;
+    font-weight: bold;
 }
 
 .toolbox {
@@ -296,16 +316,28 @@ canvas {
     display: inline-block;
 }
 
-.form-control {
-    width: 100px;
+.form-range {
+    width: 200px;
+    display: block;
+    height: calc(2.25rem + 2px);
+    padding: 0 .75rem;
+    border-top: 1px solid #ced4da;
+    border-bottom: 1px solid #ced4da;
+    border-radius: .25rem;
 }
 
-.explanation {
-    background-color: #a1c88d;
-    border-left: 6px solid #6c8d5c;
-    padding: 0;
-    margin: 0 180px 4rem;
-    display: block;
+.form-range::-webkit-slider-thumb {
+    background: dimgray;
+}
+
+.form-range:focus::-webkit-slider-thumb {
+    background: dimgray;
+    box-shadow: none;
+}
+
+.toolbox .input-group-text {
+    color: #6C757D;
+    background: #F6F8FA;
 }
 
 img {
@@ -321,3 +353,43 @@ img {
     width: 25%;
     height: auto;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/*.form-control {*/
+/*    width: 100px;*/
+/*}*/
+
+/*
+.dialog{
+    height: 70px;
+    background:#1c1c1c;
+    border-radius: 5px;
+    box-shadow: 0 0 0 60px #F5EAC8, 0 0 0 12px #251000;
+    color: #F5EAC8;
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 20px 20px 20px 20px;
+    position: relative;
+    text-transform: uppercase;
+    word-spacing: 3px;
+    width: 400px;
+}
+*/
+
+/*.outputbox{*/
+/*    padding: 20px;*/
+/*    margin: 50px;*/
+/*    font-size: 20px;*/
+/*    border: 5px seagreen;*/
+/*}*/

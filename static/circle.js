@@ -1,14 +1,16 @@
 class Circle {
-    constructor(x, y, radius, color, fillColor, key) {
+    constructor(x, y, radius, color, fillColor, key, parent, rotational_status) {
         this.x = x;
         this.y = y;
         this.radius = radius;
         this.color = color;
         this.fillColor = fillColor;
         this.key = key;
+        this.parent = parent;
+        this.rotational_status = rotational_status
     }
 
-    draw(ctx) {
+    draw() {
         ctx.beginPath();
         ctx.linewidth = 4;
         ctx.strokeStyle = this.color;
@@ -30,23 +32,47 @@ class Circle {
         return this.x;
     }
 
-    setX(current) {
-        this.x = current;
-    }
-
     getY() {
         return this.y;
-    }
-
-    setY(current) {
-        this.y = current;
     }
 
     getkey() {
         return this.key;
     }
 
+    getCircleParent() {
+        return this.parent;
+    }
+
+    getRadius() {
+        return this.radius;
+    }
+
+    getColor() {
+        return this.color;
+    }
+
+    getFillColor() {
+        return this.fillColor;
+    }
+
+    getRotationalStatus() {
+        return this.rotational_status;
+    }
+
+    setX(current) {
+        this.x = current;
+    }
+
+    setY(current) {
+        this.y = current;
+    }
+
     setFillColor(current) {
         this.fillColor = current;
+    }
+
+    setRotationalStatus(current) {
+        this.rotational_status = current;
     }
 }

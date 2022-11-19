@@ -22,17 +22,41 @@ AVL.prototype.isEmpty = function () {
     return this._size === 0;
 };
 
+AVL.prototype.getRoot = function () {
+    return this._root;
+}
+
 /**
  * Inserts the key-value pair into the AVL tree.
  * @param {Object} key The key for the new mapping.
  * @param {Object} value The value to associate with that key.
  * @throws {RuntimeError} If the key already exists.
  */
-AVL.prototype.insert = async function (key, value) {
+AVL.prototype.insert = function (key, value) {
     this._root = this._insertInSubtree(this._root, key, value);
+    let prev_set = setPrevTree(this.getRoot());
+    let insert_mes = createInsertMes();
+    let rotation_actions = [];
+    this._root = this._rotationAdjustment(this._root, rotation_actions);
+    let rotation_mes = createRotationMes(rotation_actions, insert_mes);
+    addTreeToQueue(this.getRoot(), prev_set, insert_mes, rotation_mes);
     this._size++;
-    if (Rotation_status) await sleep(500);
-    this.LevelOrderDrawInsideTree();
+};
+
+/**
+ * Deletes the element with given key from the AVL tree.
+ * @param {Object} key The key to remove.
+ * @throws {RuntimeError} If the key was not already in this AVL tree.
+ */
+AVL.prototype.remove = function (key) {
+    this._root = this._removeFromSubtree(this._root, key);
+    let prev_set = setPrevTree(this.getRoot());
+    let delete_mes = createDeleteMes();
+    let rotation_actions = [];
+    this._root = this._rotationAdjustment(this._root, rotation_actions);
+    let rotation_mes = createRotationMes(rotation_actions, delete_mes);
+    addTreeToQueue(this.getRoot(), prev_set, delete_mes, rotation_mes);
+    this._size--;
 };
 
 /**
@@ -63,18 +87,6 @@ AVL.prototype.get = function (key) {
  */
 AVL.prototype.contains = function (key) {
     return this._containsInSubtree(this._root, key);
-};
-
-/**
- * Deletes the element with given key from the AVL tree.
- * @param {Object} key The key to remove.
- * @throws {RuntimeError} If the key was not already in this AVL tree.
- */
-AVL.prototype.remove = async function (key) {
-    this._root = this._removeFromSubtree(this._root, key);
-    this._size--;
-    if (Rotation_status) await sleep(500);
-    this.LevelOrderDrawInsideTree();
 };
 
 /**
