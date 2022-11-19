@@ -75,7 +75,7 @@ function createDeleteMes() {
         document.getElementById("numDelete").value + " and search it in the tree." + " Depending on how many " +
         "child nodes that node has, it will perform different removal methods."
     let deleteCode = "AVL.remove(current_node, key)";
-    return ["Current Action: Insertion", deleteMes, deleteCode];
+    return ["Current Action: Deletion", deleteMes, deleteCode];
 }
 
 function createRotationMes(rotation_actions, prev_mes) {
