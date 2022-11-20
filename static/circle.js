@@ -40,7 +40,7 @@ class Circle {
         return this.key;
     }
 
-    getCircleParent() {
+    getCircleParentNode() {
         return this.parent;
     }
 

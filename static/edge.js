@@ -34,7 +34,7 @@ class Edge {
         ctx.stroke();
     }
 
-    getChildNode() {
+    getChildCircle() {
         return this.childNode;
     }
 

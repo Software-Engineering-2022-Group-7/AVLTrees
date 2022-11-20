@@ -15,21 +15,19 @@ Want an initial message on dialog box
 
 */
 var cont = document.getElementById("outputbox");
-  
-        function size(size) {
-  
-            // Set value of the parameter as fontSize
-            cont.style.fontSize = size;
-        }
-  
-        function changeSizeBySlider() {
-            var slider = document.getElementById("slider");
-  
-            // Set slider value as fontSize
-            cont.style.fontSize = slider.value;
-        }
 
+function size(size) {
 
+    // Set value of the parameter as fontSize
+    cont.style.fontSize = size;
+}
+
+function changeSizeBySlider() {
+    var slider = document.getElementById("slider");
+
+    // Set slider value as fontSize
+    cont.style.fontSize = slider.value;
+}
 
 /*
 var output = ["Hello !"],
@@ -60,7 +58,7 @@ createdialog(individual);
 */
 
 function createInsertMes() {
-    let insertMes = "you are performing an insertion. The tree will take your input " +
+    let insertMes = "You are performing an insertion. The tree will take your input " +
         document.getElementById("numInput").value + " as a key and " +
         "do a recursion.<br><br>As the function recursively searches through the tree, " +
         "it will compare the key of each node " +
@@ -70,10 +68,12 @@ function createInsertMes() {
     return ["Current Action: Insertion", insertMes, insertCode];
 }
 
-function createDeleteMes() {
-    let deleteMes = "you are performing a deletion. The tree will take your input " +
-        document.getElementById("numDelete").value + " and search it in the tree." + " Depending on how many " +
-        "child nodes that node has, it will perform different removal methods."
+function createDeleteMes(removal_actions) {
+    let deleteMes = "You are performing a deletion. The tree will take your input " +
+        document.getElementById("numDelete").value + " and search it in the tree.<br><br>"
+    for (let i = 0; i < removal_actions.length; i++) {
+        deleteMes += "The tree will " + removal_actions[i][0] + "with " + removal_actions[i][1] + ".<br><br>";
+    }
     let deleteCode = "AVL.remove(current_node, key)";
     return ["Current Action: Deletion", deleteMes, deleteCode];
 }
@@ -82,7 +82,7 @@ function createRotationMes(rotation_actions, prev_mes) {
     if (rotation_actions.length === 0) {
         return prev_mes;
     }
-    let rotationMes = "you are performing AVL rotation.<br><br>";
+    let rotationMes = "You are performing AVL rotation.<br><br>";
     for (let i = 0; i < rotation_actions.length; i++) {
         rotationMes += "The tree will perform a " + rotation_actions[i][0] + " rotation on node " +
             rotation_actions[i][1].getKey() + ".<br><br>";

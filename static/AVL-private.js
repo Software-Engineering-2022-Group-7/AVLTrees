@@ -75,33 +75,38 @@ AVL.prototype._insertInSubtree = function (currentNode, key, value) {
  * new root of this subtree.
  * @param {Node} currentNode The root of the subtree.
  * @param {Object} key The key we are removing from the subtree.
+ * @param removal_actions For storing removal actions.
  * @return {Node} The new root of the subtree.
  * @throws {RuntimeError} If the provided key does not exist in this tree.
  */
-AVL.prototype._removeFromSubtree = function (currentNode, key) {
+AVL.prototype._removeFromSubtree = function (currentNode, key, removal_actions) {
     if (currentNode == null) {
         throw new Error("The key does not exist.");
     } else if (key > currentNode.getKey()) {
-        currentNode.setRight(this._removeFromSubtree(currentNode.getRight(), key));
+        currentNode.setRight(this._removeFromSubtree(currentNode.getRight(), key, removal_actions));
         return currentNode;
     } else if (key < currentNode.getKey()) {
-        currentNode.setLeft(this._removeFromSubtree(currentNode.getLeft(), key));
+        currentNode.setLeft(this._removeFromSubtree(currentNode.getLeft(), key, removal_actions));
         return currentNode;
     } else {
         if (currentNode.getLeft() == null && currentNode.getRight() == null) {
+            removal_actions.push(["delete a leaf ", "no replacement"]);
             currentNode = null;
         } else if (currentNode.getLeft() == null && currentNode.getRight() != null) {
+            removal_actions.push(["replace with right node: ", currentNode.getRight().getKey()]);
             currentNode = currentNode.getRight();
             return currentNode;
         } else if (currentNode.getRight() == null && currentNode.getLeft() != null) {
+            removal_actions.push(["replace with left node: ", currentNode.getLeft().getKey()]);
             currentNode = currentNode.getLeft();
             return currentNode;
         } else {
             const min = this._getMinInSubtree(currentNode.getRight());
+            removal_actions.push(["replace with the key and value of the smallest node from right tree: ", min[0]]);
             currentNode.setKey(min[0]);
             currentNode.setValue(min[1]);
             currentNode.setRight(this._removeFromSubtree(currentNode.getRight(),
-                min[0]));
+                min[0], removal_actions));
             return currentNode;
         }
     }

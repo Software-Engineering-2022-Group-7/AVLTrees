@@ -32,7 +32,7 @@ document.getElementById("DeleteBtn").addEventListener("click", function handleCl
 document.getElementById("SpeedRange").oninput = function() {
     framePerMovement = framePerSecond - framePerSecond * this.value * 0.01;
     document.getElementById("SpeedIndication").innerHTML =
-        parseFloat(framePerSecond - framePerMovement).toFixed(2);
+        parseFloat((framePerSecond - framePerMovement) / framePerSecond * 100).toFixed(0) + "%";
 }
 
 // update error in code box

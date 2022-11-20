@@ -33,13 +33,16 @@ AVL.prototype.getRoot = function () {
  * @throws {RuntimeError} If the key already exists.
  */
 AVL.prototype.insert = function (key, value) {
+    // after insertion, before rotation
     this._root = this._insertInSubtree(this._root, key, value);
     let prev_set = setPrevTree(this.getRoot());
     let insert_mes = createInsertMes();
+    // rotation process
     let rotation_actions = [];
     this._root = this._rotationAdjustment(this._root, rotation_actions);
     let rotation_mes = createRotationMes(rotation_actions, insert_mes);
-    addTreeToQueue(this.getRoot(), prev_set, insert_mes, rotation_mes);
+    // add to animation
+    addTreeToQueue(this.getRoot(), prev_set, insert_mes, rotation_mes, []);
     this._size++;
 };
 
@@ -49,13 +52,19 @@ AVL.prototype.insert = function (key, value) {
  * @throws {RuntimeError} If the key was not already in this AVL tree.
  */
 AVL.prototype.remove = function (key) {
-    this._root = this._removeFromSubtree(this._root, key);
+    // pre-removal
+    let removal_prev_set = setPrevPrevTree(this.getRoot());
+    // after removal, before rotation
+    let removal_actions = [];
+    this._root = this._removeFromSubtree(this._root, key, removal_actions);
     let prev_set = setPrevTree(this.getRoot());
-    let delete_mes = createDeleteMes();
+    let delete_mes = createDeleteMes(removal_actions);
+    // rotation process
     let rotation_actions = [];
     this._root = this._rotationAdjustment(this._root, rotation_actions);
     let rotation_mes = createRotationMes(rotation_actions, delete_mes);
-    addTreeToQueue(this.getRoot(), prev_set, delete_mes, rotation_mes);
+    // add to animation
+    addTreeToQueue(this.getRoot(), prev_set, delete_mes, rotation_mes, removal_prev_set);
     this._size--;
 };
 
