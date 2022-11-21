@@ -84,6 +84,7 @@ function drawOnCanvas() {
 
 // Draw a tree. Disable edges connecting rotation nodes
 function drawTree(current) {
+    if (current[0] === undefined && current[1] === undefined) return;
     for (let i = 0; i < current[0].length; i++) {
         current[0][i].draw();
         if (current[1][i]) {
@@ -127,6 +128,10 @@ function prePositionAdjustment(removal_set, prev_set, method_mes) {
             treeQueue.push([createArrayCopyCircle(prev_set[0]), createArrayCopyEdge(prev_set[1]), method_mes]);
         }
     } else {
+        if (prev_set === undefined) {
+            treeQueue.push([undefined, undefined, method_mes]);
+            return;
+        }
         let prev_circles = prev_set[0];
         let newTempCircle = [], newTempEdges = [], removed_node;
         let prev_removal_circles = createArrayCopyCircle(removal_set[0]);
@@ -214,6 +219,7 @@ function prePositionAdjustment(removal_set, prev_set, method_mes) {
 
 // Animation Process for rotation
 function positionAdjustment(prev_set, current_set, rotation_mes) {
+    if (prev_set === undefined) return;
     let prev_circles = createArrayCopyCircle(prev_set[0]);
     let prev_circles_copy = createArrayCopyCircle(prev_set[0]);
     let prev_edges = createArrayCopyEdge(prev_set[1]);
@@ -288,6 +294,7 @@ function pre_updateParameters(input, current_parent, circle_list) {
 
 // level order store tree
 function levelOrderStore(root) {
+    if (root === undefined) return;
     let circle_list = [];
     let edge_list = [];
     const queue = [];
@@ -332,6 +339,7 @@ function levelOrderStore(root) {
 
 // level order store, but create copies of parent nodes
 function levelOrderStoreWithCopy(root) {
+    if (root === undefined) return;
     let circle_list = [];
     let edge_list = [];
     const queue = [];
