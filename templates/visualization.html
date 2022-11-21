@@ -21,6 +21,9 @@
             <div class="input-group-text" id="rangeBar">SPEED</div>
             <label for="SpeedRange"></label><input type="range" class="form-range" id="SpeedRange">
             <div class="input-group-text" id="SpeedIndication">50%</div>
+            <button id="SmallBtn" onclick="document.getElementById('explanation').style.fontSize='1em'" class="btn btn-outline-secondary" type="button">-A</button>
+            <button id="resetBtn" onclick="document.getElementById('explanation').style.fontSize='1.25em'" class="btn btn-outline-secondary" type="button">A</button>
+            <button id="BigBtn" onclick="document.getElementById('explanation').style.fontSize='1.75em'" class="btn btn-outline-secondary" type="button">A+</button>
         </div>
     </div>
 
@@ -28,13 +31,7 @@
     <canvas id="canvas" width="850" height="500"></canvas>
 
     {#explanation#}
-    <div class="fontS">
-        <div class="input-group">
-            <button id="SmallBtn" onclick="document.getElementById('explanation').style.fontSize='1em'" class="btn btn-outline-secondary" type="button">-A</button>
-            <button id="resetBtn" onclick="document.getElementById('explanation').style.fontSize='1.25em'" class="btn btn-outline-secondary" type="button">A</button>
-            <button id="BigBtn" onclick="document.getElementById('explanation').style.fontSize='1.75em'" class="btn btn-outline-secondary" type="button">A+</button>
-        </div>
-    </div>
+
     <div class="explanation_card">
         <div class="card" style="width: 285px; margin-bottom: 10px;">
             <div class="card-body">
