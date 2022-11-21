@@ -142,6 +142,43 @@ main ul {
     background-color: #d0d7de;
 }
 
+.carousel {
+    margin: 35px 70px 10px 70px;
+    height: 550px;
+    overflow: hidden;
+    background: white;
+
+
+    border-radius: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+}
+
+.carousel .carousel-item {
+    max-height: 550px;
+    overflow: auto;
+}
+
+.carousel .carousel-item::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel .carousel-item .carousel_text {
+    margin-left: 10px;
+    margin-top: 30px;
+}
+
+.carousel-control-prev {
+    margin-left: -40px;
+}
+
+.carousel-control-next {
+    margin-right: -40px;
+}
+
+.carousel-indicators {
+    margin-bottom: 5px;
+}
+
 /* The main_content section is exclusively for implementation.html. */
 .main_content {
     margin-left: 70px;
@@ -366,6 +403,7 @@ img {
     width: 20%;
     height: auto;
 }
+
 .questImg {
     width: 25%;
     height: auto;
@@ -376,16 +414,11 @@ img {
     margin-top: 10px;
     display: inline-block;
 }
+
 .fontS .input-group-text {
     color: #6C757D;
     background: #F6F8FA;
 }
-
-
-
-
-
-
 
 
 /*.form-control {*/
