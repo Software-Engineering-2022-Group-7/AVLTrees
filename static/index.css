@@ -304,13 +304,23 @@ canvas {
     float: right;
     margin-top: 10px;
     margin-right: 10px;
-    width: 285px;
+    max-height: 500px;
+    overflow: auto;
 }
 
-.explanation_card .card {
+.explanation_card::-webkit-scrollbar {
+    display: none;
+}
+
+.explanation_card .code_box {
+    margin-bottom: 10px;
     max-height: 245px;
     overflow: auto;
-    /*background: #f8f8f8;*/
+}
+
+.explanation_card .explanation_explanation_box {
+    max-height: 400px;
+    overflow: auto;
 }
 
 .explanation_card .card .card-body .card-title {

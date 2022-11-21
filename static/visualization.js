@@ -62,10 +62,11 @@ function ResetCanvas() {
     ctx.clearRect(0, 0, canvas_width, canvas_height);
     tree = new AVL();
     document.getElementById("explanationTitle").innerHTML = "Current Action: None";
-    document.getElementById("explanation").innerHTML = "As you perform an action on the canvas, " +
-        "the corresponding explanation will be displayed here. Have fun!";
-    document.getElementById("code_display").innerHTML = "As you perform an action on the canvas, the " +
-        "corresponding pseudocode will be displayed here.";
+    document.getElementById("explanation").innerHTML =
+        "The corresponding explanation will be displayed here. Have fun!";
+    document.getElementById("code_display").innerHTML =
+        "The corresponding pseudocode will be displayed here.<br><br>Note due to the scale of the canvas, " +
+        "any node after level 4 cannot be properly shown.";
 }
 
 // Normal clear function
