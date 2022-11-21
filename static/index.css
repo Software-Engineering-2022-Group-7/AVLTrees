@@ -371,15 +371,6 @@ img {
     height: auto;
 }
 
-.fontS {
-    float: right;
-    margin-top: 10px;
-    display: inline-block;
-}
-.fontS .input-group-text {
-    color: #6C757D;
-    background: #F6F8FA;
-}
 
 
 
