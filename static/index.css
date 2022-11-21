@@ -302,6 +302,7 @@ canvas {
 
 .explanation_card {
     float: right;
+    height: 250px;
     margin-top: 10px;
     margin-right: 10px;
     max-height: 500px;
@@ -352,7 +353,7 @@ canvas {
     box-shadow: none;
 }
 
-.toolbox .input-group-text {
+.toolbox .input-group-text .fontS {
     color: #6C757D;
     background: #F6F8FA;
 }
@@ -376,11 +377,22 @@ img {
     margin-top: 10px;
     display: inline-block;
 }
-.fontS .input-group-text {
-    color: #6C757D;
-    background: #F6F8FA;
+/*
+.FixedHeightContainer
+{
+  float:right;
+  height: 250px;
+  width:250px; 
+  padding:3px; 
+    background:#f00;
 }
-
+*/
+.card-text
+{
+max-height:224px;
+overflow:auto;
+background:#fff;
+}
 
 
 
