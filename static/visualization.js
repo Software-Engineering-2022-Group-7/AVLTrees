@@ -53,6 +53,7 @@ function deleteInput() {
         tree.remove(Number(input), 0);
     } catch (error) {
         printError(error);
+        console.log(error);
     }
 }
 
@@ -162,25 +163,25 @@ function prePositionAdjustment(removal_set, prev_set, method_mes) {
 
         // if the removal only removes a leaf, no need to do removal animation
         if (removed_node.getCircleParentNode() !== null) {
-            if (removed_node.getCircleParentNode().getLeft() === undefined) {
-                if (removed_node.getCircleParentNode().getRight().getLeft() === undefined &&
-                    removed_node.getCircleParentNode().getRight().getRight() === undefined) {
+            if (removed_node.getCircleParentNode().getLeft() === null) {
+                if (removed_node.getCircleParentNode().getRight().getLeft() === null &&
+                    removed_node.getCircleParentNode().getRight().getRight() === null) {
                     return;
                 }
-            } else if (removed_node.getCircleParentNode().getRight() === undefined) {
-                if (removed_node.getCircleParentNode().getLeft().getLeft() === undefined &&
-                    removed_node.getCircleParentNode().getLeft().getRight() === undefined) {
+            } else if (removed_node.getCircleParentNode().getRight() === null) {
+                if (removed_node.getCircleParentNode().getLeft().getLeft() === null &&
+                    removed_node.getCircleParentNode().getLeft().getRight() === null) {
                     return;
                 }
             } else {
                 if (removed_node.getkey() === removed_node.getCircleParentNode().getLeft().getKey()) {
-                    if (removed_node.getCircleParentNode().getLeft().getLeft() === undefined &&
-                        removed_node.getCircleParentNode().getLeft().getRight() === undefined) {
+                    if (removed_node.getCircleParentNode().getLeft().getLeft() === null &&
+                        removed_node.getCircleParentNode().getLeft().getRight() === null) {
                         return;
                     }
                 } else if (removed_node.getkey() === removed_node.getCircleParentNode().getRight().getKey()) {
-                    if (removed_node.getCircleParentNode().getRight().getLeft() === undefined &&
-                        removed_node.getCircleParentNode().getRight().getRight() === undefined) {
+                    if (removed_node.getCircleParentNode().getRight().getLeft() === null &&
+                        removed_node.getCircleParentNode().getRight().getRight() === null) {
                         return;
                     }
                 }
@@ -339,7 +340,7 @@ function levelOrderStore(root) {
 
 // level order store, but create copies of parent nodes
 function levelOrderStoreWithCopy(root) {
-    if (root === undefined) return;
+    if (root === null || root === undefined) return;
     let circle_list = [];
     let edge_list = [];
     const queue = [];
