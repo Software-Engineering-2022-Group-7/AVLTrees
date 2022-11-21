@@ -201,7 +201,7 @@ function prePositionAdjustment(removal_set, prev_set, method_mes) {
                 let newX = removal_one.getX(), newY = removal_one.getY();
                 if (newX !== prev_circles[j].getX() || newY !== prev_circles[j].getY()) {
                     removal_one.setRotationalStatus(true);
-                    removal_one.setFillColor("#bceabf");
+                    removal_one.setFillColor("#bed6ec");
                 }
                 newX = newX + (prev_circles[j].getX() - removal_copy.getX()) / framePerMovement;
                 newY = newY + (prev_circles[j].getY() - removal_copy.getY()) / framePerMovement;

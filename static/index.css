@@ -287,6 +287,10 @@ text .tree_hierarchy {
     background: #B3B3B3;
 }
 
+.visualization_main::-webkit-scrollbar {
+    display: none;
+}
+
 canvas {
     background: #f8f8f8;
     margin-top: 10px;
@@ -299,13 +303,15 @@ canvas {
 .explanation_card {
     float: right;
     margin-top: 10px;
-    margin-right: 10px;
-    width: 200px;
+    margin-right: 12px;
+    width: 285px;
 }
 
-/*.explanation_card .card {*/
-/*    background: #f8f8f8;*/
-/*}*/
+.explanation_card .card {
+    max-height: 245px;
+    overflow: auto;
+    /*background: #f8f8f8;*/
+}
 
 .explanation_card .card .card-body .card-title {
     font-style: italic;
@@ -354,7 +360,6 @@ img {
     width: 25%;
     height: auto;
 }
-
 
 .fontS {
     float: right;

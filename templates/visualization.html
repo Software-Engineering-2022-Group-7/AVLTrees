@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block content %}
-<main id="visualization_main">
+<main class="visualization_main" id="visualization_main">
     <h1>Canvas</h1>
     <div class="toolbox">
         <div class="input-group">
@@ -21,6 +21,15 @@
             <div class="input-group-text" id="rangeBar">SPEED</div>
             <label for="SpeedRange"></label><input type="range" class="form-range" id="SpeedRange">
             <div class="input-group-text" id="SpeedIndication">50%</div>
+            <button id="SmallBtn" onclick="document.getElementById('explanation_card').style.fontSize='1em'"
+                    class="btn btn-outline-secondary" type="button">-A
+            </button>
+            <button id="resetBtn" onclick="document.getElementById('explanation_card').style.fontSize='1.25em'"
+                    class="btn btn-outline-secondary" type="button">A
+            </button>
+            <button id="BigBtn" onclick="document.getElementById('explanation_card').style.fontSize='1.75em'"
+                    class="btn btn-outline-secondary" type="button">A+
+            </button>
         </div>
     </div>
 
@@ -28,13 +37,6 @@
     <canvas id="canvas" width="850" height="500"></canvas>
 
     {#explanation#}
-    <div class="fontS">
-        <div class="input-group">
-            <button id="SmallBtn" onclick="document.getElementById('explanation').style.fontSize='1em'" class="btn btn-outline-secondary" type="button">-A</button>
-            <button id="resetBtn" onclick="document.getElementById('explanation').style.fontSize='1.25em'" class="btn btn-outline-secondary" type="button">A</button>
-            <button id="BigBtn" onclick="document.getElementById('explanation').style.fontSize='1.75em'" class="btn btn-outline-secondary" type="button">A+</button>
-        </div>
-    </div>
     <div class="explanation_card" id="explanation_card">
         <div class="card" style="margin-bottom: 10px;">
             <div class="card-body">
@@ -60,9 +62,9 @@
     <script>
         let w = document.getElementById('visualization_main').offsetWidth;
         let adjust_use_c = document.getElementById("canvas").width;
-        let should_be_width = w - adjust_use_c - 100;
+        let should_be_width = w - adjust_use_c - 80;
         let explanation_box = document.getElementById("explanation_card");
-        explanation_box.style.width = should_be_width + 'px';
+        explanation_box.style.maxWidth = should_be_width + 'px';
     </script>
 
     {#Js files#}
