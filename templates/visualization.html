@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block content %}
-<main>
+<main id="visualization_main">
     <h1>Canvas</h1>
     <div class="toolbox">
         <div class="input-group">
@@ -35,8 +35,8 @@
             <button id="BigBtn" onclick="document.getElementById('explanation').style.fontSize='1.75em'" class="btn btn-outline-secondary" type="button">A+</button>
         </div>
     </div>
-    <div class="explanation_card">
-        <div class="card" style="width: 285px; margin-bottom: 10px;">
+    <div class="explanation_card" id="explanation_card">
+        <div class="card" style="margin-bottom: 10px;">
             <div class="card-body">
                 <h5 class="card-title">Code Box</h5>
                 <div class="card-text" id="code_display">
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <div class="card" style="width: 285px;">
+        <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Explanation Box</h5>
                 <h6 class="card-subtitle mb-2 text-muted" id="explanationTitle">Current Action: None</h6>
@@ -57,18 +57,13 @@
         </div>
     </div>
 
-    <!--    <h2>Explanation</h2>-->
-    <!--    <div class="fontop">-->
-    <!--        <div class="options">-->
-    <!--            <button id="small" onclick="size(15)" class="btn btn-outline-secondary" type="button">-A</button>-->
-    <!--            <button id="med" onclick="size(20)" class="btn btn-outline-secondary" type="button">A</button>-->
-    <!--            <button id="large" onclick="size(25)" class="btn btn-outline-secondary" type="button">A+</button>-->
-    <!--        </div>-->
-    <!--    </div>-->
-    <!--    <br/><br/>-->
-    <!--    <div class="outputbox" id="outputbox"></div>-->
-    <!--    <input type="range" min="10" max="30" id="slider"-->
-    <!--           onchange="size()" value="20"/>-->
+    <script>
+        let w = document.getElementById('visualization_main').offsetWidth;
+        let adjust_use_c = document.getElementById("canvas").width;
+        let should_be_width = w - adjust_use_c - 100;
+        let explanation_box = document.getElementById("explanation_card");
+        explanation_box.style.width = should_be_width + 'px';
+    </script>
 
     {#Js files#}
     <script src="/static/AVL.js"></script>
