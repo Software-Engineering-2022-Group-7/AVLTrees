@@ -27,14 +27,14 @@ let framePerMovement = 30;
 // Start insertion
 function getInput() {
     let input = document.getElementById("numInput").value;
-    let regex = /(^\d+$)|(^\d+\.\d+$)/;
+    let regex = /(^(-?)\d+$)|(^(-?)\d+\.\d+$)/;
     // Check input validity
     if (!input.match(regex)) {
         printError(new Error("Please enter integer/float."));
         return;
     }
     try {
-        tree.insert(input, 0);
+        tree.insert(Number(input), 0);
     } catch (error) {
         printError(error);
     }
@@ -43,14 +43,14 @@ function getInput() {
 // Start deletion
 function deleteInput() {
     let input = document.getElementById("numDelete").value;
-    let regex = /(^\d+$)|(^\d+\.\d+$)/;
+    let regex = /(^(-?)\d+$)|(^(-?)\d+\.\d+$)/;
     // Check input validity
     if (!input.match(regex)) {
         printError(new Error("Please enter integer/float."));
         return;
     }
     try {
-        tree.remove(input, 0);
+        tree.remove(Number(input), 0);
     } catch (error) {
         printError(error);
     }
@@ -156,7 +156,7 @@ function prePositionAdjustment(removal_set, prev_set, method_mes) {
         prev_removal_edges = newTempEdges;
 
         // after remove, pre-replacement
-        for (let i = 0; i < framePerMovement * 1.5; i++) {
+        for (let i = 0; i < framePerMovement; i++) {
             treeQueue.push([createArrayCopyCircle(prev_removal_circles), createArrayCopyEdge(prev_removal_edges), method_mes]);
         }
 
