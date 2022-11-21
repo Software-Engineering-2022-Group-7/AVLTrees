@@ -372,21 +372,6 @@ img {
     height: auto;
 }
 
-.fontS {
-    float: right;
-    margin-top: 10px;
-    display: inline-block;
-}
-/*
-.FixedHeightContainer
-{
-  float:right;
-  height: 250px;
-  width:250px; 
-  padding:3px; 
-    background:#f00;
-}
-*/
 .card-text
 {
 max-height:224px;
