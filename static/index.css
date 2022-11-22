@@ -207,6 +207,15 @@ main ul {
     cursor: pointer;
 }
 
+.carousel_text .btn {
+    float: right;
+    margin-right: 100px;
+}
+
+.carousel_text h2 {
+    max-width: 500px;
+}
+
 /* The main_content section is exclusively for implementation.html. */
 .main_content {
     margin-left: 70px;
