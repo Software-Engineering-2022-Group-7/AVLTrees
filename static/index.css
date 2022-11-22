@@ -167,11 +167,13 @@ main ul {
 }
 
 .carousel-control-prev {
-    margin-left: -40px;
+    margin-left: -10px;
+    width: 10%;
 }
 
 .carousel-control-next {
-    margin-right: -40px;
+    margin-right: -10px;
+    width: 10%;
 }
 
 .carousel-indicators {
@@ -188,6 +190,21 @@ main ul {
 
 .tutorial_Img3 {
     width: 100%;
+}
+
+.tutorial_front_page li {
+    margin-left: 10px;
+}
+
+.tutorial_front_page p {
+    margin-left: 0;
+    color: gray;
+    width: 500px;
+}
+
+.tutorial_front_page p:hover {
+    color: #24292F;
+    cursor: pointer;
 }
 
 /* The main_content section is exclusively for implementation.html. */
