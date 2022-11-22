@@ -34,6 +34,7 @@ AVL.prototype.getRoot = function () {
  */
 AVL.prototype.insert = function (key, value) {
     // after insertion, before rotation
+    let insertion_prev_set = setPrevTree(this.getRoot());
     this._root = this._insertInSubtree(this._root, key, value);
     let prev_set = setPrevTree(this.getRoot());
     let insert_mes = createInsertMes();
@@ -42,7 +43,7 @@ AVL.prototype.insert = function (key, value) {
     this._root = this._rotationAdjustment(this._root, rotation_actions);
     let rotation_mes = createRotationMes(rotation_actions, insert_mes);
     // add to animation
-    addTreeToQueue(this.getRoot(), prev_set, insert_mes, rotation_mes, []);
+    addTreeToQueue(this.getRoot(), prev_set, insert_mes, rotation_mes, [], insertion_prev_set);
     this._size++;
 };
 
@@ -64,7 +65,7 @@ AVL.prototype.remove = function (key) {
     this._root = this._rotationAdjustment(this._root, rotation_actions);
     let rotation_mes = createRotationMes(rotation_actions, delete_mes);
     // add to animation
-    addTreeToQueue(this.getRoot(), prev_set, delete_mes, rotation_mes, removal_prev_set);
+    addTreeToQueue(this.getRoot(), prev_set, delete_mes, rotation_mes, removal_prev_set, []);
     this._size--;
 };
 

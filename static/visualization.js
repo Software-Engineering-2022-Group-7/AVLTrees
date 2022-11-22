@@ -17,6 +17,7 @@ let radius = 20;
 let circleColor = "black";
 let circleFillColor = "white";
 let circleFillTextColor = "black";
+let lineColor = "black";
 // initial position
 let initial_x = canvas_width / 2;
 let initial_y = radius * 2;
@@ -37,6 +38,7 @@ function getInput() {
         tree.insert(Number(input), 0);
     } catch (error) {
         printError(error);
+        console.log(error);
     }
 }
 
@@ -113,20 +115,22 @@ function setPrevTree(root) {
 }
 
 // Add drawable trees
-function addTreeToQueue(root, prev_set, method_mes, rotation_mes, removal_set) {
+function addTreeToQueue(root, prev_set, method_mes, rotation_mes, removal_set, insertion_set) {
     treeQueue = [];
     // pre rotation animation
-    prePositionAdjustment(removal_set, prev_set, method_mes);
+    prePositionAdjustment(removal_set, prev_set, method_mes, insertion_set);
     let current_set = levelOrderStore(root);
     // rotation animation
     positionAdjustment(prev_set, current_set, rotation_mes);
 }
 
 // draw insertion / removal process
-function prePositionAdjustment(removal_set, prev_set, method_mes) {
+function prePositionAdjustment(removal_set, prev_set, method_mes, insertion_set) {
     if (removal_set.length === 0) {
+        if (insertion_set === undefined) return;
+
         // for insertion, display tree before rotation
-        for (let i = 0; i < framePerMovement * 1.5; i++) {
+        for (let i = 0; i < framePerMovement; i++) {
             treeQueue.push([createArrayCopyCircle(prev_set[0]), createArrayCopyEdge(prev_set[1]), method_mes]);
         }
     } else {
@@ -296,7 +300,7 @@ function pre_updateParameters(input, current_parent, circle_list) {
 
 // level order store tree
 function levelOrderStore(root) {
-    if (root === undefined) return;
+    if (root === null || root === undefined) return;
     let circle_list = [];
     let edge_list = [];
     const queue = [];
