@@ -400,7 +400,7 @@ canvas {
     box-shadow: none;
 }
 
-.toolbox .input-group-text {
+.toolbox .input-group-text .fontS {
     color: #6C757D;
     background: #F6F8FA;
 }
@@ -420,17 +420,12 @@ img {
     height: auto;
 }
 
-.fontS {
-    float: right;
-    margin-top: 10px;
-    display: inline-block;
+.card-text
+{
+max-height:224px;
+overflow:auto;
+background:#fff;
 }
-
-.fontS .input-group-text {
-    color: #6C757D;
-    background: #F6F8FA;
-}
-
 
 /*.form-control {*/
 /*    width: 100px;*/
