@@ -45,8 +45,8 @@
                 <div class="carousel_text">
                     <h1 id="content_title" class="content_title">AVL Tree Tutorial</h1>
                     <p>Welcome to the AVL tutorial!
-                        The following slides will introduce this fascinating data structures to you. We have separated
-                    the introduction into several subpages:</p>
+                        The following slides will introduce this fascinating data structure to you. We have separated
+                        the introduction into several subpages:</p>
                     <ol>
                         <li>Intro to tree structure</li>
                         <li>Intro to binary tree structure</li>
@@ -79,11 +79,12 @@
                             <li>Height is the maximum number of steps from a node to its leaf nodes.</li>
                         </ul>
                         <li>An example of a tree:</li>
-                        <pre>     C
- / /   \ \
-D A     F G
-|        / \
-B       E   H</pre>
+                        <img class='tutorial_Img' src="../static/tutorial_images/tree.png" alt="A tree">
+                        <!--                        <pre>     C-->
+                        <!-- / /   \ \-->
+                        <!--D A     F G-->
+                        <!--|        / \-->
+                        <!--B       E   H</pre>-->
                         <li>In the above example:</li>
                         <ul class="secondary_list">
                             <li>Node G has a depth of 1 and a height of 1.</li>
@@ -111,13 +112,15 @@ B       E   H</pre>
                     <ul>
                         <li>A binary tree is a tree in which each node is allowed at most two children.</li>
                         <li>An example of a binary tree:</li>
-                        <pre>     C
-   /   \
-  D     A
- / \     \
-F   G     E
-     \     \
-      B     H</pre>
+                        <img class='tutorial_Img2' src="../static/tutorial_images/binary%20tree.png"
+                             alt="A binary tree">
+                        <!--                        <pre>     C-->
+                        <!--   /   \-->
+                        <!--  D     A-->
+                        <!-- / \     \-->
+                        <!--F   G     E-->
+                        <!--     \     \-->
+                        <!--      B     H</pre>-->
                         <li>What are traversals?</li>
                         <ul class="secondary_list">
                             <li>Traversals are a list of the nodes in a tree. There are 4 different
@@ -150,13 +153,15 @@ F   G     E
                             <li>The left and right subtree of the node must also be binary search trees.</li>
                         </ol>
                         <li>An example of a binary search tree:</li>
-                        <pre>     D
-   /   \
-  B     F
- / \     \
-A   C     G
-     \     \
-      E     H</pre>
+                        <img class='tutorial_Img2' src="../static/tutorial_images/binary%20search%20tree.png"
+                             alt="A binary search tree">
+                        <!--                        <pre>     D-->
+                        <!--   /   \-->
+                        <!--  B     F-->
+                        <!-- / \     \-->
+                        <!--A   C     G-->
+                        <!--     \     \-->
+                        <!--      E     H</pre>-->
                     </ul>
                 </div>
             </div>
@@ -174,30 +179,37 @@ A   C     G
                             <li>There are four cases of unbalance in a tree:</li>
                             <ol class="secondary_list">
                                 <li>Left left:</li>
-                                <pre>    C
-   /
-  B
- /
-A</pre>
+                                <img class='tutorial_Img2' src="../static/tutorial_images/left_left.png"
+                                     alt="A left-left balance">
+                                <!--                                <pre>    C-->
+                                <!--   /-->
+                                <!--  B-->
+                                <!-- /-->
+                                <!--A</pre>-->
                                 <li>Left right:</li>
-                                <pre>  C
- /
-A
- \
-  B</pre>
+                                <img class='tutorial_Img2' src="../static/tutorial_images/left_right.png"
+                                     alt="A left-right balance">
+                                <!--                                <pre>  C-->
+                                <!-- /-->
+                                <!--A-->
+                                <!-- \-->
+                                <!--  B</pre>-->
                                 <li>Right right:</li>
-                                <pre>A
- \
-  B
-   \
-    C</pre>
-
+                                <img class='tutorial_Img2' src="../static/tutorial_images/right_right.png"
+                                     alt="A right-right balance">
+                                <!--                                <pre>A-->
+                                <!-- \-->
+                                <!--  B-->
+                                <!--   \-->
+                                <!--    C</pre>-->
                                 <li>Right left:</li>
-                                <pre>A
- \
-  C
- /
-B</pre>
+                                <img class='tutorial_Img2' src="../static/tutorial_images/right_left.png"
+                                     alt="A right-left balance">
+                                <!--                                <pre>A-->
+                                <!-- \-->
+                                <!--  C-->
+                                <!-- /-->
+                                <!--B</pre>-->
                             </ol>
                             <li>Trees can become unbalanced when a new node is inserted or when
                                 an existing node is removed.
@@ -213,6 +225,10 @@ B</pre>
                         <li>AVL trees were invented by Georgy Adelson-Velsky and Evgenii Landis.</li>
                         <li>AVL trees were the first kind of self-balancing binary search tree.</li>
                     </ul>
+                    <h2 id="AVL_tree_mechanism">What is unbalance to AVL trees?</h2>
+                    <p>The AVL tree considers a node whose balance is greater than 1 to be unbalanced. It will perform a
+                        rotational
+                        adjustment to that node to make it balanced.</p>
                 </div>
             </div>
             <div class="carousel-item">
@@ -225,31 +241,39 @@ B</pre>
                         </li>
                         <ol class="secondary_list">
                             <li>Left left:</li>
-                            <pre>    C                          B
-   /     rightRotate(C)       / \
-  B     --------------->     A   C
- /
-A</pre>
+                            <img class='tutorial_Img3' src="../static/tutorial_images/left_left_adjustment.png"
+                                 alt="A left-left rotation">
+                            <!--                            <pre>    C                          B-->
+                            <!--   /     rightRotate(C)       / \-->
+                            <!--  B     -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;     A   C-->
+                            <!-- /-->
+                            <!--A</pre>-->
                             <li>Left right:</li>
-                            <pre>  C                          C                          B
- /     leftRotate(A)        /     rightRotate(C)       / \
-A     --------------->     B     --------------->     A   C
- \                        /
-  B                      A</pre>
+                            <img class='tutorial_Img3' src="../static/tutorial_images/left_right_adjustment.png"
+                                 alt="A left-right rotation">
+                            <!--                            <pre>  C                          C                          B-->
+                            <!-- /     leftRotate(A)        /     rightRotate(C)       / \-->
+                            <!--A     -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;     B     -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;     A   C-->
+                            <!-- \                        /-->
+                            <!--  B                      A</pre>-->
                             <li>Right right:</li>
-                            <pre>A                              B
- \       leftRotate(A)        / \
-  B     --------------->     A   C
-   \
-    C</pre>
+                            <img class='tutorial_Img3' src="../static/tutorial_images/right_right_adjustment.png"
+                                 alt="A right-right rotation">
+                            <!--                            <pre>A                              B-->
+                            <!-- \       leftRotate(A)        / \-->
+                            <!--  B     -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;     A   C-->
+                            <!--   \-->
+                            <!--    C</pre>-->
                             <li>Right left:</li>
-                            <pre>
-A                          A                              B
- \       rightRotate(C)     \       leftRotate(A)        / \
-  C     --------------->     B     --------------->     A   C
- /                            \
-B                              C
-</pre>
+                            <img class='tutorial_Img3' src="../static/tutorial_images/right_left_adjustment.png"
+                                 alt="A right-left rotation">
+                            <!--                            <pre>-->
+                            <!--A                          A                              B-->
+                            <!-- \       rightRotate(C)     \       leftRotate(A)        / \-->
+                            <!--  C     -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;     B     -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;     A   C-->
+                            <!-- /                            \-->
+                            <!--B                              C-->
+                            <!--</pre>-->
                         </ol>
                     </ul>
                 </div>
@@ -263,7 +287,15 @@ B                              C
         </button>
     </div>
 
-
+    <script>
+        $(document).bind('keyup', function (e) {
+            if (e.which === 39) {
+                $('.carousel').carousel('next');
+            } else if (e.which === 37) {
+                $('.carousel').carousel('prev');
+            }
+        });
+    </script>
     <!--    <h3 id="Tree">What is a tree?</h3>-->
     <!--    <ul>-->
     <!--        <li>A tree is a kind of data structure.</li>-->

@@ -148,7 +148,6 @@ main ul {
     overflow: hidden;
     background: white;
 
-
     border-radius: 20px;
     box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
 }
@@ -163,7 +162,7 @@ main ul {
 }
 
 .carousel .carousel-item .carousel_text {
-    margin-left: 10px;
+    margin-left: 20px;
     margin-top: 30px;
 }
 
@@ -177,6 +176,18 @@ main ul {
 
 .carousel-indicators {
     margin-bottom: 5px;
+}
+
+.tutorial_Img {
+    width: 70%;
+}
+
+.tutorial_Img2 {
+    width: 40%;
+}
+
+.tutorial_Img3 {
+    width: 100%;
 }
 
 /* The main_content section is exclusively for implementation.html. */
