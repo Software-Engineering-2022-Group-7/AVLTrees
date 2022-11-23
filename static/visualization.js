@@ -38,7 +38,6 @@ function getInput() {
         tree.insert(Number(input), 0);
     } catch (error) {
         printError(error);
-        console.log(error);
     }
 }
 
@@ -55,7 +54,6 @@ function deleteInput() {
         tree.remove(Number(input), 0);
     } catch (error) {
         printError(error);
-        console.log(error);
     }
 }
 
@@ -119,8 +117,8 @@ function addTreeToQueue(root, prev_set, method_mes, rotation_mes, removal_set, i
     treeQueue = [];
     // pre rotation animation
     prePositionAdjustment(removal_set, prev_set, method_mes, insertion_set);
-    let current_set = levelOrderStore(root);
     // rotation animation
+    let current_set = levelOrderStore(root);
     positionAdjustment(prev_set, current_set, rotation_mes);
 }
 
@@ -206,7 +204,7 @@ function prePositionAdjustment(removal_set, prev_set, method_mes, insertion_set)
                 let newX = removal_one.getX(), newY = removal_one.getY();
                 if (newX !== prev_circles[j].getX() || newY !== prev_circles[j].getY()) {
                     removal_one.setRotationalStatus(true);
-                    removal_one.setFillColor("#bed6ec");
+                    removal_one.setFillColor("#ECFFDC");
                 }
                 newX = newX + (prev_circles[j].getX() - removal_copy.getX()) / framePerMovement;
                 newY = newY + (prev_circles[j].getY() - removal_copy.getY()) / framePerMovement;

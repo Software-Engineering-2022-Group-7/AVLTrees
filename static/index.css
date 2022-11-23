@@ -28,18 +28,15 @@ header.page_header a:hover {
 
 nav.sidebar {
     /* position the navigation bar */
-    position: fixed;
+    position: absolute;
     top: 80px;
     bottom: 0;
     left: 0;
     right: 0;
 
-    width: 300px;
+    width: 19.5%;
     padding-top: 60px;
-    /* for potential side bar animation*/
-    z-index: -1;
-    /*transition: 0.5s;*/
-    overflow-x: hidden;
+    overflow: auto;
 
     /* words */
     font-family: "Times New Roman", Arial, serif;
@@ -69,13 +66,17 @@ nav.sidebar a:hover {
     color: gray;
 }
 
+nav.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
 main {
     /* Position the main section */
     position: absolute;
     top: 80px;
     bottom: 0;
-    left: 300px;
-    right: 0;
+    left: 19.5%;
+    width: 80.5%;
 
     overflow: auto;
     padding-top: 30px;
@@ -445,14 +446,3 @@ img {
     width: 25%;
     height: auto;
 }
-
-.card-text
-{
-max-height:224px;
-overflow:auto;
-background:#fff;
-}
-
-
-
-
