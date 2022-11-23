@@ -446,6 +446,19 @@ img {
     height: auto;
 }
 
+.card-text
+{
+max-height:224px;
+overflow:auto;
+background:#fff;
+}
+
+
+
+
+
+
+
 /*.form-control {*/
 /*    width: 100px;*/
 /*}*/
