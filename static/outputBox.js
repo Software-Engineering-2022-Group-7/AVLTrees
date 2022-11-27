@@ -2,27 +2,8 @@
 Explaination box requirements
 Report when a node is being added and deleted
 Mention the rotations that is taking place
-Descriptions will be ongoing and should the user be able to scroll back
-
-We want it scroll using a scroll bar within the box.
-resize font size within the explanation box (Want button on the right of the explanation box)
-Want an initial message on dialog box
 
 */
-var cont = document.getElementById("outputbox");
-
-function size(size) {
-
-    // Set value of the parameter as fontSize
-    cont.style.fontSize = size;
-}
-
-function changeSizeBySlider() {
-    var slider = document.getElementById("slider");
-
-    // Set slider value as fontSize
-    cont.style.fontSize = slider.value;
-}
 
 function createInsertMes() {
     let insertMes = "You are performing an insertion. The tree will take your input " +
