@@ -1,18 +1,16 @@
 header.page_header h1 {
     /* Position the page header */
     position: absolute;
-    top: 0;
     left: 0;
     right: 0;
-
+    height: 10.5%;
     margin: auto;
     padding: 10px 0;
     background: #24292F;
 
-    /* words */
     font-family: "Trebuchet MS", Arial, serif;
     font-style: italic;
-    font-size: 50px;
+    font-size: 300%;
     font-weight: bold;
     text-align: center;
 }
@@ -29,32 +27,26 @@ header.page_header a:hover {
 nav.sidebar {
     /* position the navigation bar */
     position: absolute;
-    top: 80px;
+    top: 10.5%;
     bottom: 0;
-    left: 0;
-    right: 0;
-
     width: 19.5%;
-    padding-top: 60px;
     overflow: auto;
+    text-align: center;
 
     /* words */
     font-family: "Times New Roman", Arial, serif;
     font-size: 25px;
     font-style: italic;
-    text-align: center;
-    white-space: nowrap;
+}
+
+nav.sidebar ul {
+    padding-top: 110px;
+    list-style-type: none;
 }
 
 nav.sidebar h2 {
     font-weight: bold;
     font-size: 25px;
-    margin-top: 50px;
-}
-
-nav.sidebar ul {
-    list-style-type: none;
-    line-height: 150%;
 }
 
 nav.sidebar a {
@@ -73,7 +65,7 @@ nav.sidebar::-webkit-scrollbar {
 main {
     /* Position the main section */
     position: absolute;
-    top: 80px;
+    top: 10.5%;
     bottom: 0;
     left: 19.5%;
     width: 80.5%;
@@ -81,8 +73,6 @@ main {
     overflow: auto;
     padding-top: 30px;
     background: #F6F8FA;
-    /* for potential side bar animation */
-    /*transition: margin-left 0.5s;*/
 
     /* words */
     font-family: "Trebuchet MS", Arial, serif;
