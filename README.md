@@ -1,6 +1,6 @@
 ## Introduction to AVL Trees through Visualization
 
-###### This repository contains the design of a website that teaches users AVL Tree data structure.
+_This repository contains the design of a website that teaches users AVL Tree data structure._
 
 ### How we organized the repository:
 The repository is built on flask. The template folder contains the Html files, 
