@@ -111,9 +111,9 @@ class Answer
 //Results class
 class Result
 {
-	constructor(text, value)
+	constructor(png, value)
 	{
-		this.text = text;
+		this.png = png;
 		this.value = value;
 	}
 
@@ -134,10 +134,10 @@ class Result
 //Messages for the results
 const results =
 [
-	new Result("You should study more", 0),
-	new Result("Not bad, not bad", 4),
-	new Result("You are above average", 10),
-	new Result("You nailed it!", 14)
+	new Result("<img class='questImg' src=../static/results/result1.png/>", 0),
+	new Result("<img class='questImg' src=../static/results/result2.png/>", 4),
+	new Result("<img class='questImg' src=../static/results/result3.png/>", 10),
+	new Result("<img class='questImg' src=../static/results/result4.png/>", 14)
 ];
 
 //Questions
@@ -299,8 +299,8 @@ function Update()
 	{
 		//If ends -> display results
 		buttonsElem.innerHTML = "";
-		headElem.innerHTML = quiz.results[quiz.result].text;
-		pngElem.innerHTML = "";
+		headElem.innerHTML = "";
+		pngElem.innerHTML = quiz.results[quiz.result].png;
 		pagesElem.innerHTML = "";
 		pointsElem.innerHTML = "Points: " + quiz.score;
 	}

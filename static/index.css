@@ -1,18 +1,16 @@
 header.page_header h1 {
     /* Position the page header */
     position: absolute;
-    top: 0;
     left: 0;
     right: 0;
-
+    height: 10.5%;
     margin: auto;
     padding: 10px 0;
     background: #24292F;
 
-    /* words */
     font-family: "Trebuchet MS", Arial, serif;
     font-style: italic;
-    font-size: 50px;
+    font-size: 300%;
     font-weight: bold;
     text-align: center;
 }
@@ -28,36 +26,27 @@ header.page_header a:hover {
 
 nav.sidebar {
     /* position the navigation bar */
-    position: fixed;
-    top: 80px;
+    position: absolute;
+    top: 10.5%;
     bottom: 0;
-    left: 0;
-    right: 0;
-
-    width: 300px;
-    padding-top: 60px;
-    /* for potential side bar animation*/
-    z-index: -1;
-    /*transition: 0.5s;*/
-    overflow-x: hidden;
+    width: 19.5%;
+    overflow: auto;
+    text-align: center;
 
     /* words */
     font-family: "Times New Roman", Arial, serif;
     font-size: 25px;
     font-style: italic;
-    text-align: center;
-    white-space: nowrap;
+}
+
+nav.sidebar ul {
+    padding-top: 110px;
+    list-style-type: none;
 }
 
 nav.sidebar h2 {
     font-weight: bold;
     font-size: 25px;
-    margin-top: 50px;
-}
-
-nav.sidebar ul {
-    list-style-type: none;
-    line-height: 150%;
 }
 
 nav.sidebar a {
@@ -69,19 +58,21 @@ nav.sidebar a:hover {
     color: gray;
 }
 
+nav.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
 main {
     /* Position the main section */
     position: absolute;
-    top: 80px;
+    top: 10.5%;
     bottom: 0;
-    left: 300px;
-    right: 0;
+    left: 19.5%;
+    width: 80.5%;
 
     overflow: auto;
     padding-top: 30px;
     background: #F6F8FA;
-    /* for potential side bar animation */
-    /*transition: margin-left 0.5s;*/
 
     /* words */
     font-family: "Trebuchet MS", Arial, serif;
@@ -140,6 +131,80 @@ main ul {
 
 .tutorial_sidebar .nav-pills .nav-link.active {
     background-color: #d0d7de;
+}
+
+.carousel {
+    margin: 35px 70px 10px 70px;
+    height: 550px;
+    overflow: hidden;
+    background: white;
+
+    border-radius: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+}
+
+.carousel .carousel-item {
+    max-height: 550px;
+    overflow: auto;
+}
+
+.carousel .carousel-item::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel .carousel-item .carousel_text {
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+.carousel-control-prev {
+    margin-left: -10px;
+    width: 10%;
+}
+
+.carousel-control-next {
+    margin-right: -10px;
+    width: 10%;
+}
+
+.carousel-indicators {
+    margin-bottom: 5px;
+}
+
+.tutorial_Img {
+    width: 70%;
+}
+
+.tutorial_Img2 {
+    width: 40%;
+}
+
+.tutorial_Img3 {
+    width: 100%;
+}
+
+.tutorial_front_page li {
+    margin-left: 10px;
+}
+
+.tutorial_front_page p {
+    margin-left: 0;
+    color: gray;
+    width: 500px;
+}
+
+.tutorial_front_page p:hover {
+    color: #24292F;
+    cursor: pointer;
+}
+
+.carousel_text .btn {
+    float: right;
+    margin-right: 100px;
+}
+
+.carousel_text h2 {
+    max-width: 500px;
 }
 
 /* The main_content section is exclusively for implementation.html. */
@@ -352,7 +417,7 @@ canvas {
     box-shadow: none;
 }
 
-.toolbox .input-group-text {
+.toolbox .input-group-text .fontS {
     color: #6C757D;
     background: #F6F8FA;
 }
@@ -366,8 +431,8 @@ img {
     width: 20%;
     height: auto;
 }
+
 .questImg {
     width: 25%;
     height: auto;
 }
-
