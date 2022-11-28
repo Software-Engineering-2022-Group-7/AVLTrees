@@ -436,3 +436,11 @@ img {
     width: 25%;
     height: auto;
 }
+
+.repo_url {
+    color: #24292F;
+}
+
+.repo_url:hover {
+    color: gray;
+}
