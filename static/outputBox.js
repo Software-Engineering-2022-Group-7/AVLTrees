@@ -45,3 +45,4 @@ function displayMessage(explanation_title, explanation_text, code_text) {
     document.getElementById("explanation").innerHTML = explanation_text;
     document.getElementById("code_display").innerHTML = code_text;
 }
+
