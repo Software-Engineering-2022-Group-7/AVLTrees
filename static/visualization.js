@@ -257,7 +257,7 @@ function initial_update(input, current_parent, circle_list) {
     let index = circle_list.find(find_circle);
     let curr_x;
     let curr_y = index.getY() * 1.2 + radius * 3;
-    let current_key = parseInt(current_parent.getKey(), 10);
+    let current_key = current_parent.getKey();
     if (input < current_key) {
         curr_x = index.getX() - radius * 11.5 + (index.getY() + radius * 2) * 0.2;
     } else {
@@ -272,7 +272,7 @@ function SecondLevel_updateParameters(input, current_parent, circle_list) {
     let index = circle_list.find(find_circle);
     let curr_x;
     let curr_y = index.getY() * 1.2 + radius * 3;
-    let current_key = parseInt(current_parent.getKey(), 10);
+    let current_key = current_parent.getKey();
     if (input < current_key) {
         curr_x = index.getX() - radius * 6.5 + (index.getY() + radius * 2) * 0.2;
     } else {
@@ -287,7 +287,7 @@ function pre_updateParameters(input, current_parent, circle_list) {
     let index = circle_list.find(find_circle);
     let curr_x;
     let curr_y = index.getY() * 1.2 + radius * 3;
-    let current_key = parseInt(current_parent.getKey(), 10);
+    let current_key = current_parent.getKey();
     if (input < current_key) {
         curr_x = index.getX() - radius * 6 + (index.getY() + radius * 2) * 0.3;
     } else {
