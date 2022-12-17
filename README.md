@@ -18,4 +18,4 @@ app.py will run Flask and return a temporary URL for our website.
 ### Official URL
 Here is the URL for our website: [IntroToAvl](https://introtoavl.pythonanywhere.com/)
 
-_Created by Swarthmore College, CS71, Group 7_
+_Created by Swarthmore College, CS71, Group 7: Xingyu (Kevin) Dong; Ryan Oet; Anarsaikhan Tuvshinjargal; Lizbeth Zarate._
