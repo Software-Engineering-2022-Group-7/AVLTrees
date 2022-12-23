@@ -5,10 +5,10 @@
 {% endblock %}
 
 {% block content %}
-<main>
+<main class="implementation_main" id="implementation_main">
     <h1>Implementations of an AVL Tree!</h1>
     <div class="main_content">
-        <div class="card">
+        <div class="card" id="implementation_card">
             <div class="card-header" style="height: auto">
                 <ul class="nav nav-tabs card-header-tabs" data-bs-tabs="tabs">
                     <li class="nav-item">
@@ -22,7 +22,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="card-body tab-content">
+            <div class="card-body tab-content" style="overflow: auto;">
                 <div class="tab-pane active" id="pg1">
                     <h3 class="card-title">General Implementation</h3>
                     <text>
@@ -752,7 +752,7 @@ return leftNode;</code></pre>
                                         Adds a new node to its correct position in the tree.
                                         Does this by setting the root node to a call to a private
                                         recursive function AVL._insertInSubtree(currentNode, key, value),
-                                        with the root passed in as the currentNode. Also incremements _size.
+                                        with the root passed in as the currentNode. It will also increment _size.
 <pre><code>this._root = this._insertInSubtree(this._root, key, value);
 this._size++;</code></pre>
                                         AVL._insertInSubtree(currentNode, key, value):
@@ -767,7 +767,7 @@ this._size++;</code></pre>
 <pre><code>else if(currentNode.getKey() == key) {
     throw "The key already exists.";
 }</code></pre>
-                                        If the given key is greater than than the currentNode's, set the currentNode's right child to be a
+                                        If the given key is greater than the currentNode's, set the currentNode's right child to be a
                                         recursive call to this function with currentNode's right child passed in.
 <pre><code>else if(key > currentNode.getKey()) {
     currentNode.setRight(this._insertInSubtree(currentNode.getRight(), key, value));
@@ -810,7 +810,7 @@ if(balance > 1) {
         return this._leftRotate(currentNode);
     }
 }
-return currentNode;</pre></code>
+return currentNode;</code></pre>
                                     </div>
                                 </div>
                             </div>
@@ -954,7 +954,7 @@ this._size--;</code></pre>
 <pre><code>if(currentNode == null) {
     throw "The key does not exist.";
 }</code></pre>
-                                        If the given key is greater than than the currentNode's,
+                                        If the given key is greater than the currentNode's,
                                         set the currentNode's right child to be a recursive call to this function with currentNode's right child passed in.
 <pre><code>else if(key > currentNode.getKey()) {
     currentNode.setRight(this._removeFromSubtree(currentNode.getRight(), key));
@@ -1010,13 +1010,13 @@ if(balance > 1 && this._getBalance(currentNode.getLeft()) >= 0) {
 <pre><code>if(balance > 1 && this._getBalance(currentNode.getLeft()) < 0) {
     currentNode.setLeft(this._leftRotate(currentNode.getLeft()));
     return this._rightRotate(currentNode);
-}</pre></code>
+}</code></pre>
                                         If balance is less than -1 and the balance of the right child is
                                         less than or equal to 0, it's a right right case of rebalancing. A right right
                                         case is rebalanced by returning a left rotation on currentNode.
 <pre><code>if(balance < -1 && this._getBalance(currentNode.getRight()) <= 0) {
   return this._leftRotate(currentNode);
-}</pre></code>
+}</code></pre>
                                         If balance is less than -1 and the balance of the right child is
                                         greater than 0, it's a right left case of rebalancing. A right left
                                         case is rebalanced by setting currentNode's right child to be
@@ -1027,7 +1027,7 @@ if(balance > 1 && this._getBalance(currentNode.getLeft()) >= 0) {
     return this._leftRotate(currentNode);
 }
 
-return currentNode;</pre></code>
+return currentNode;</code></pre>
 
                                     </div>
                                 </div>
@@ -1282,7 +1282,7 @@ return list;</code></pre>
 list.unshift(node);</code></pre>
                                         If currentNode has a right child, recursively call this function with currentNode's
                                         right child passed in.
-<code></pre>if(currentNode.getRight() != null) {
+<pre><code>if(currentNode.getRight() != null) {
     this._buildPostOrderTraversal(currentNode.getRight(), list);
 }</code></pre>
                                     </div>
@@ -1330,5 +1330,12 @@ return list;</code></pre>
             </div>
         </div>
     </div>
+
+    <script>
+        let w = document.getElementById('implementation_main').offsetWidth;
+        let h = document.getElementById('implementation_main').offsetHeight;
+        document.getElementById("implementation_card").style.width = 1000 + 'px';
+        document.getElementById("implementation_card").style.height = (h - 130) + 'px';
+    </script>
 </main>
 {% endblock %}

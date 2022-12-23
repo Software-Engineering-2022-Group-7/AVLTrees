@@ -1,9 +1,10 @@
+/* Page Header */
 header.page_header h1 {
     /* Position the page header */
     position: absolute;
     left: 0;
     right: 0;
-    height: 10.5%;
+    height: 80px;
     margin: auto;
     padding: 10px 0;
     background: #24292F;
@@ -24,12 +25,13 @@ header.page_header a:hover {
     color: gray;
 }
 
+/* Navigation Bar */
 nav.sidebar {
     /* position the navigation bar */
     position: absolute;
-    top: 10.5%;
+    top: 80px;
     bottom: 0;
-    width: 19.5%;
+    width: 300px;
     overflow: auto;
     text-align: center;
 
@@ -62,13 +64,14 @@ nav.sidebar::-webkit-scrollbar {
     display: none;
 }
 
+/* Main Section */
 main {
     /* Position the main section */
     position: absolute;
-    top: 10.5%;
+    top: 80px;
     bottom: 0;
-    left: 19.5%;
-    width: 80.5%;
+    left: 300px;
+    right: 0;
 
     overflow: auto;
     padding-top: 30px;
@@ -112,27 +115,7 @@ main ul {
     margin-left: 70px;
 }
 
-.secondary_list {
-    margin-left: 0;
-}
-
-.tutorial_sidebar {
-    position: sticky;
-    float: right;
-    top: 20px;
-    right: 0;
-    width: 22%;
-    font-size: 100%;
-}
-
-.tutorial_sidebar .nav-pills .nav-link {
-    color: #24292F;
-}
-
-.tutorial_sidebar .nav-pills .nav-link.active {
-    background-color: #d0d7de;
-}
-
+/* Tutorial Page */
 .carousel {
     margin: 35px 70px 10px 70px;
     height: 550px;
@@ -207,10 +190,9 @@ main ul {
     max-width: 500px;
 }
 
-/* The main_content section is exclusively for implementation.html. */
+/* Implementation Page */
 .main_content {
     margin-left: 70px;
-    max-width: 1000px;
 }
 
 .main_content .card {
@@ -276,6 +258,11 @@ text .tree_hierarchy {
     background-color: #e8e8e8;
 }
 
+.main_content .card-body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Quiz Page */
 .wrapper {
     width: 100%;
     height: 100%;
@@ -352,6 +339,7 @@ text .tree_hierarchy {
     background: #B3B3B3;
 }
 
+/* Visualization Page */
 .visualization_main::-webkit-scrollbar {
     display: none;
 }

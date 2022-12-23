@@ -65,10 +65,15 @@
 
     <script>
         let w = document.getElementById('visualization_main').offsetWidth;
-        let adjust_use_c = document.getElementById("canvas").width;
-        let should_be_width = w - adjust_use_c - 70 - 20;
+        let canvas_current_width = document.getElementById("canvas").width;
+        let box_width = w - canvas_current_width - 70 - 20;
         let explanation_box = document.getElementById("explanation_card");
-        explanation_box.style.maxWidth = should_be_width + 'px';
+        if (box_width > 300) {
+            explanation_box.style.maxWidth = 300 + 'px';
+            document.getElementById("canvas").width = w - 300 - 20 - 70;
+        } else {
+            explanation_box.style.maxWidth = box_width + 'px';
+        }
     </script>
 
     {#Js files#}
