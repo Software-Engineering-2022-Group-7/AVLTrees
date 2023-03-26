@@ -33,48 +33,37 @@
         </div>
     </div>
 
-    {#canvas#}
-    <canvas id="canvas" width="850" height="500"></canvas>
+    <div class="visualization_wrapper">
+        {#canvas#}
+        <canvas id="canvas" width="850" height="500"></canvas>
 
-    {#explanation#}
-    <div class="explanation_card" id="explanation_card">
-        <div class="code_box">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Code Box</h5>
-                    <div class="card-text" id="code_display">
-                        The corresponding pseudocode will be displayed here.<br><br>
-                        Note due to the scale of the canvas, any node after level 4 cannot be properly shown.
+        {#explanation#}
+        <div class="explanation_card" id="explanation_card">
+            <div class="code_box">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Code Box</h5>
+                        <div class="card-text" id="code_display">
+                            The corresponding pseudocode will be displayed here.<br><br>
+                            Note due to the scale of the canvas, any node after level 4 cannot be properly shown.
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="explanation_explanation_box">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Explanation Box</h5>
-                    <h6 class="card-subtitle mb-2 text-muted" id="explanationTitle">Current Action: None</h6>
-                    <div class="card-text" id="explanation">
-                        The corresponding explanation
-                        will be displayed here. Have fun!
+            <div class="explanation_explanation_box">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Explanation Box</h5>
+                        <h6 class="card-subtitle mb-2 text-muted" id="explanationTitle">Current Action: None</h6>
+                        <div class="card-text" id="explanation">
+                            The corresponding explanation
+                            will be displayed here. Have fun!
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        let w = document.getElementById('visualization_main').offsetWidth;
-        let canvas_current_width = document.getElementById("canvas").width;
-        let box_width = w - canvas_current_width - 70 - 20;
-        let explanation_box = document.getElementById("explanation_card");
-        if (box_width > 300) {
-            explanation_box.style.maxWidth = 300 + 'px';
-            document.getElementById("canvas").width = w - 300 - 20 - 70;
-        } else {
-            explanation_box.style.maxWidth = box_width + 'px';
-        }
-    </script>
 
     {#Js files#}
     <script src="/static/AVL.js"></script>

@@ -38,6 +38,7 @@ function getInput() {
         tree.insert(Number(input), 0);
     } catch (error) {
         printError(error);
+        console.log(error);
     }
 }
 
@@ -296,6 +297,38 @@ function pre_updateParameters(input, current_parent, circle_list) {
     return [curr_x, curr_y];
 }
 
+let alpha = radius;
+function updateParameters(input, current_parent, circle_list) {
+    const find_circle = (element) => element.getkey() === current_parent.getKey();
+    let index = circle_list.find(find_circle); // Parent Index
+    if (index.getX() * 0.2 + radius * 3 - radius < radius / 2) {
+        generalUpdate(circle_list);
+    }
+    let curr_x;
+    let curr_y = index.getY() * 1.2 + radius * 3; // y' - y = 0.2y + 3R
+    let current_key = current_parent.getKey();
+    if (input < current_key) {
+        curr_x = index.getX() * 0.8 - radius * 3; // x - x' = 0.2x + 3R
+    } else {
+        curr_x = index.getX() * 1.2 + radius * 3; // x' - x = 0.2x + 3R
+    }
+    return [curr_x, curr_y];
+}
+
+function generalUpdate(circle_list) {
+    console.log(1);
+    for (let i = 0; i < circle_list.length; i++) {
+        if (circle_list[i].getkey() < circle_list[i].getCircleParentNode().getKey()) {
+            let temp = circle_list[i].getX();
+            circle_list[i].setX(temp - alpha);
+        } else {
+            let temp = circle_list[i].getX();
+            circle_list[i].setX(temp + alpha);
+        }
+    }
+    alpha = alpha * 2;
+}
+
 // level order store tree
 function levelOrderStore(root) {
     if (root === null || root === undefined) return;
@@ -310,13 +343,14 @@ function levelOrderStore(root) {
         if (currentNode.getLeft() != null) {
             queue.push(currentNode.getLeft());
             let temp;
-            if (currentNode === root) {
-                temp = initial_update(currentNode.getLeft().getKey(), currentNode, circle_list);
-            } else if (root.getLeft() === currentNode || root.getRight() === currentNode) {
-                temp = SecondLevel_updateParameters(currentNode.getLeft().getKey(), currentNode, circle_list);
-            } else {
-                temp = pre_updateParameters(currentNode.getLeft().getKey(), currentNode, circle_list);
-            }
+            temp = updateParameters(currentNode.getLeft().getKey(), currentNode, circle_list);
+            // if (currentNode === root) {
+            //     temp = initial_update(currentNode.getLeft().getKey(), currentNode, circle_list);
+            // } else if (root.getLeft() === currentNode || root.getRight() === currentNode) {
+            //     temp = SecondLevel_updateParameters(currentNode.getLeft().getKey(), currentNode, circle_list);
+            // } else {
+            //     temp = pre_updateParameters(currentNode.getLeft().getKey(), currentNode, circle_list);
+            // }
             let childNode = new Circle(temp[0], temp[1], radius, circleColor, circleFillColor,
                 currentNode.getLeft().getKey(), currentNode, false);
             circle_list.push(childNode);
@@ -325,13 +359,14 @@ function levelOrderStore(root) {
         if (currentNode.getRight() != null) {
             queue.push(currentNode.getRight());
             let temp;
-            if (currentNode === root) {
-                temp = initial_update(currentNode.getRight().getKey(), currentNode, circle_list);
-            } else if (root.getLeft() === currentNode || root.getRight() === currentNode) {
-                temp = SecondLevel_updateParameters(currentNode.getRight().getKey(), currentNode, circle_list);
-            } else {
-                temp = pre_updateParameters(currentNode.getRight().getKey(), currentNode, circle_list);
-            }
+            temp = updateParameters(currentNode.getRight().getKey(), currentNode, circle_list);
+            // if (currentNode === root) {
+            //     temp = initial_update(currentNode.getRight().getKey(), currentNode, circle_list);
+            // } else if (root.getLeft() === currentNode || root.getRight() === currentNode) {
+            //     temp = SecondLevel_updateParameters(currentNode.getRight().getKey(), currentNode, circle_list);
+            // } else {
+            //     temp = pre_updateParameters(currentNode.getRight().getKey(), currentNode, circle_list);
+            // }
             let childNode = new Circle(temp[0], temp[1], radius, circleColor, circleFillColor,
                 currentNode.getRight().getKey(), currentNode, false);
             circle_list.push(childNode);

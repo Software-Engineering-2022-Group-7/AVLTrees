@@ -4,8 +4,9 @@
 {% endblock %}
 
 {% block content %}
-<div class="wrapper">
-    <main class="main">
+
+<main class="main">
+    <div class="wrapper">
         <div class="quiz__head">
             <div class="head__content" id="head"></div>
             <div class="head__content" id="png"></div>
@@ -13,10 +14,14 @@
         <div class="quiz__body">
             <div class="buttons">
                 <div class="buttons__content" id="buttons">
-                    <button class="button">Default button</button><br>
-                    <button class="button button_wrong">Wrong answer</button><br>
-                    <button class="button button_correct">Correct answer</button><br>
-                    <button class="button button_passive">Unclicked button</button><br>
+                    <button class="button">Default button</button>
+                    <br>
+                    <button class="button button_wrong">Wrong answer</button>
+                    <br>
+                    <button class="button button_correct">Correct answer</button>
+                    <br>
+                    <button class="button button_passive">Unclicked button</button>
+                    <br>
                 </div>
             </div>
 
@@ -27,8 +32,8 @@
                 <div class="footer__content" id="points">Points: 0</div>
             </div>
         </div>
+    </div>
+</main>
 
-    </main>
-</div>
 <script src="../static/quiz.js"></script>
 {% endblock %}

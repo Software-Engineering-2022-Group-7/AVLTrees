@@ -1,18 +1,31 @@
+:root {
+    --black_color: #24292F;
+    --page_font_family: "Trebuchet MS", Arial, serif;
+}
+
+body {
+    display: grid;
+    grid-template-areas:
+            "header header"
+            "sidebar main_sec";
+    grid-template-rows: 80px auto;
+    grid-template-columns: 300px auto;
+}
+
 /* Page Header */
+.page_header {
+    grid-area: header;
+    background: var(--black_color);
+}
+
 header.page_header h1 {
-    /* Position the page header */
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 80px;
     margin: auto;
     padding: 10px 0;
-    background: #24292F;
 
-    font-family: "Trebuchet MS", Arial, serif;
+    font-family: var(--page_font_family);
     font-style: italic;
-    font-size: 300%;
     font-weight: bold;
+    font-size: 50px;
     text-align: center;
 }
 
@@ -27,16 +40,12 @@ header.page_header a:hover {
 
 /* Navigation Bar */
 nav.sidebar {
-    /* position the navigation bar */
-    position: absolute;
-    top: 80px;
-    bottom: 0;
-    width: 300px;
-    overflow: auto;
+    grid-area: sidebar;
     text-align: center;
+    min-height: calc(100vh - 80px);
 
     /* words */
-    font-family: "Times New Roman", Arial, serif;
+    font-family: var(--page_font_family);
     font-size: 25px;
     font-style: italic;
 }
@@ -66,12 +75,8 @@ nav.sidebar::-webkit-scrollbar {
 
 /* Main Section */
 main {
-    /* Position the main section */
-    position: absolute;
-    top: 80px;
-    bottom: 0;
-    left: 300px;
-    right: 0;
+    grid-area: main_sec;
+    min-height: calc(100vh - 80px);
 
     overflow: auto;
     padding-top: 30px;
@@ -190,13 +195,21 @@ main ul {
     max-width: 500px;
 }
 
+.secondary_list {
+    margin: 0;
+}
+
 /* Implementation Page */
 .main_content {
     margin-left: 70px;
+    max-height: 550px;
 }
 
 .main_content .card {
     margin-bottom: 10px;
+    overflow: auto;
+    max-height: inherit;
+    max-width: 900px;
 }
 
 .main_content h2 {
@@ -258,20 +271,14 @@ text .tree_hierarchy {
     background-color: #e8e8e8;
 }
 
-.main_content .card-body::-webkit-scrollbar {
-    display: none;
-}
-
 /* Quiz Page */
-.wrapper {
-    width: 100%;
-    height: 100%;
-    display: table;
+.main {
+    max-height: calc(100vh - 80px);
 }
 
-.main {
-    display: table-cell;
-    vertical-align: middle;
+.wrapper {
+    display: flex;
+    flex-direction: column;
     text-align: center;
 }
 
@@ -282,7 +289,7 @@ text .tree_hierarchy {
 
 .quiz__head {
     font-size: 30pt;
-    margin: 50px 10px 50px;
+    margin: 20px;
 }
 
 .head__content {
@@ -291,6 +298,7 @@ text .tree_hierarchy {
 
 .quiz__body {
     margin: 10px;
+    max-height: 350px;
 }
 
 .quiz__footer {
@@ -344,20 +352,26 @@ text .tree_hierarchy {
     display: none;
 }
 
+.visualization_wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 10px;
+
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
 canvas {
     background: #f8f8f8;
-    margin-top: 10px;
     margin-left: 70px;
-    display: inline-block;
     border: 1px solid gray;
     border-radius: 10px;
 }
 
 .explanation_card {
-    float: right;
-    margin-top: 10px;
-    margin-right: 10px;
     max-height: 500px;
+    max-width: 280px;
     overflow: auto;
 }
 
@@ -383,6 +397,7 @@ canvas {
 
 .toolbox {
     margin-left: 70px;
+    margin-right: 10px;
     display: inline-block;
 }
 
@@ -410,6 +425,10 @@ canvas {
     background: #F6F8FA;
 }
 
+.input-group .form-control {
+    min-width: 100px;
+}
+
 img {
     width: 50%;
     height: auto;
@@ -431,4 +450,19 @@ img {
 
 .repo_url:hover {
     color: gray;
+}
+
+/**** Screen Size Adjustment ****/
+@media screen and (max-width: 1400px) {
+    .sidebar {
+        display: none;
+    }
+
+    body {
+        grid-template-areas:
+            "header"
+            "main_sec";
+        grid-template-rows: 80px auto;
+        grid-template-columns: auto;
+    }
 }
