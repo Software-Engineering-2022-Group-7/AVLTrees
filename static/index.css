@@ -16,6 +16,7 @@ body {
 .page_header {
     grid-area: header;
     background: var(--black_color);
+    position: relative;
 }
 
 header.page_header h1 {
@@ -464,5 +465,9 @@ img {
             "main_sec";
         grid-template-rows: 80px auto;
         grid-template-columns: auto;
+    }
+
+    #offcanvas_control {
+        display: inherit !important;
     }
 }

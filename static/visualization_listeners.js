@@ -39,3 +39,19 @@ document.getElementById("SpeedRange").oninput = function() {
 function printError(e) {
     document.getElementById("code_display").innerHTML = e;
 }
+
+let offcanvas_start = window.matchMedia("(max-width: 1400px)");
+transformPanel(offcanvas_start);
+offcanvas_start.addEventListener('change', function () {
+    transformPanel(offcanvas_start);
+})
+
+function transformPanel(curr) {
+    if (curr.matches) { // If media query matches
+        console.log("match");
+        $('#offcanvasRight').append($('#sidebar'));
+    } else {
+        console.log("not match");
+        $('.page_header').after($('#sidebar'));
+    }
+}

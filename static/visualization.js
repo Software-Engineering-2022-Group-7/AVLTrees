@@ -344,13 +344,13 @@ function levelOrderStore(root) {
             queue.push(currentNode.getLeft());
             let temp;
             temp = updateParameters(currentNode.getLeft().getKey(), currentNode, circle_list);
-            // if (currentNode === root) {
-            //     temp = initial_update(currentNode.getLeft().getKey(), currentNode, circle_list);
-            // } else if (root.getLeft() === currentNode || root.getRight() === currentNode) {
-            //     temp = SecondLevel_updateParameters(currentNode.getLeft().getKey(), currentNode, circle_list);
-            // } else {
-            //     temp = pre_updateParameters(currentNode.getLeft().getKey(), currentNode, circle_list);
-            // }
+            if (currentNode === root) {
+                temp = initial_update(currentNode.getLeft().getKey(), currentNode, circle_list);
+            } else if (root.getLeft() === currentNode || root.getRight() === currentNode) {
+                temp = SecondLevel_updateParameters(currentNode.getLeft().getKey(), currentNode, circle_list);
+            } else {
+                temp = pre_updateParameters(currentNode.getLeft().getKey(), currentNode, circle_list);
+            }
             let childNode = new Circle(temp[0], temp[1], radius, circleColor, circleFillColor,
                 currentNode.getLeft().getKey(), currentNode, false);
             circle_list.push(childNode);
@@ -360,13 +360,13 @@ function levelOrderStore(root) {
             queue.push(currentNode.getRight());
             let temp;
             temp = updateParameters(currentNode.getRight().getKey(), currentNode, circle_list);
-            // if (currentNode === root) {
-            //     temp = initial_update(currentNode.getRight().getKey(), currentNode, circle_list);
-            // } else if (root.getLeft() === currentNode || root.getRight() === currentNode) {
-            //     temp = SecondLevel_updateParameters(currentNode.getRight().getKey(), currentNode, circle_list);
-            // } else {
-            //     temp = pre_updateParameters(currentNode.getRight().getKey(), currentNode, circle_list);
-            // }
+            if (currentNode === root) {
+                temp = initial_update(currentNode.getRight().getKey(), currentNode, circle_list);
+            } else if (root.getLeft() === currentNode || root.getRight() === currentNode) {
+                temp = SecondLevel_updateParameters(currentNode.getRight().getKey(), currentNode, circle_list);
+            } else {
+                temp = pre_updateParameters(currentNode.getRight().getKey(), currentNode, circle_list);
+            }
             let childNode = new Circle(temp[0], temp[1], radius, circleColor, circleFillColor,
                 currentNode.getRight().getKey(), currentNode, false);
             circle_list.push(childNode);

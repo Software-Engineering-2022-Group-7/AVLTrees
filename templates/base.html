@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
     <meta name="viewport" content="width=1200">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'index.css') }}">
@@ -29,8 +29,9 @@
     </ul>
 </nav>
 
-<!--< main content section >-->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel"></div>
 
+<!--< main content section >-->
 
 {% block content %}{% endblock %}
 
