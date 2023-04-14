@@ -372,7 +372,7 @@ canvas {
 
 .explanation_card {
     max-height: 500px;
-    max-width: 280px;
+    max-width: 260px;
     overflow: auto;
 }
 
